@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import "@testing-library/jest-dom";
 
-const childEl = <div id="childDiv"></div>;
+const childEl = <div id="childDiv">Hello World!</div>;
 
 const hash = "#hash";
 
@@ -20,4 +20,5 @@ test("Returns children", async () => {
   const el = await screen.findByTestId("hash-scroll");
 
   expect(el).toHaveAttribute("id", "childDiv");
+  expect(el).toHaveTextContent("Hello World!");
 });
