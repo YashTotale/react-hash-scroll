@@ -13,23 +13,23 @@ export interface MultiHashProps extends Partial<BaseHashOptions> {
    * An object specifying the hashes and the refs they point to
    *
    * Hashes can include or exclude leading "#"
-   * 
+   *
    * Each hash corresponds to a ref or a ref with options
-   * 
+   *
    * Example:
    * ```
-      const ref1 = createRef<HTMLDivElement>();
-      const ref2 = createRef<HTMLAnchorElement>()
-      {
-        "hash1": ref1,
-        "#hash2": [ref2,
-          {
-            behavior: "auto",
-            position: "nearest",
-            requiredPathname: ["/docs", "/contact"],
-          }
-        ],
-      };
+   *  const ref1 = createRef<HTMLDivElement>();
+   *  const ref2 = createRef<HTMLAnchorElement>();
+   *  const hashes = {
+   *    "hash1": ref1,
+   *    "#hash2": [ref2,
+   *      {
+   *        behavior: "auto",
+   *        position: "nearest",
+   *        requiredPathname: ["/docs", "/contact"],
+   *      }
+   *    ],
+   *  };
    * ```
    */
   hashes: MultiHashes<HTMLElement>;
