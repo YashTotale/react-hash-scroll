@@ -58,7 +58,10 @@ const HashScroll: FC<HashScrollProps> = ({
     }
   }, [urlHash, childRef, hash]);
 
-  return cloneElement(children, { ref: childRef });
+  return cloneElement(children, {
+    ref: childRef,
+    "data-testid": "hash-scroll",
+  });
 };
 
 export default HashScroll;
