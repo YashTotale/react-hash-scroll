@@ -120,10 +120,10 @@ Scrolls to child element when the specified hash is present in the url
     - "#example"
     - "example"
 
-- [**behavior**](#prop-behavior)
-- [**position**](#prop-position)
-- [**requiredPathname**](#prop-required-pathname)
-- [**scrollFunc**](#prop-scroll-func)
+- [**behavior**](#user-content-prop-behavior)
+- [**position**](#user-content-prop-position)
+- [**requiredPathname**](#user-content-prop-required-pathname)
+- [**scrollFunc**](#user-content-prop-scroll-func)
 
 - **children**: ReactElement (_Required_)
 
@@ -161,7 +161,7 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
 
   - An object specifying the hashes and the refs they correspond to
   - Hashes can include or exclude leading "#"
-  - Each hash corresponds to a ref or a ref with options ([behavior](#prop-behavior), [position](#prop-position), [requiredPathname](#prop-required-pathname), [scrollFunc](#prop-scroll-func))
+  - Each hash corresponds to a ref or a ref with options ([behavior](#user-content-prop-behavior), [position](#user-content-prop-position), [requiredPathname](#user-content-prop-required-pathname), [scrollFunc](#user-content-prop-scroll-func))
   - Example:
 
     ```javascript
@@ -181,20 +181,20 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
     return <MultiHash hashes={hashes} />;
     ```
 
-- [**behavior**](#prop-behavior)
+- [**behavior**](#user-content-prop-behavior)
   - Applies to all hashes unless overriden by a ref with options
-- [**position**](#prop-position)
+- [**position**](#user-content-prop-position)
   - Applies to all hashes unless overriden by a ref with options
-- [**requiredPathname**](#prop-required-pathname)
+- [**requiredPathname**](#user-content-prop-required-pathname)
   - Applies to all hashes unless overriden by a ref with options
-- [**scrollFunc**](#prop-scroll-func)
+- [**scrollFunc**](#user-content-prop-scroll-func)
   - Applies to all hashes unless overriden by a ref with options
 
 ### Reused Props
 
 Props that are used by multiple components
 
-- <span id="prop-behavior" name="prop-behavior">**behavior**: [ScrollBehavior](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior)</span>
+- <span id="user-content-prop-behavior" name="user-content-prop-behavior">**behavior**: [ScrollBehavior](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior)</span>
 
   - The behavior of the scroll
   - Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
@@ -202,17 +202,17 @@ Props that are used by multiple components
     - "smooth": Smooth scroll (_Default_)
     - "auto": Instant scroll
 
-- <span id="prop-position" name="prop-position">**position**: [ScrollPosition](https://github.com/microsoft/TypeScript/blob/master/lib/lib.dom.d.ts#L20072)</span>
+- <span id="user-content-prop-position" name="user-content-prop-position">**position**: [ScrollPosition](https://github.com/microsoft/TypeScript/blob/master/lib/lib.dom.d.ts#L20072)</span>
 
   - The position of the element on the page after it is scrolled to
-  - Like [behavior](#prop-behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
+  - Like [behavior](#user-content-prop-behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
   - Type:
     - "center": Element will scroll to center of page (_Default_)
     - "end": Element will scroll to bottom of page
     - "start": Element will scroll to top of page
     - "nearest": Element will scroll to center/end/start depending on which one is closest
 
-- <span id="prop-required-pathname" name="prop-required-pathname">**requiredPathname**: string | string[]</span>
+- <span id="user-content-prop-required-pathname" name="user-content-prop-required-pathname">**requiredPathname**: string | string[]</span>
 
   - Only scroll on a specific pathname(s)
   - Note: "/" matches to the website name with no pathname
@@ -221,12 +221,12 @@ Props that are used by multiple components
     - **/home/contact**: "/home/contact"
     - **/docs** or **/features**: ["/docs", "/features"]
 
-- <span id="prop-scroll-func" name="prop-scroll-func">**scrollFunc**: (ref, [behavior](#prop-behavior), [position](#prop-position)) => void</span>
+- <span id="user-content-prop-scroll-func" name="user-content-prop-scroll-func">**scrollFunc**: (ref, [behavior](#user-content-prop-behavior), [position](#user-content-prop-position)) => void</span>
   - A custom scroll function that overrides the default [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) function used by React Hash Scroll
   - Parameters:
     - ref: The ref object that contains the target element
-    - [behavior](#prop-behavior): The defined scroll behavior for the element or the default behavior
-    - [position](#prop-position): The defined scroll position for the element or the default position
+    - [behavior](#user-content-prop-behavior): The defined scroll behavior for the element or the default behavior
+    - [position](#user-content-prop-position): The defined scroll position for the element or the default position
 
 ## Contributing
 
