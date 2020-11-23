@@ -112,7 +112,9 @@ const MultiHash: FC<MultiHashProps> = ({
   useEffect(() => {
     const scroll = hashFuncs[urlHash];
 
-    scroll?.();
+    if (typeof scroll === "function") {
+      scroll();
+    }
   }, [urlHash, hashFuncs]);
 
   return <>{children}</>;
