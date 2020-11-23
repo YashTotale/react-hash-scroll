@@ -22,7 +22,8 @@ _Table Of Contents_
 - [Usage](#usage)
   - [HashScroll](#hashscroll)
   - [MultiHash](#multihash)
-- [Components](#components)
+- [Component API](#component-api)
+  - [HashScroll](#hashscroll-1)
 
 ---
 
@@ -104,4 +105,17 @@ const App = () => {
 };
 ```
 
-## Components
+## Component API
+
+### HashScroll
+
+Scrolls to child element when the specified hash is present in the url.
+
+#### Props
+
+- **hash** (string)
+  - The [hash](<https://www.oho.com/blog/explained-60-seconds-hash-symbols-urls-and-seo#:~:text=A%20hash%20sign%20(%23)%20in,specific%20subsection%20of%20that%20document.>) that should trigger scroll to the element
+  - Can include or exclude leading "#"
+  - Examples:
+    - "#example"
+    - "example"
