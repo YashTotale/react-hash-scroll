@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "yasht.terminal-all-in-one",
+    "esbenp.prettier-vscode",
+    "DavidAnson.vscode-markdownlint"
+  ]
+}
