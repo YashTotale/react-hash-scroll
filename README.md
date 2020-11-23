@@ -2,9 +2,9 @@
 <p align="center">
     <a href="https://github.com/YashTotale/react-hash-scroll/blob/main/static/icon.svg"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/cc2728f850fb8332a9ba22717faf70e1e74a30a6/static/icon.svg" alt="React Hash Scroll" width="200"></a>
   <br>
-  <h1 style="text-align: center">
+  <h1 align="center" style="text-align: center">
     React Hash Scroll
-    <br></h1>
+  </h1>
 </p>
 
 <p align="center">
