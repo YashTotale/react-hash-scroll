@@ -49,7 +49,8 @@ yarn add react-hash-scroll
 
 ### HashScroll
 
-In this example, the div with text "Element #1" will be scrolled to the center of the page when the url hash is "#hash1". The div with text "Element #2" will only be scrolled to when both the hash and the pathname are "#hash2" and "/docs", respectively.
+- In this example, the div with text "Element #1" will be scrolled to the center of the page when the url hash is "#hash1".
+- The div with text "Element #2" will only be scrolled to when both the hash and the pathname are "#hash2" and "/docs", respectively.
 
 ```javascript
 import React from "react";
@@ -76,7 +77,11 @@ const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for c
 
 ### MultiHash
 
-In this example, the elements will only be scrolled to on the "/docs" page. The div with text "Element #1" will be scrolled to when the url hash is "#div". Similarly, the h4 with text "Element #2" will be scrolled to smoothly when the hash is "#heading". Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the top of the page.
+In this example, the elements will only be scrolled to on the "/docs" page.
+
+- The div with text "Element #1" will be scrolled to when the url hash is "#div".
+- Similarly, the h4 with text "Element #2" will be scrolled to smoothly when the hash is "#heading".
+- Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the top of the page.
 
 ```javascript
 import React from "react";
@@ -120,10 +125,10 @@ Scrolls to child element when the specified hash is present in the url
     - "#example"
     - "example"
 
-- [**behavior**](#user-content-prop-behavior)
-- [**position**](#user-content-prop-position)
-- [**requiredPathname**](#user-content-prop-required-pathname)
-- [**scrollFunc**](#user-content-prop-scroll-func)
+- [behavior](#user-content-prop-behavior)
+- [position](#user-content-prop-position)
+- [requiredPathname](#user-content-prop-required-pathname)
+- [scrollFunc](#user-content-prop-scroll-func)
 
 - **children**: ReactElement (_Required_)
 
@@ -181,13 +186,13 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
     return <MultiHash hashes={hashes} />;
     ```
 
-- [**behavior**](#user-content-prop-behavior)
+- [behavior](#user-content-prop-behavior)
   - Applies to all hashes unless overriden by a ref with options
-- [**position**](#user-content-prop-position)
+- [position](#user-content-prop-position)
   - Applies to all hashes unless overriden by a ref with options
-- [**requiredPathname**](#user-content-prop-required-pathname)
+- [requiredPathname](#user-content-prop-required-pathname)
   - Applies to all hashes unless overriden by a ref with options
-- [**scrollFunc**](#user-content-prop-scroll-func)
+- [scrollFunc](#user-content-prop-scroll-func)
   - Applies to all hashes unless overriden by a ref with options
 
 ### Reused Props
