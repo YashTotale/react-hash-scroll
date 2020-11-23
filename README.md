@@ -26,6 +26,7 @@ _Table Of Contents_
   - [HashScroll](#hashscroll-1)
   - [MultiHash](#multihash-1)
   - [Reused Props](#reused-props)
+- [Contributing](#contributing)
 
 ---
 
@@ -51,7 +52,7 @@ yarn add react-hash-scroll
 
 ### HashScroll
 
-In this example, the div with text "Element #1" will be scrolled to when the url hash is "#hash1". The div with text "Element #2" will only be scrolled to when both the hash and the pathname are "#hash2" and "/docs", respectively.
+In this example, the div with text "Element #1" will be scrolled to the center of the page when the url hash is "#hash1". The div with text "Element #2" will only be scrolled to when both the hash and the pathname are "#hash2" and "/docs", respectively.
 
 ```javascript
 import React from "react";
@@ -61,7 +62,7 @@ import { HashScroll } from "react-hash-scroll";
 const App = () => {
   return (
     <BrowserRouter>
-      <HashScroll hash="#hash1">
+      <HashScroll hash="#hash1" position="center">
         <HashChild>Element #1</HashChild>
       </HashScroll>
       <HashScroll hash="#hash2" requiredPathname="/docs">
@@ -78,7 +79,7 @@ const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for c
 
 ### MultiHash
 
-In this example, the elements will only be scrolled to on the "/docs" page. The div with text "Element #1" will be scrolled to when the url hash is "#div". Similarly, the h4 with text "Element #2" will be scrolled to when the hash is "#heading" and the scroll behavior will be smooth. Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the center of the page.
+In this example, the elements will only be scrolled to on the "/docs" page. The div with text "Element #1" will be scrolled to when the url hash is "#div". Similarly, the h4 with text "Element #2" will be scrolled to smoothly when the hash is "#heading". Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the top of the page.
 
 ```javascript
 import React from "react";
@@ -96,7 +97,7 @@ const App = () => {
         hashes={{
           "#div": ref1,
           "#heading": [ref2, { behavior: "smooth" }],
-          "#paragraph": [ref3, { position: "center" }],
+          "#paragraph": [ref3, { position: "start" }],
         }}
         requiredPathname="/docs"
       />
@@ -229,3 +230,10 @@ Props that are used by multiple components
     - ref: The ref object that contains the target element
     - [behavior](#prop-behavior): The defined scroll behavior for the element or the default behavior
     - [position](#prop-position): The defined scroll position for the element or the default position
+
+## Contributing
+
+- Go to the [github repository](https://github.com/YashTotale/react-hash-scroll)
+- Open a new [issue](https://github.com/YashTotale/react-hash-scroll/issues/new/choose) or [pull request](https://github.com/YashTotale/react-hash-scroll/pulls)
+
+_Check out [first contributions](https://github.com/firstcontributions/first-contributions/blob/master/README.md) if you are new to contributing_
