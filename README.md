@@ -20,6 +20,8 @@ _Table Of Contents_
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [HashScroll](#hashscroll)
+  - [MultiHash](#multihash)
 - [Components](#components)
 
 ---
@@ -44,6 +46,8 @@ yarn add react-hash-scroll
 
 **Note**: [react-router-dom](https://reactrouter.com/web/) is required as a peer dependency and all components must be wrapped in a [Router](https://reactrouter.com/web/api/BrowserRouter)
 
+### HashScroll
+
 ```javascript
 import React from "react";
 import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
@@ -62,10 +66,38 @@ const App = () => {
   );
 };
 
-const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for custom React components
+const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for custom component children
   <div ref={ref}>{props.children}</div>
 )
+```
 
+### MultiHash
+
+```javascript
+import React from "react";
+import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
+import { MultiHash } from "react-hash-scroll";
+
+const App = () => {
+  const ref1 = React.createRef();
+  const ref2 = React.createRef();
+  const ref3 = React.createRef();
+
+  return (
+    <BrowserRouter>
+      <MultiHash
+        hashes={{
+          "#div": ref1,
+          "#heading": [ref2, { behavior: "smooth" }],
+          "#paragraph": [ref3, { position: "center" }],
+        }}
+      />
+      <div ref={ref1}>Element #1</div>
+      <h4 ref={ref2}>Element #3</h4>
+      <p ref={ref3}>Element #2</p>
+    </BrowserRouter>
+  );
+};
 ```
 
 ## Components
