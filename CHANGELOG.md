@@ -8,11 +8,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
+- [[1.0.1] - (2020-11-23)](#101---2020-11-23)
+  - [Added](#added)
+  - [Fixed](#fixed)
 - [[1.0.0] - (2020-11-23)](#100---2020-11-23)
 
 ---
 
 ## [Unreleased]
+
+---
+
+## [1.0.1] - (2020-11-23)
+
+### Added
+
+- CHANGELOG
+
+### Fixed
+
+- README made more readable
 
 ---
 
