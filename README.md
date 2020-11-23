@@ -24,6 +24,7 @@ _Table Of Contents_
   - [MultiHash](#multihash)
 - [Component API](#component-api)
   - [HashScroll](#hashscroll-1)
+  - [Reused Props](#reused-props)
 
 ---
 
@@ -111,7 +112,7 @@ const App = () => {
 
 Scrolls to child element when the specified hash is present in the url.
 
-- **hash** (string)
+- **hash**: string _(Required)_
 
   - The [hash](<https://www.oho.com/blog/explained-60-seconds-hash-symbols-urls-and-seo#:~:text=A%20hash%20sign%20(%23)%20in,specific%20subsection%20of%20that%20document.>) that should trigger scroll to the element
   - Can include or exclude leading "#"
@@ -119,20 +120,53 @@ Scrolls to child element when the specified hash is present in the url.
     - "#example"
     - "example"
 
-- **children** (ReactElement)
+- [**behavior**](#prop-behavior)
+- [**position**](#prop-position)
+- [**requiredPathname**](#prop-required-pathname)
+
+- **children**: ReactElement _(Required)_
 
   - Must be a singular child
   - Custom children must forward refs to a dom element
   - Examples:
 
     ```javascript
-    <HashScroll hash="example">
+    <HashScroll hash="#example" position="start" behavior="smooth">
       <div></div>
     </HashScroll>
     ```
 
     ```javascript
-    <HashScroll hash="example">
+    <HashScroll hash="#example" position="nearest" behavior="auto">
       <CustomChild /> //This component MUST forward ref to a dom element
     </HashScroll>
     ```
+
+### Reused Props
+
+Props that are used by multiple components
+
+- <span id="prop-behavior" name="prop-behavior">**behavior**: [ScrollBehavior](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior)</span>
+
+  - The behavior of the scroll
+  - Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
+  - Type:
+    - "smooth": Smooth scroll
+    - "auto": Instant scroll
+
+- <span id="prop-position" name="prop-position">**position**: [ScrollPosition](https://github.com/microsoft/TypeScript/blob/master/lib/lib.dom.d.ts#L20072)</span>
+
+  - The position of the element on the page after it is scrolled to
+  - Type:
+    - "center": Element will scroll to center of page
+    - "end": Element will scroll to bottom of page
+    - "start": Element will scroll to top of page
+    - "nearest": Element will scroll to center/end/start depending on which one is closest
+
+- <span id="prop-required-pathname" name="prop-required-pathname">**requiredPathname**: string | string[]</span>
+  - Only scroll on a specific pathname(s)
+  - Note: "/" matches to the website name with no pathname
+  - **Don't** end pathnames with "/" (Ex. "/test/")
+  - For example, to only scroll on:
+    - **/home/contact**: "/home/contact"
+    - **/docs** or **/features**: ["/docs", "/features"]
