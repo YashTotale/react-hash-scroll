@@ -1,9 +1,9 @@
 import { useRef, FC, ReactElement, cloneElement, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { DEFAULT_BEHAVIOR, DEFAULT_POSITION } from "../Utils/constants";
-import { BaseHashOptions } from "../Utils/types";
+import { BaseScrollOptions } from "../Utils/types";
 
-export interface HashScrollProps extends Partial<BaseHashOptions> {
+export interface HashScrollProps extends Partial<BaseScrollOptions> {
   /**
    * The [hash](https://www.oho.com/blog/explained-60-seconds-hash-symbols-urls-and-seo#:~:text=A%20hash%20sign%20(%23)%20in,specific%20subsection%20of%20that%20document.) that should trigger scroll to the element
    *

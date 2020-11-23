@@ -1,4 +1,4 @@
-export interface BaseHashOptions {
+export interface BaseScrollOptions {
   /**
    * The behavior of the scroll
    *

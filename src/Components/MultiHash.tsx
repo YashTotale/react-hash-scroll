@@ -2,14 +2,14 @@
 import React, { FC, RefObject, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { DEFAULT_BEHAVIOR, DEFAULT_POSITION } from "../Utils/constants";
-import { BaseHashOptions } from "../Utils/types";
+import { BaseScrollOptions } from "../Utils/types";
 
 export type MultiHashes<T> = Record<
   string,
-  RefObject<T> | [RefObject<T>, Partial<BaseHashOptions>]
+  RefObject<T> | [RefObject<T>, Partial<BaseScrollOptions>]
 >;
 
-export interface MultiHashProps extends Partial<BaseHashOptions> {
+export interface MultiHashProps extends Partial<BaseScrollOptions> {
   /**
    * An object specifying the hashes and the refs they point to
    *
@@ -41,8 +41,8 @@ export interface MultiHashProps extends Partial<BaseHashOptions> {
 
 const createHashFunc = (
   ref: RefObject<HTMLElement>,
-  options: Partial<BaseHashOptions>,
-  defaultOptions: Partial<BaseHashOptions>,
+  options: Partial<BaseScrollOptions>,
+  defaultOptions: Partial<BaseScrollOptions>,
   pathname: string
 ) => {
   const { behavior, position, requiredPathname, scrollFunc } = defaultOptions;
