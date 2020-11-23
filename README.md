@@ -24,6 +24,7 @@ _Table Of Contents_
   - [MultiHash](#multihash)
 - [Component API](#component-api)
   - [HashScroll](#hashscroll-1)
+  - [MultiHash](#multihash-1)
   - [Reused Props](#reused-props)
 
 ---
@@ -77,7 +78,7 @@ const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for c
 
 ### MultiHash
 
-In this example, the div with text "Element #1" will be scrolled to when the url hash is "#div". Similarly, the h4 with text "Element #2" will be scrolled to when the hash is "#heading" and the scroll behavior will be smooth. Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the center of the page.
+In this example, the elements will only be scrolled to on the "/docs" page. The div with text "Element #1" will be scrolled to when the url hash is "#div". Similarly, the h4 with text "Element #2" will be scrolled to when the hash is "#heading" and the scroll behavior will be smooth. Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the center of the page.
 
 ```javascript
 import React from "react";
@@ -97,6 +98,7 @@ const App = () => {
           "#heading": [ref2, { behavior: "smooth" }],
           "#paragraph": [ref3, { position: "center" }],
         }}
+        requiredPathname="/docs"
       />
       <div ref={ref1}>Element #1</div>
       <h4 ref={ref2}>Element #2</h4>
@@ -110,7 +112,7 @@ const App = () => {
 
 ### HashScroll
 
-Scrolls to child element when the specified hash is present in the url.
+Scrolls to child element when the specified hash is present in the url
 
 - **hash**: string _(Required)_
 
@@ -131,16 +133,61 @@ Scrolls to child element when the specified hash is present in the url.
   - Examples:
 
     ```javascript
-    <HashScroll hash="#example" position="start" behavior="smooth">
+    <HashScroll
+      hash="#example"
+      position="start"
+      behavior="smooth"
+      requiredPathname="/contact"
+    >
       <div></div>
     </HashScroll>
     ```
 
     ```javascript
-    <HashScroll hash="#example" position="nearest" behavior="auto">
+    <HashScroll
+      hash="#example"
+      position="nearest"
+      behavior="auto"
+      requiredPathname=["/docs/api", "/home"]
+    >
       <CustomChild /> //This component MUST forward ref to a dom element
     </HashScroll>
     ```
+
+### MultiHash
+
+Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
+
+- hashes _(Required)_
+
+  - An object specifying the hashes and the refs they point to
+  - Hashes can include or exclude leading "#"
+  - Each hash corresponds to a ref or a ref with options ([behavior](#prop-behavior), [position](#prop-position), [requiredPathname](#prop-required-pathname))
+  - Example:
+
+    ```javascript
+    const ref1 = createRef();
+    const ref2 = createRef();
+    const hashes = {
+      hash1: ref1,
+      "#hash2": [
+        ref2,
+        {
+          behavior: "auto",
+          requiredPathname: ["/docs", "/contact"],
+        },
+      ],
+    };
+
+    return <MultiHash hashes={hashes} />;
+    ```
+
+- [**behavior**](#prop-behavior)
+  - Applies to all hashes unless overriden by ref with options
+- [**position**](#prop-position)
+  - Applies to all hashes unless overriden by ref with options
+- [**requiredPathname**](#prop-required-pathname)
+  - Applies to all hashes unless overriden by ref with options
 
 ### Reused Props
 
@@ -157,6 +204,7 @@ Props that are used by multiple components
 - <span id="prop-position" name="prop-position">**position**: [ScrollPosition](https://github.com/microsoft/TypeScript/blob/master/lib/lib.dom.d.ts#L20072)</span>
 
   - The position of the element on the page after it is scrolled to
+  - Like [behavior](#prop-behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
   - Type:
     - "center": Element will scroll to center of page
     - "end": Element will scroll to bottom of page

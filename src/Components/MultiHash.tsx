@@ -18,20 +18,23 @@ export interface MultiHashProps extends Partial<BaseHashOptions> {
    * Each hash corresponds to a ref or a ref with options
    *
    * Example:
-   * ```
-   *  const ref1 = createRef<HTMLDivElement>();
-   *  const ref2 = createRef<HTMLAnchorElement>();
+   *
+   *  ```javascript
+   *  const ref1 = createRef();
+   *  const ref2 = createRef();
    *  const hashes = {
-   *    "hash1": ref1,
-   *    "#hash2": [ref2,
+   *    hash1: ref1,
+   *    "#hash2": [
+   *      ref2,
    *      {
    *        behavior: "auto",
    *        position: "nearest",
    *        requiredPathname: ["/docs", "/contact"],
-   *      }
+   *      },
    *    ],
    *  };
-   * ```
+   *  return <MultiHash hashes={hashes} />;
+   *  ```
    */
   hashes: MultiHashes<HTMLElement>;
 }
@@ -59,6 +62,9 @@ const createHashFunc = (
   };
 };
 
+/**
+ * Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
+ */
 const MultiHash: FC<MultiHashProps> = ({
   hashes,
   children,
