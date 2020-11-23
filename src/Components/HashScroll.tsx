@@ -33,6 +33,7 @@ const HashScroll: FC<HashScrollProps> = ({
   behavior = DEFAULT_BEHAVIOR,
   position = DEFAULT_POSITION,
   requiredPathname,
+  scrollFunc,
 }) => {
   const { hash: urlHash, pathname } = useLocation();
 
@@ -51,17 +52,20 @@ const HashScroll: FC<HashScrollProps> = ({
       urlHash === hash &&
       (requiredPathname === undefined || requiredPathname.includes(pathname))
     ) {
-      childRef?.current?.scrollIntoView({
-        behavior,
-        block: position,
-        inline: position,
-      });
+      if (childRef.current) {
+        if (scrollFunc) scrollFunc(childRef, behavior, position);
+        else
+          childRef.current.scrollIntoView({
+            behavior,
+            block: position,
+            inline: position,
+          });
+      }
     }
   }, [urlHash, childRef, hash]);
 
   return cloneElement(children, {
     ref: childRef,
-    "data-testid": "hash-scroll",
   });
 };
 

@@ -45,19 +45,26 @@ const createHashFunc = (
   defaultOptions: Partial<BaseHashOptions>,
   pathname: string
 ) => {
-  const { behavior, position, requiredPathname } = defaultOptions;
+  const { behavior, position, requiredPathname, scrollFunc } = defaultOptions;
 
   let req = options.requiredPathname ?? requiredPathname;
 
   if (typeof req === "string") req = [req];
 
+  const b = options.behavior ?? behavior ?? DEFAULT_BEHAVIOR;
+
+  const p = options.position ?? position ?? DEFAULT_POSITION;
+
   return () => {
-    if (req === undefined || req.includes(pathname)) {
-      ref.current?.scrollIntoView({
-        behavior: options.behavior ?? behavior,
-        block: options.position ?? position,
-        inline: options.position ?? position,
-      });
+    if ((req === undefined || req.includes(pathname)) && ref.current) {
+      if (options.scrollFunc) options.scrollFunc(ref, b, p);
+      else if (scrollFunc) scrollFunc(ref, b, p);
+      else
+        ref.current.scrollIntoView({
+          behavior: b,
+          block: p,
+          inline: p,
+        });
     }
   };
 };
@@ -68,15 +75,16 @@ const createHashFunc = (
 const MultiHash: FC<MultiHashProps> = ({
   hashes,
   children,
-  behavior = DEFAULT_BEHAVIOR,
-  position = DEFAULT_POSITION,
+  behavior,
+  position,
   requiredPathname,
+  scrollFunc,
 }) => {
   const { hash: urlHash, pathname } = useLocation();
 
   const hashFuncs: Record<string, () => void> = {};
 
-  const defaultOptions = { behavior, position, requiredPathname };
+  const defaultOptions = { behavior, position, requiredPathname, scrollFunc };
 
   useMemo(() => {
     for (let hash in hashes) {
@@ -99,9 +107,9 @@ const MultiHash: FC<MultiHashProps> = ({
   }, [hashes, defaultOptions, pathname]);
 
   useEffect(() => {
-    const scrollFunc = hashFuncs[urlHash];
+    const scroll = hashFuncs[urlHash];
 
-    scrollFunc?.();
+    scroll?.();
   }, [urlHash, hashFuncs]);
 
   return <>{children}</>;

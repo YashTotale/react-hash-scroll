@@ -33,4 +33,17 @@ export interface BaseHashOptions {
    * - string[]
    */
   requiredPathname: string | string[];
+  /**
+   * A custom scroll function
+   *
+   * Parameters:
+   * - ref: The ref object that contains the target element
+   * - behavior: The defined scroll behavior for the element or the default behavior
+   * - position: The defined scroll position for the element or the default position
+   */
+  scrollFunc?: (
+    ref: React.RefObject<HTMLElement>,
+    behavior: ScrollBehavior,
+    position: ScrollLogicalPosition
+  ) => void;
 }

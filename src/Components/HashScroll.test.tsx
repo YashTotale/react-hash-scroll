@@ -11,13 +11,13 @@ const childEl = <div id="childDiv">Hello World!</div>;
 const hash = "#hash";
 
 test("Returns children", async () => {
-  render(
+  const e = render(
     <BrowserRouter>
       <HashScroll hash={hash}>{childEl}</HashScroll>
     </BrowserRouter>
   );
 
-  const el = await screen.findByTestId("hash-scroll");
+  const el = e.baseElement.firstChild?.firstChild;
 
   expect(el).toHaveAttribute("id", "childDiv");
   expect(el).toHaveTextContent("Hello World!");
