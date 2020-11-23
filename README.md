@@ -125,6 +125,7 @@ Scrolls to child element when the specified hash is present in the url
 - [**behavior**](#prop-behavior)
 - [**position**](#prop-position)
 - [**requiredPathname**](#prop-required-pathname)
+- [**scrollFunc**](#prop-scroll-func)
 
 - **children**: ReactElement (_Required_)
 
@@ -160,9 +161,9 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
 
 - hashes _(Required)_
 
-  - An object specifying the hashes and the refs they point to
+  - An object specifying the hashes and the refs they correspond to
   - Hashes can include or exclude leading "#"
-  - Each hash corresponds to a ref or a ref with options ([behavior](#prop-behavior), [position](#prop-position), [requiredPathname](#prop-required-pathname))
+  - Each hash corresponds to a ref or a ref with options ([behavior](#prop-behavior), [position](#prop-position), [requiredPathname](#prop-required-pathname), [scrollFunc](#prop-scroll-func))
   - Example:
 
     ```javascript
@@ -183,13 +184,13 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
     ```
 
 - [**behavior**](#prop-behavior)
-  - Applies to all hashes unless overriden by ref with options
+  - Applies to all hashes unless overriden by a ref with options
 - [**position**](#prop-position)
-  - Applies to all hashes unless overriden by ref with options
+  - Applies to all hashes unless overriden by a ref with options
 - [**requiredPathname**](#prop-required-pathname)
-  - Applies to all hashes unless overriden by ref with options
+  - Applies to all hashes unless overriden by a ref with options
 - [**scrollFunc**](#prop-scroll-func)
-  - Applies to all hashes unless overriden by ref with options
+  - Applies to all hashes unless overriden by a ref with options
 
 ### Reused Props
 

@@ -10,9 +10,9 @@ export default {
       format: "cjs",
       exports: "named",
       sourcemap: true,
-      strict: false,
+      strict: true,
     },
   ],
   plugins: [typescript({ objectHashIgnoreUnknownHack: true })],
-  external: ["react", "react-dom"],
+  external: ["react", "react-dom", "react-router-dom"],
 };
