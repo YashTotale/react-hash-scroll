@@ -19,7 +19,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "test": "jest",
-    "prettify": "npx prettier --write ."
+    "prettify": "npx prettier --write . --loglevel silent"
   },
   "peerDependencies": {
     "react": "^16.8.0",
