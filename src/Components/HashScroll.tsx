@@ -1,5 +1,6 @@
 import { useRef, FC, ReactElement, cloneElement, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { DEFAULT_BEHAVIOR, DEFAULT_POSITION } from "../Utils/constants";
 import { BaseHashOptions } from "../Utils/types";
 
 export interface HashScrollProps extends Partial<BaseHashOptions> {
@@ -29,8 +30,8 @@ export interface HashScrollProps extends Partial<BaseHashOptions> {
 const HashScroll: FC<HashScrollProps> = ({
   hash,
   children,
-  behavior = "smooth",
-  position = "center",
+  behavior = DEFAULT_BEHAVIOR,
+  position = DEFAULT_POSITION,
   requiredPathname,
 }) => {
   const { hash: urlHash, pathname } = useLocation();

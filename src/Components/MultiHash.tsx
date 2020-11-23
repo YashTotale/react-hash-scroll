@@ -1,6 +1,7 @@
 // React Imports
 import React, { FC, RefObject, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import { DEFAULT_BEHAVIOR, DEFAULT_POSITION } from "../Utils/constants";
 import { BaseHashOptions } from "../Utils/types";
 
 export type MultiHashes<T> = Record<
@@ -61,8 +62,8 @@ const createHashFunc = (
 const MultiHash: FC<MultiHashProps> = ({
   hashes,
   children,
-  behavior = "smooth",
-  position = "center",
+  behavior = DEFAULT_BEHAVIOR,
+  position = DEFAULT_POSITION,
   requiredPathname,
 }) => {
   const { hash: urlHash, pathname } = useLocation();
