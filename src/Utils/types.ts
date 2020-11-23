@@ -34,7 +34,7 @@ export interface BaseScrollOptions {
    */
   requiredPathname: string | string[];
   /**
-   * A custom scroll function
+   * A custom scroll function that overrides the default [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) function used by React Hash Scroll
    *
    * Parameters:
    * - ref: The ref object that contains the target element

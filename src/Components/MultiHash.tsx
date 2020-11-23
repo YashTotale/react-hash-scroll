@@ -1,7 +1,10 @@
 // React Imports
 import React, { FC, RefObject, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import { DEFAULT_BEHAVIOR, DEFAULT_POSITION } from "../Utils/constants";
+import {
+  DEFAULT_SCROLL_BEHAVIOR,
+  DEFAULT_SCROLL_POSITION,
+} from "../Utils/constants";
 import { BaseScrollOptions } from "../Utils/types";
 
 export type MultiHashes<T> = Record<
@@ -51,9 +54,9 @@ const createHashFunc = (
 
   if (typeof req === "string") req = [req];
 
-  const b = options.behavior ?? behavior ?? DEFAULT_BEHAVIOR;
+  const b = options.behavior ?? behavior ?? DEFAULT_SCROLL_BEHAVIOR;
 
-  const p = options.position ?? position ?? DEFAULT_POSITION;
+  const p = options.position ?? position ?? DEFAULT_SCROLL_POSITION;
 
   return () => {
     if ((req === undefined || req.includes(pathname)) && ref.current) {
