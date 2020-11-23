@@ -48,6 +48,8 @@ yarn add react-hash-scroll
 
 ### HashScroll
 
+In this example, the div with text "Element #1" will be scrolled to when the url hash is "#hash1". The div with text "Element #2" will only be scrolled to when both the hash and the pathname are "#hash2" and "/docs", respectively.
+
 ```javascript
 import React from "react";
 import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
@@ -57,21 +59,23 @@ const App = () => {
   return (
     <BrowserRouter>
       <HashScroll hash="#hash1">
-        <HashChild>Scroll #1</HashChild>
+        <HashChild>Element #1</HashChild>
       </HashScroll>
-      <HashScroll hash="#hash2">
-        <div>Scroll #2</div>
+      <HashScroll hash="#hash2" requiredPathname="/docs">
+        <div>Element #2</div>
       </HashScroll>
     </BrowserRouter>
   );
 };
 
-const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for custom component children
+const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for custom HashScroll children
   <div ref={ref}>{props.children}</div>
 )
 ```
 
 ### MultiHash
+
+In this example, the div with text "Element #1" will be scrolled to when the url hash is "#div". Similarly, the h4 with text "Element #2" will be scrolled to when the hash is "#heading" and the scroll behavior will be smooth. Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the center of the page.
 
 ```javascript
 import React from "react";
@@ -93,8 +97,8 @@ const App = () => {
         }}
       />
       <div ref={ref1}>Element #1</div>
-      <h4 ref={ref2}>Element #3</h4>
-      <p ref={ref3}>Element #2</p>
+      <h4 ref={ref2}>Element #2</h4>
+      <p ref={ref3}>Element #3</p>
     </BrowserRouter>
   );
 };
