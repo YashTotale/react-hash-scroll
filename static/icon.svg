@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="1.1"
+  id="Capa_1"
+  x="0px"
+  y="0px"
+  viewBox="0 0 512 512"
+  style="enable-background: new 0 0 512 512"
+  xml:space="preserve"
+  width="512"
+  height="512"
+>
+  <g>
+    <g>
+      <g>
+        <g>
+          <g>
+            <g>
+              <g>
+                <g>
+                  <g>
+                    <circle style="fill: #555a66" cx="256" cy="256" r="256" />
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <path
+      style="fill: #333940"
+      d="M505.169,314.943L342.184,151.958l-82.708-41.886l-63.498,68.049l71.429,71.429l-45.419,37.918   l82.529,82.529L256,446.226l58.943,58.943C408.987,483.006,483.007,408.987,505.169,314.943z"
+    />
+    <g>
+      <circle style="fill: #ffffff" cx="256" cy="256" r="46.344" />
+    </g>
+    <g>
+      <path
+        style="fill: #dce1eb"
+        d="M256,209.656c-0.032,0-0.063,0.002-0.095,0.002v92.683c0.032,0,0.063,0.002,0.095,0.002    c25.595,0,46.344-20.749,46.344-46.344S281.595,209.656,256,209.656z"
+      />
+    </g>
+    <g>
+      <g>
+        <polygon
+          style="fill: #ffffff"
+          points="195.979,178.121 169.815,151.958 256,65.773 342.184,151.958 316.021,178.121      256,118.099    "
+        />
+      </g>
+      <g>
+        <polygon
+          style="fill: #dce1eb"
+          points="256,118.099 316.021,178.121 342.184,151.958 256,65.773    "
+        />
+      </g>
+      <g>
+        <polygon
+          style="fill: #ffffff"
+          points="256,446.226 169.816,360.042 195.979,333.879 256,393.9 316.021,333.879 342.185,360.042         "
+        />
+      </g>
+      <g>
+        <polygon
+          style="fill: #dce1eb"
+          points="256,446.226 342.185,360.042 316.021,333.879 256,393.9    "
+        />
+      </g>
+    </g>
+  </g>
+</svg>
