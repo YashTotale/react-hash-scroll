@@ -1,18 +1,25 @@
 {
   "name": "react-hash-scroll",
   "version": "1.0.0",
-  "description": "",
+  "description": "Customizable React components for hash scrolling with refs (TS supported)",
   "main": "dist/index.js",
+  "author": {
+    "name": "Yash Totale",
+    "email": "totaleyash@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YashTotale/react-hash-scroll.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YashTotale/react-hash-scroll/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
     "test": "jest"
   },
-  "author": "Yash Totale",
-  "files": [
-    "dist"
-  ],
-  "license": "MIT",
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
@@ -40,9 +47,15 @@
     "rollup-plugin-typescript2": "^0.29.0",
     "typescript": "^4.1.2"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "react",
+    "router",
+    "url",
     "hash",
-    "scroll"
+    "scroll",
+    "scroller"
   ]
 }
