@@ -19,6 +19,8 @@
 _Table Of Contents_
 
 - [Installation](#installation)
+- [Usage](#usage)
+- [Components](#components)
 
 ---
 
@@ -30,4 +32,40 @@ Using [npm](https://www.npmjs.com):
 npm install --save react-hash-scroll
 ```
 
+Using [yarn](https://yarnpkg.com/):
+
+```shell
+yarn add react-hash-scroll
+```
+
 ---
+
+## Usage
+
+**Note**: [react-router-dom](https://reactrouter.com/web/) is required as a peer dependency and all components must be wrapped in a [Router](https://reactrouter.com/web/api/BrowserRouter)
+
+```javascript
+import React from "react";
+import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
+import { HashScroll } from "react-hash-scroll";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <HashScroll hash="#hash1">
+        <HashChild>Scroll #1</HashChild>
+      </HashScroll>
+      <HashScroll hash="#hash2">
+        <div>Scroll #2</div>
+      </HashScroll>
+    </BrowserRouter>
+  );
+};
+
+const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for custom React components
+  <div ref={ref}>{props.children}</div>
+)
+
+```
+
+## Components
