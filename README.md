@@ -280,3 +280,22 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
 - Open a new [issue](https://github.com/YashTotale/react-hash-scroll/issues/new/choose) or [pull request](https://github.com/YashTotale/react-hash-scroll/pulls)
 
 _Check out [first contributions](https://github.com/firstcontributions/first-contributions/blob/master/README.md) if you are new to contributing_
+
+---
+
+## More Info (Badges)
+
+<!-- NPM Badges -->
+<p align="center">
+    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/npm/dw/react-hash-scroll?logo=npm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Downloads" alt="Downloads"></a>&nbsp;
+    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/bundlephobia/min/react-hash-scroll?logo=npm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Minified%20Size" alt="Minified Size"></a>&nbsp;
+</p>
+
+---
+
+<!-- NPM Badges -->
+<p align="center">
+    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/snyk/vulnerabilities/npm/react-hash-scroll?logo=snyk&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
+</p>
+
+---
