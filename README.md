@@ -16,7 +16,7 @@
 _Table Of Contents_
 
 - [Installation](#installation)
-- [Why this one?](#why-this-one)
+- [Why this one](#why-this-one)
 - [Usage](#usage)
   - [HashScroll](#hashscroll)
   - [MultiHash](#multihash)
@@ -52,7 +52,7 @@ yarn add react-hash-scroll
 
 ---
 
-## Why this one?
+## Why this one
 
 There are a lot of hash scrolling React libraries out there, so why should you pick this one?
 

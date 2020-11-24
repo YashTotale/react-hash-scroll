@@ -1,4 +1,12 @@
 {
-  "**/*.@(js|jsx|ts|tsx)": ["eslint --fix", "prettier --write"],
-  "**/*.@(md|json|yml)": ["prettier --write"]
+  "**/*.@(js|jsx|ts|tsx)": [
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "**/*@(md)": [
+    "markdownlint --fix"
+  ],
+  "**/*.@(md|json|yml)": [
+    "prettier --write"
+  ]
 }
