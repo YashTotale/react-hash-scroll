@@ -23,7 +23,7 @@ const config = {
   ],
   plugins: [
     babel({ exclude: "node_modules/**", extensions }),
-    typescript({ noEmitOnError: true }),
+    typescript(),
     terser(),
   ],
   external: Object.keys(globals),
