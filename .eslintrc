@@ -23,6 +23,7 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
+    "react/prop-types": "off",
     "@typescript-eslint/no-explicit-any": "off"
   }
 }

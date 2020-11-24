@@ -5,6 +5,7 @@ import {
   DEFAULT_SCROLL_BEHAVIOR,
   DEFAULT_SCROLL_POSITION,
 } from "../Utils/constants";
+import { DEFAULT_SCROLL_FUNC } from "../Utils/functions";
 import { BaseScrollOptions } from "../Utils/types";
 
 export type MultiHashes<T> = Record<
@@ -62,12 +63,7 @@ const createHashFunc = (
     if ((req === undefined || req.includes(pathname)) && ref.current) {
       if (options.scrollFunc) options.scrollFunc(ref, b, p);
       else if (scrollFunc) scrollFunc(ref, b, p);
-      else
-        ref.current.scrollIntoView({
-          behavior: b,
-          block: p,
-          inline: p,
-        });
+      else DEFAULT_SCROLL_FUNC(ref, b, p);
     }
   };
 };

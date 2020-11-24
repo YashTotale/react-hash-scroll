@@ -4,6 +4,7 @@ import {
   DEFAULT_SCROLL_BEHAVIOR,
   DEFAULT_SCROLL_POSITION,
 } from "../Utils/constants";
+import { DEFAULT_SCROLL_FUNC } from "../Utils/functions";
 import { BaseScrollOptions } from "../Utils/types";
 
 export interface HashScrollProps extends Partial<BaseScrollOptions> {
@@ -57,12 +58,7 @@ const HashScroll: FC<HashScrollProps> = ({
     ) {
       if (childRef.current) {
         if (scrollFunc) scrollFunc(childRef, behavior, position);
-        else
-          childRef.current.scrollIntoView({
-            behavior,
-            block: position,
-            inline: position,
-          });
+        else DEFAULT_SCROLL_FUNC(childRef, behavior, position);
       }
     }
   }, [urlHash, childRef, hash]);
