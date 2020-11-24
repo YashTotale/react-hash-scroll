@@ -81,9 +81,16 @@ const MultiHash: FC<MultiHashProps> = ({
 }) => {
   const { hash: urlHash, pathname } = useLocation();
 
-  const hashFuncs: Record<string, () => void> = {};
+  const defaultOptions = useMemo(
+    () => ({ behavior, position, requiredPathname, scrollFunc }),
+    [behavior, position, requiredPathname, scrollFunc]
+  );
 
-  const defaultOptions = { behavior, position, requiredPathname, scrollFunc };
+  const hashFuncs: Record<string, () => void> = useMemo(() => ({}), [
+    hashes,
+    defaultOptions,
+    pathname,
+  ]);
 
   useMemo(() => {
     for (let hash in hashes) {
