@@ -32,6 +32,7 @@ _Table Of Contents_
   - [MultiHash](#multihash-1)
     - [hashes](#hashes)
 - [Contributing](#contributing)
+- [More Info (Badges)](#more-info-badges)
 
 ---
 
@@ -296,6 +297,34 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 <!-- NPM Badges -->
 <p align="center">
     <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/snyk/vulnerabilities/npm/react-hash-scroll?logo=snyk&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
+    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/depfu/YashTotale/react-hash-scroll?logo=dependabot&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
+</p>
+
+---
+
+<!-- Code Alerts/Issues Badges -->
+
+<p align="center">
+    <a href="https://codeclimate.com/github/YashTotale/react-hash-scroll/issues"><img src="https://img.shields.io/codeclimate/issues/YashTotale/react-hash-scroll.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Issues" alt="Issues"></a>&nbsp;
+    <a href="https://lgtm.com/projects/g/YashTotale/react-hash-scroll/alerts/?mode=list"><img src="https://img.shields.io/lgtm/alerts/github/YashTotale/react-hash-scroll?logo=lgtm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Lgtm%20Alerts" alt="Alerts"></a>&nbsp;
+</p>
+
+---
+
+<!-- Code Maintainability Badges -->
+
+<p align="center">
+    <a href="https://codeclimate.com/github/YashTotale/react-hash-scroll/trends/technical_debt"><img src="https://img.shields.io/codeclimate/tech-debt/YashTotale/react-hash-scroll.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Technical%20Debt" alt="Technical Debt"></a>&nbsp;
+    <a href="https://codeclimate.com/github/YashTotale/react-hash-scroll"><img src="https://img.shields.io/codeclimate/maintainability-percentage/YashTotale/react-hash-scroll.svg?style=for-the-badge&logo=code-climate&labelColor=000000&label=Maintainability" alt="Maintainability"></a>&nbsp;
+</p>
+
+---
+
+<!-- Commit Badges -->
+
+<p align="center">
+    <a href="https://github.com/YashTotale/react-hash-scroll/commits/master"><img src="https://img.shields.io/github/last-commit/YashTotale/react-hash-scroll?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit&color=007EC6" alt="Last Commit"></a>&nbsp;
+    <a href="https://github.com/YashTotale/react-hash-scroll/pulse/monthly"><img src="https://img.shields.io/github/commit-activity/w/YashTotale/react-hash-scroll?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity&color=007EC6" alt="Commit Activity"></a>&nbsp;
 </p>
 
 ---
