@@ -19,7 +19,6 @@
     "build": "NODE_ENV=production rm -rf dist && rm -rf umd && rollup -c",
     "start": "rollup -c -w",
     "test": "jest",
-    "mdlint": "markdownlint",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {

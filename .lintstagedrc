@@ -4,9 +4,10 @@
     "prettier --write"
   ],
   "**/*@(md)": [
-    "markdownlint --fix"
+    "markdownlint --fix",
+    "prettier --write"
   ],
-  "**/*.@(md|json|yml)": [
+  "**/*.@(json|yml)": [
     "prettier --write"
   ]
 }
