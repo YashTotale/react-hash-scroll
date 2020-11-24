@@ -2,9 +2,9 @@
 <p align="center">
     <a href="https://github.com/YashTotale/react-hash-scroll/blob/main/static/icon.svg"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/cc2728f850fb8332a9ba22717faf70e1e74a30a6/static/icon.svg" alt="React Hash Scroll" width="200"></a>
   <br>
-  <h1 align="center" style="text-align: center">
+  <h2 align="center">
     React Hash Scroll
-  </h1>
+  </h2>
 </p>
 
 <p align="center">
@@ -20,9 +20,16 @@ _Table Of Contents_
   - [HashScroll](#hashscroll)
   - [MultiHash](#multihash)
 - [Component API](#component-api)
-  - [HashScroll](#hashscroll-1)
-  - [MultiHash](#multihash-1)
   - [Reused Props](#reused-props)
+    - [behavior](#behavior)
+    - [position](#position)
+    - [requiredPathname](#requiredpathname)
+    - [scrollFunc](#scrollfunc)
+  - [HashScroll](#hashscroll-1)
+    - [hash](#hash)
+    - [children](#children)
+  - [MultiHash](#multihash-1)
+    - [hashes](#hashes)
 - [Contributing](#contributing)
 
 ---
@@ -113,125 +120,143 @@ const App = () => {
 
 ## Component API
 
+### Reused Props
+
+Props that are used by multiple components
+
+#### behavior
+
+- The behavior of the scroll
+- Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
+- Type:
+  - "smooth": Smooth scroll (_Default_)
+  - "auto": Instant scroll
+
+#### position
+
+- The position of the element on the page after it is scrolled to
+- Like [behavior](#behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
+- Type:
+  - "center": Element will scroll to center of page (_Default_)
+  - "end": Element will scroll to bottom of page
+  - "start": Element will scroll to top of page
+  - "nearest": Element will scroll to center/end/start depending on which one is closest
+
+#### requiredPathname
+
+- Only scroll on a specific pathname(s)
+- Note: "/" matches to the website name with no pathname
+- **Don't** end pathnames with "/" (Ex. "/test/")
+- For example, to only scroll on:
+  - **/home/contact**: "/home/contact"
+  - **/docs** or **/features**: ["/docs", "/features"]
+- Type: `string | string[]`
+
+#### scrollFunc
+
+- A custom scroll function that overrides the default [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) function used by React Hash Scroll
+- Parameters:
+  - ref: The ref object that contains the target element
+  - [behavior](#behavior): The defined scroll behavior for the element or the default behavior
+  - [position](#position): The defined scroll position for the element or the default position
+- Type: `(ref,`[`behavior`](#behavior)`,`[`position`](#position)`) => void`
+
 ### HashScroll
 
 Scrolls to child element when the specified hash is present in the url
 
-- **hash**: string (_Required_)
+#### hash
 
-  - The [hash](<https://www.oho.com/blog/explained-60-seconds-hash-symbols-urls-and-seo#:~:text=A%20hash%20sign%20(%23)%20in,specific%20subsection%20of%20that%20document.>) that should trigger scroll to the element
-  - Can include or exclude leading "#"
-  - Examples:
-    - "#example"
-    - "example"
+- **Required**
+- Type: `string`
+- The [hash](<https://www.oho.com/blog/explained-60-seconds-hash-symbols-urls-and-seo#:~:text=A%20hash%20sign%20(%23)%20in,specific%20subsection%20of%20that%20document.>) that should trigger scroll to the element
+- Can include or exclude leading "#"
+- Examples:
+  - "#example"
+  - "example"
 
-- [behavior](#user-content-prop-behavior)
-- [position](#user-content-prop-position)
-- [requiredPathname](#user-content-prop-required-pathname)
-- [scrollFunc](#user-content-prop-scroll-func)
+#### [behavior](#behavior) <!-- omit in toc -->
 
-- **children**: ReactElement (_Required_)
+#### [position](#position) <!-- omit in toc -->
 
-  - Must be a singular child
-  - Custom children must forward refs to a dom element
-  - Examples:
+#### [requiredPathname](#requiredpathname) <!-- omit in toc -->
 
-    ```javascript
-    <HashScroll
-      hash="#example"
-      position="start"
-      behavior="smooth"
-      requiredPathname="/contact"
-    >
-      <div></div>
-    </HashScroll>
-    ```
+#### [scrollFunc](#scrollfunc) <!-- omit in toc -->
 
-    ```javascript
-    <HashScroll
-      hash="#example"
-      position="nearest"
-      behavior="auto"
-      requiredPathname=["/docs/api", "/home"]
-    >
-      <CustomChild /> //This component MUST forward ref to a dom element
-    </HashScroll>
-    ```
+#### children
+
+- **Required**
+- Type: `ReactElement`
+- Must be a singular child
+- Custom children must forward refs to a dom element
+- Examples:
+
+  ```javascript
+  <HashScroll
+    hash="#example"
+    position="start"
+    behavior="smooth"
+    requiredPathname="/contact"
+  >
+    <div></div>
+  </HashScroll>
+  ```
+
+  ```javascript
+  <HashScroll
+    hash="#example"
+    position="nearest"
+    behavior="auto"
+    requiredPathname=["/docs/api", "/home"]
+  >
+    <CustomChild /> //This component MUST forward ref to a dom element
+  </HashScroll>
+  ```
 
 ### MultiHash
 
 Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
 
-- hashes _(Required)_
+#### hashes
 
-  - An object specifying the hashes and the refs they correspond to
-  - Hashes can include or exclude leading "#"
-  - Each hash corresponds to a ref or a ref with options ([behavior](#user-content-prop-behavior), [position](#user-content-prop-position), [requiredPathname](#user-content-prop-required-pathname), [scrollFunc](#user-content-prop-scroll-func))
-  - Example:
+- **Required**
+- An object specifying the hashes and the refs they correspond to
+- Hashes can include or exclude leading "#"
+- Each hash corresponds to a ref or a ref with options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc))
+- Example:
 
-    ```javascript
-    const ref1 = createRef();
-    const ref2 = createRef();
-    const hashes = {
-      hash1: ref1,
-      "#hash2": [
-        ref2,
-        {
-          behavior: "auto",
-          requiredPathname: ["/docs", "/contact"],
-        },
-      ],
-    };
+  ```javascript
+  const ref1 = createRef();
+  const ref2 = createRef();
+  const hashes = {
+    hash1: ref1,
+    "#hash2": [
+      ref2,
+      {
+        behavior: "auto",
+        requiredPathname: ["/docs", "/contact"],
+      },
+    ],
+  };
 
-    return <MultiHash hashes={hashes} />;
-    ```
+  return <MultiHash hashes={hashes} />;
+  ```
 
-- [behavior](#user-content-prop-behavior)
-  - Applies to all hashes unless overriden by a ref with options
-- [position](#user-content-prop-position)
-  - Applies to all hashes unless overriden by a ref with options
-- [requiredPathname](#user-content-prop-required-pathname)
-  - Applies to all hashes unless overriden by a ref with options
-- [scrollFunc](#user-content-prop-scroll-func)
-  - Applies to all hashes unless overriden by a ref with options
+#### [behavior](#behavior) <!-- omit in toc -->
 
-### Reused Props
+- Applies to all hashes unless overriden by a ref with options
 
-Props that are used by multiple components
+#### [position](#position) <!-- omit in toc -->
 
-- <span id="user-content-prop-behavior" name="user-content-prop-behavior">**behavior**: [ScrollBehavior](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior)</span>
+- Applies to all hashes unless overriden by a ref with options
 
-  - The behavior of the scroll
-  - Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
-  - Type:
-    - "smooth": Smooth scroll (_Default_)
-    - "auto": Instant scroll
+#### [requiredPathname](#requiredpathname) <!-- omit in toc -->
 
-- <span id="user-content-prop-position" name="user-content-prop-position">**position**: [ScrollPosition](https://github.com/microsoft/TypeScript/blob/master/lib/lib.dom.d.ts#L20072)</span>
+- Applies to all hashes unless overriden by a ref with options
 
-  - The position of the element on the page after it is scrolled to
-  - Like [behavior](#user-content-prop-behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
-  - Type:
-    - "center": Element will scroll to center of page (_Default_)
-    - "end": Element will scroll to bottom of page
-    - "start": Element will scroll to top of page
-    - "nearest": Element will scroll to center/end/start depending on which one is closest
+#### [scrollFunc](#scrollfunc) <!-- omit in toc -->
 
-- <span id="user-content-prop-required-pathname" name="user-content-prop-required-pathname">**requiredPathname**: string | string[]</span>
-
-  - Only scroll on a specific pathname(s)
-  - Note: "/" matches to the website name with no pathname
-  - **Don't** end pathnames with "/" (Ex. "/test/")
-  - For example, to only scroll on:
-    - **/home/contact**: "/home/contact"
-    - **/docs** or **/features**: ["/docs", "/features"]
-
-- <span id="user-content-prop-scroll-func" name="user-content-prop-scroll-func">**scrollFunc**: (ref, [behavior](#user-content-prop-behavior), [position](#user-content-prop-position)) => void</span>
-  - A custom scroll function that overrides the default [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) function used by React Hash Scroll
-  - Parameters:
-    - ref: The ref object that contains the target element
-    - [behavior](#user-content-prop-behavior): The defined scroll behavior for the element or the default behavior
-    - [position](#user-content-prop-position): The defined scroll position for the element or the default position
+- Applies to all hashes unless overriden by a ref with options
 
 ## Contributing
 
