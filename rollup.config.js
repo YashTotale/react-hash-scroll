@@ -1,18 +1,32 @@
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@rollup/plugin-typescript";
+import babel from "@rollup/plugin-babel";
+import { terser } from "rollup-plugin-terser";
 
-import pkg from "./package.json";
+const globals = {
+  react: "React",
+  "react-dom": "ReactDOM",
+  "react-router-dom": "ReactRouterDom",
+};
 
-export default {
+const extensions = [".js", ".ts", ".jsx", ".tsx"];
+
+const config = {
   input: "src/index.tsx",
   output: [
     {
-      file: pkg.main,
+      dir: "dist",
       format: "cjs",
       exports: "named",
       sourcemap: true,
       strict: true,
     },
   ],
-  plugins: [typescript({ objectHashIgnoreUnknownHack: true })],
-  external: ["react", "react-dom", "react-router-dom"],
+  plugins: [
+    babel({ exclude: "node_modules/**", extensions }),
+    typescript({ noEmitOnError: true }),
+    terser(),
+  ],
+  external: Object.keys(globals),
 };
+
+export default config;
