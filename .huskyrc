@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "npm run prettify"
+    "pre-commit": "lint-staged"
   }
 }
