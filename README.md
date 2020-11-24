@@ -16,6 +16,7 @@
 _Table Of Contents_
 
 - [Installation](#installation)
+- [Why this one?](#why-this-one)
 - [Usage](#usage)
   - [HashScroll](#hashscroll)
   - [MultiHash](#multihash)
@@ -47,6 +48,17 @@ Using [yarn](https://yarnpkg.com/):
 ```shell
 yarn add react-hash-scroll
 ```
+
+---
+
+## Why this one?
+
+There are a lot of hash scrolling React libraries out there, so why should you pick this one?
+
+- Most other libraries rely on scrolling by id, whereas this library relies on ref scrolling, making it more robust for large projects
+- This library offers built-in [TypeScript](https://www.typescriptlang.org/) support
+- Extensive testing makes this library more dependable
+- The components that this library provides are very customizable, making it more likely that they will fit your use case
 
 ---
 
@@ -117,6 +129,8 @@ const App = () => {
   );
 };
 ```
+
+---
 
 ## Component API
 
@@ -257,6 +271,8 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
 #### [scrollFunc](#scrollfunc) <!-- omit in toc -->
 
 - Applies to all hashes unless overriden by a ref with options
+
+---
 
 ## Contributing
 
