@@ -7,9 +7,9 @@ const cjs = () => {
   const js = `"use strict";
 
 if (process.env.NODE_ENV === "production") {
-  module.exports = require("./react-router-dom.min.js");
+  module.exports = require("./react-hash-scroll.min.js");
 } else {
-  module.exports = require("./react-router-dom.js");
+  module.exports = require("./react-hash-scroll.js");
 }`;
 
   writeFileSync(join(rootDir, "cjs", "index.js"), js);
