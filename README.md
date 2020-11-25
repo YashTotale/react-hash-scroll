@@ -202,7 +202,7 @@ Scrolls to child element when the specified hash is present in the url
 
 - **Required**
 - Type: `ReactElement`
-- Must be a singular child
+- Must be a singular child (which **CANNOT** be text)
 - Custom children must forward refs to a dom element
 - Examples:
 
@@ -213,7 +213,7 @@ Scrolls to child element when the specified hash is present in the url
     behavior="smooth"
     requiredPathname="/contact"
   >
-    <div></div>
+    <div>Example</div>
   </HashScroll>
   ```
 
@@ -225,6 +225,12 @@ Scrolls to child element when the specified hash is present in the url
     requiredPathname=["/docs/api", "/home"]
   >
     <CustomChild /> //This component MUST forward ref to a dom element
+  </HashScroll>
+  ```
+
+  ```javascript
+  <HashScroll hash="#example" position="end">
+    Hello! //This does not work! Neither does <>Hello!</>
   </HashScroll>
   ```
 
