@@ -58,7 +58,6 @@ const umd = [
     input: "src/index.tsx",
     output: {
       file: `umd/${pkg.name}.js`,
-      sourcemap: true,
       format: "umd",
       name: "ReactHashScroll",
       globals,
@@ -71,18 +70,16 @@ const umd = [
       babel({
         exclude: /node_modules/,
         babelHelpers: "runtime",
-        sourceMaps: true,
         plugins: [["@babel/transform-runtime", { useESModules: true }]],
         rootMode: "upward",
       }),
-      typescript(),
+      typescript({ sourceMap: false }),
     ],
   },
   {
     input: "src/index.tsx",
     output: {
       file: `umd/${pkg.name}.min.js`,
-      sourcemap: true,
       format: "umd",
       name: "ReactHashScroll",
       globals,
@@ -95,11 +92,10 @@ const umd = [
       babel({
         exclude: /node_modules/,
         babelHelpers: "runtime",
-        sourceMaps: true,
         plugins: [["@babel/transform-runtime", { useESModules: true }]],
         rootMode: "upward",
       }),
-      typescript(),
+      typescript({ sourceMap: false }),
       terser(),
     ],
   },
