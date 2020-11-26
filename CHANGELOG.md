@@ -8,17 +8,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
-- [[v1.1.0] - (2020-11-24)](#v110---2020-11-24)
+- [[v1.2.1] - (2020-11-26)](#v121---2020-11-26)
+  - [Fixed](#fixed)
+- [[v1.2.0] - (2020-11-26)](#v120---2020-11-26)
   - [Added](#added)
   - [Changed](#changed)
-- [[v1.0.2] - (2020-11-23)](#v102---2020-11-23)
-  - [Changed](#changed-1)
-- [[1.0.1] - (2020-11-23)](#101---2020-11-23)
+  - [Dependencies](#dependencies)
+- [[v1.1.0] - (2020-11-24)](#v110---2020-11-24)
   - [Added](#added-1)
-  - [Fixed](#fixed)
+  - [Changed](#changed-1)
+- [[v1.0.2] - (2020-11-23)](#v102---2020-11-23)
+  - [Changed](#changed-2)
+- [[1.0.1] - (2020-11-23)](#101---2020-11-23)
+  - [Added](#added-2)
+  - [Fixed](#fixed-1)
 - [[1.0.0] - (2020-11-23)](#100---2020-11-23)
 
 ## [Unreleased]
+
+---
+
+## [v1.2.1] - (2020-11-26)
+
+### Fixed
+
+- Link to [unpkg](https://unpkg.com/) build in README
 
 ---
 
