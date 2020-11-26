@@ -8,8 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
-- [[v1.2.1] - (2020-11-26)](#v121---2020-11-26)
+- [[v1.2.2] - (2020-11-26)](#v122---2020-11-26)
   - [Fixed](#fixed)
+- [[v1.2.1] - (2020-11-26)](#v121---2020-11-26)
+  - [Fixed](#fixed-1)
 - [[v1.2.0] - (2020-11-26)](#v120---2020-11-26)
   - [Added](#added)
   - [Changed](#changed)
@@ -21,10 +23,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - [Changed](#changed-2)
 - [[1.0.1] - (2020-11-23)](#101---2020-11-23)
   - [Added](#added-2)
-  - [Fixed](#fixed-1)
+  - [Fixed](#fixed-2)
 - [[1.0.0] - (2020-11-23)](#100---2020-11-23)
 
 ## [Unreleased]
+
+---
+
+## [v1.2.2] - (2020-11-26)
+
+### Fixed
+
+- Typo in [UMD](https://github.com/umdjs/umd#readme) build
 
 ---
 
