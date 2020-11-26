@@ -20,6 +20,9 @@ switch (process.env.BUILD_ENV) {
     cjs();
     break;
   }
+  case "umd": {
+    break;
+  }
   default: {
     cjs();
   }

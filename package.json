@@ -19,6 +19,7 @@
     "prebuild": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/prebuild.ts",
     "build": "NODE_ENV=production rollup -c",
     "build:cjs": "BUILD_ENV=cjs npm run build",
+    "build:umd": "BUILD_ENV=umd npm run build",
     "postbuild": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/postbuild.ts",
     "start": "rollup -c -w",
     "test": "jest",

@@ -17,7 +17,11 @@ switch (process.env.BUILD_ENV) {
     remover("cjs");
     break;
   }
+  case "umd": {
+    remover("umd");
+    break;
+  }
   default: {
-    remover(["cjs"]);
+    remover(["cjs", "umd"]);
   }
 }

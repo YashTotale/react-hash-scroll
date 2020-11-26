@@ -8,7 +8,7 @@ import { terser } from "rollup-plugin-terser";
 const globals = {
   react: "React",
   "react-dom": "ReactDOM",
-  "react-router-dom": "ReactRouterDom",
+  "react-router-dom": "ReactRouterDOM",
 };
 
 const cjs = [
@@ -53,13 +53,68 @@ const cjs = [
   },
 ];
 
+const umd = [
+  {
+    input: "src/index.tsx",
+    output: {
+      file: `umd/${pkg.name}.js`,
+      sourcemap: true,
+      format: "umd",
+      name: "ReactHashScoll",
+      globals,
+    },
+    external: Object.keys(globals),
+    plugins: [
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("development"),
+      }),
+      babel({
+        exclude: /node_modules/,
+        babelHelpers: "runtime",
+        sourceMaps: true,
+        plugins: [["@babel/transform-runtime", { useESModules: true }]],
+        rootMode: "upward",
+      }),
+      typescript(),
+    ],
+  },
+  {
+    input: "src/index.tsx",
+    output: {
+      file: `umd/${pkg.name}.min.js`,
+      sourcemap: true,
+      format: "umd",
+      name: "ReactHashScoll",
+      globals,
+    },
+    external: Object.keys(globals),
+    plugins: [
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("production"),
+      }),
+      babel({
+        exclude: /node_modules/,
+        babelHelpers: "runtime",
+        sourceMaps: true,
+        plugins: [["@babel/transform-runtime", { useESModules: true }]],
+        rootMode: "upward",
+      }),
+      typescript(),
+      terser(),
+    ],
+  },
+];
+
 const createConfig = () => {
   switch (process.env.BUILD_ENV) {
     case "cjs": {
       return [...cjs];
     }
+    case "umd": {
+      return [...umd];
+    }
     default: {
-      return [...cjs];
+      return [...cjs, ...umd];
     }
   }
 };
