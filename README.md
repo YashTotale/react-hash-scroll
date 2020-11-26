@@ -58,7 +58,7 @@ Using [unpkg](https://unpkg.com/):
 <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
-<script src="https://unpkg.com/react-router-dom/umd/react-hash-scroll.min.js"></script>
+<script src="https://unpkg.com/react-hash-scroll/umd/react-hash-scroll.min.js"></script>
 ```
 
 You can then access the library as `window.ReactHashScroll`
