@@ -1,6 +1,6 @@
 import React from "react";
 
-import HashScroll from "./HashScroll";
+import MultiHash from "./MultiHash";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 
@@ -8,12 +8,10 @@ import "@testing-library/jest-dom";
 
 const childEl = <div id="childDiv">Hello World!</div>;
 
-const hash = "#hash";
-
 test("Returns children", async () => {
   const dom = render(
     <BrowserRouter>
-      <HashScroll hash={hash}>{childEl}</HashScroll>
+      <MultiHash hashes={{}}>{childEl}</MultiHash>
     </BrowserRouter>
   );
 
