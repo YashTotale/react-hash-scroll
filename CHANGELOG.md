@@ -22,6 +22,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v1.2.0] - (2020-11-26)
+
+### Added
+
+- [UMD](https://github.com/umdjs/umd#readme) build added
+
+### Changed
+
+- [unpkg](https://unpkg.com/) documentation added to README
+
+### Dependencies
+
+- [`07fa3fb`](https://github.com/YashTotale/react-hash-scroll/pull/1) `lint-staged@10.5.2`
+- [`15c640b`](https://github.com/YashTotale/react-hash-scroll/pull/2) `@babel/core@7.12.9`
+
+---
+
 ## [v1.1.0] - (2020-11-24)
 
 ### Added

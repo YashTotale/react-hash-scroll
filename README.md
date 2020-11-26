@@ -50,6 +50,19 @@ Using [yarn](https://yarnpkg.com/):
 yarn add react-hash-scroll
 ```
 
+Using [unpkg](https://unpkg.com/):
+
+```html
+<!-- These 3 are required as peer dependencies -->
+<script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+
+<script src="https://unpkg.com/react-router-dom/umd/react-hash-scroll.min.js"></script>
+```
+
+You can then access the library as `window.ReactHashScroll`
+
 ---
 
 ## Why this one
