@@ -11,8 +11,6 @@ const globals = {
   "react-router-dom": "ReactRouterDom",
 };
 
-const extensions = [".js", ".ts", ".jsx", ".tsx"];
-
 const cjs = [
   {
     input: "src/index.tsx",
