@@ -17,12 +17,14 @@ import {
 import { Brightness7, Brightness4 } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
-  // Styles
+  toolbar: {
+    justifyContent: "flex-end",
+  },
 }));
 
 interface NavbarProps {}
 
-const Navbar: FC<NavbarProps> = ({}) => {
+const Navbar: FC<NavbarProps> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -31,7 +33,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
 
   return (
     <AppBar elevation={2} color="transparent" position="static">
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <Tooltip title={`Toggle ${isDarkMode ? "Light" : "Dark"} Theme`}>
           <IconButton
             onClick={() => {
