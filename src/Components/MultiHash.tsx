@@ -10,6 +10,9 @@ import {
 import { DEFAULT_SCROLL_FUNC } from "../Utils/functions";
 import { BaseScrollOptions } from "../Utils/types";
 
+/**
+ * Object specifying hashes and the refs or refs with scroll options they point to
+ */
 export type MultiHashes<T> = Record<
   string,
   RefObject<T> | [RefObject<T>, Partial<BaseScrollOptions>]

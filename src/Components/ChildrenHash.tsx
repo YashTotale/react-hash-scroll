@@ -12,11 +12,20 @@ export type ChildHash =
   | (Partial<BaseScrollOptions> & { hash: string });
 
 export interface ChildrenHashProps extends Partial<BaseScrollOptions> {
+  /**
+   * Array of hashes or hashes with scroll options
+   *
+   * Length should be equal to children length
+   *
+   */
   hashes: ChildHash[];
+  /**
+   * Length should be equal to hashes length
+   */
   children: ReactElement[];
 }
 
-const createReffed = (
+const createChild = (
   child: ReactElement,
   defaultOptions: Partial<BaseScrollOptions>,
   hash?: ChildHash
@@ -35,6 +44,9 @@ const createReffed = (
   );
 };
 
+/**
+ * Scrolls to a corresponding child when one of the hashes is present in the url
+ */
 const ChildrenHash: FC<ChildrenHashProps> = ({
   hashes,
   children,
@@ -48,7 +60,7 @@ const ChildrenHash: FC<ChildrenHashProps> = ({
     <>
       {children.map((child, i) => (
         <Fragment key={i}>
-          {createReffed(
+          {createChild(
             child,
             {
               behavior,
