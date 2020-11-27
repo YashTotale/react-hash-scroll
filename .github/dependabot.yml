@@ -12,3 +12,21 @@ updates:
       - "dependencies"
     assignees:
       - "YashTotale"
+  - package-ecosystem: "npm"
+    directory: "/website"
+    schedule:
+      interval: "daily"
+      time: "07:15"
+      timezone: "America/Los_Angeles"
+    labels:
+      - "dependencies"
+    assignees:
+      - "YashTotale"
+  - package-ecosystem: "github-action"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "07:15"
+      timezone: "America/Los_Angeles"
+    assignees:
+      - "YashTotale"

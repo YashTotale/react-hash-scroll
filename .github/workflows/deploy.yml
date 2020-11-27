@@ -5,7 +5,8 @@ name: Node.js Package Deploy
 
 on:
   release:
-    types: [created]
+    types:
+      - created
 
 jobs:
   build:

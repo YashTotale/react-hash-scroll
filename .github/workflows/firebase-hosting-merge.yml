@@ -5,8 +5,10 @@ name: Deploy on Push
 
 on:
   push:
+    paths:
+      - "website/**"
     branches:
-      - main
+      - "main"
 
 jobs:
   build_and_deploy:
