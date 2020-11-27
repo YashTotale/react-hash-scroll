@@ -38,6 +38,7 @@
     "@babel/preset-react": "^7.12.7",
     "@babel/preset-typescript": "^7.12.7",
     "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-typescript": "^6.1.0",
     "@testing-library/jest-dom": "^5.11.6",
@@ -51,6 +52,7 @@
     "@typescript-eslint/parser": "^4.8.2",
     "babel-core": "^6.26.3",
     "babel-jest": "^26.6.3",
+    "babel-plugin-dev-expression": "^0.2.2",
     "babel-runtime": "^6.26.0",
     "eslint": "^7.14.0",
     "eslint-plugin-react": "^7.21.5",
@@ -78,5 +80,8 @@
     "hash",
     "scroll",
     "scroller"
-  ]
+  ],
+  "dependencies": {
+    "tiny-warning": "^1.0.3"
+  }
 }
