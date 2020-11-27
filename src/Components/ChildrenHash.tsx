@@ -15,6 +15,8 @@ export interface ChildrenHashProps extends Partial<BaseScrollOptions> {
   /**
    * Array of hashes or hashes with scroll options
    *
+   * Hashes can include or exclude leading "#"
+   *
    * Length should be equal to children length
    *
    */
@@ -45,7 +47,7 @@ const createChild = (
 };
 
 /**
- * Scrolls to a corresponding child when one of the hashes is present in the url
+ * Scrolls to corresponding child element when one of the hashes is present in the url
  */
 const ChildrenHash: FC<ChildrenHashProps> = ({
   hashes,
