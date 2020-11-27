@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: demo
+        working-directory: website
 
     steps:
       - name: Checkout Repository
@@ -29,6 +29,6 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_HASH_SCROLL }}"
           projectId: react-hash-scroll
-          entrypoint: "./demo"
+          entrypoint: "./website"
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

@@ -7,7 +7,7 @@ import Home from "./Pages/Home";
 import Theme from "./Theme";
 
 //Router Imports
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App: React.FC = (props) => {
   return (
