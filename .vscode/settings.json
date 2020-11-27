@@ -6,6 +6,7 @@
     ".huskyrc": "json",
     ".lintstagedrc": "json",
     ".prettierrc": "json",
-    ".eslintrc": "json"
+    ".eslintrc": "json",
+    ".firebaserc": "json"
   }
 }
