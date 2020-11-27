@@ -1,8 +1,11 @@
 // React Imports
 import React, { FC, Fragment, ReactElement } from "react";
-import { BaseScrollOptions } from "../Utils/types";
-import HashScroll from "./HashScroll";
 import warning from "tiny-warning";
+import HashScroll from "./HashScroll";
+
+//Utils
+import { BaseScrollOptions } from "../Utils/types";
+import { CHILDREN_HASH_UNEQUAL_LENGTHS } from "../Utils/messages";
 
 export type ChildHash =
   | string
@@ -40,10 +43,7 @@ const ChildrenHash: FC<ChildrenHashProps> = ({
   requiredPathname,
   scrollFunc,
 }) => {
-  warning(
-    hashes.length !== children.length,
-    "The number of hashes and children should be the same so that each child corresponds to a hash"
-  );
+  warning(hashes.length !== children.length, CHILDREN_HASH_UNEQUAL_LENGTHS);
   return (
     <>
       {children.map((child, i) => (

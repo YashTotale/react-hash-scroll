@@ -1,7 +1,8 @@
 import React from "react";
+import ChildrenHash, { ChildHash } from "./ChildrenHash";
+import { CHILDREN_HASH_UNEQUAL_LENGTHS } from "../Utils/messages";
 
-import ChildrenHash from "./ChildrenHash";
-import { render } from "@testing-library/react";
+import { render, RenderResult } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 
 import "@testing-library/jest-dom";
@@ -18,7 +19,7 @@ const childEl = [
   </div>,
 ];
 
-const hashesArr = [
+const hashesArr: ChildHash[][] = [
   [],
   ["1"],
   ["1", "2"],
@@ -26,7 +27,7 @@ const hashesArr = [
   ["1", "2", "3", "4"],
 ];
 
-test("Returns children", async () => {
+const renderer = (func: (dom: RenderResult, hashes: ChildHash[]) => void) => {
   hashesArr.forEach((hashes) => {
     const dom = render(
       <BrowserRouter>
@@ -34,11 +35,30 @@ test("Returns children", async () => {
       </BrowserRouter>
     );
 
+    func(dom, hashes);
+  });
+};
+
+test("Returns children", () => {
+  console.warn = jest.fn();
+
+  renderer((dom) => {
     childEl.forEach((x, i) => {
       const el = dom.baseElement.firstChild?.childNodes[i];
 
       expect(el).toHaveAttribute("id", (i + 1).toString());
       expect(el).toHaveTextContent("Hello World!");
     });
+  });
+});
+
+test("Logs warning to console", () => {
+  jest.spyOn(console, "warn").mockImplementation();
+
+  renderer((dom, hashes) => {
+    if (hashes.length !== childEl.length)
+      expect(console.warn).toHaveBeenCalledWith(
+        expect.stringContaining(CHILDREN_HASH_UNEQUAL_LENGTHS)
+      );
   });
 });
