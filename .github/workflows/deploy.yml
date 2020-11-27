@@ -40,7 +40,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 15
-          registry-url: $registry-url(npm)
+          registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm publish
         env:
