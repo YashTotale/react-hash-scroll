@@ -7,7 +7,7 @@ export type ChildHash =
   | string
   | (Partial<BaseScrollOptions> & { hash: string });
 
-export interface ChildrenHashProps extends BaseScrollOptions {
+export interface ChildrenHashProps extends Partial<BaseScrollOptions> {
   hashes: ChildHash[];
   children: ReactElement[];
 }
