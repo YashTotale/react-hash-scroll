@@ -3,9 +3,11 @@ import React, { FC, Fragment, ReactElement } from "react";
 import { BaseScrollOptions } from "../Utils/types";
 import HashScroll from "./HashScroll";
 
-type ChildHash = string | (Partial<BaseScrollOptions> & { hash: string });
+export type ChildHash =
+  | string
+  | (Partial<BaseScrollOptions> & { hash: string });
 
-interface ChildrenHashProps extends BaseScrollOptions {
+export interface ChildrenHashProps extends BaseScrollOptions {
   hashes: ChildHash[];
   children: ReactElement[];
 }
