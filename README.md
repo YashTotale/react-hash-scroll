@@ -17,20 +17,21 @@ _Table Of Contents_
 
 - [Installation](#installation)
 - [Why this one](#why-this-one)
-- [Usage](#usage)
-  - [HashScroll](#hashscroll)
-  - [MultiHash](#multihash)
-- [Component API](#component-api)
+- [Components](#components)
   - [Reused Props](#reused-props)
     - [behavior](#behavior)
     - [position](#position)
     - [requiredPathname](#requiredpathname)
     - [scrollFunc](#scrollfunc)
-  - [HashScroll](#hashscroll-1)
-    - [hash](#hash)
-    - [children](#children)
-  - [MultiHash](#multihash-1)
-    - [hashes](#hashes)
+  - [HashScroll](#hashscroll)
+    - [Props](#props)
+    - [Example](#example)
+  - [MultiHash](#multihash)
+    - [Props](#props-1)
+    - [Example](#example-1)
+  - [ChildrenHash](#childrenhash)
+    - [Props](#props-2)
+    - [Example](#example-2)
 - [Contributing](#contributing)
 - [More Info (Badges)](#more-info-badges)
 
@@ -72,81 +73,13 @@ There are a lot of hash scrolling React libraries out there, so why should you p
 - Most other libraries rely on scrolling by id, whereas this library relies on ref scrolling, making it more robust for large projects
 - This library offers built-in [TypeScript](https://www.typescriptlang.org/) support
 - Extensive testing makes this library more dependable
-- The components that this library provides are very customizable, making it more likely that they will fit your use case
+- This library provides components that are very customizable, making it more likely that they will fit your use case
 
 ---
 
-## Usage
+## Components
 
 **Note**: [react-router-dom](https://reactrouter.com/web/) is required as a peer dependency and all components must be wrapped in a [Router](https://reactrouter.com/web/api/BrowserRouter)
-
-### HashScroll
-
-- In this example, the div with text "Element #1" will be scrolled to the center of the page when the url hash is "#hash1".
-- The div with text "Element #2" will only be scrolled to when both the hash and the pathname are "#hash2" and "/docs", respectively.
-
-```javascript
-import React from "react";
-import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
-import { HashScroll } from "react-hash-scroll";
-
-const App = () => {
-  return (
-    <BrowserRouter>
-      <HashScroll hash="#hash1" position="center">
-        <HashChild>Element #1</HashChild>
-      </HashScroll>
-      <HashScroll hash="#hash2" requiredPathname="/docs">
-        <div>Element #2</div>
-      </HashScroll>
-    </BrowserRouter>
-  );
-};
-
-const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for custom HashScroll children
-  <div ref={ref}>{props.children}</div>
-)
-```
-
-### MultiHash
-
-In this example, the elements will only be scrolled to on the "/docs" page.
-
-- The div with text "Element #1" will be scrolled to when the url hash is "#div".
-- Similarly, the h4 with text "Element #2" will be scrolled to smoothly when the hash is "#heading".
-- Finally, if the hash is "#paragraph", the p with text "Element #3" will be scrolled to the top of the page.
-
-```javascript
-import React from "react";
-import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
-import { MultiHash } from "react-hash-scroll";
-
-const App = () => {
-  const ref1 = React.createRef();
-  const ref2 = React.createRef();
-  const ref3 = React.createRef();
-
-  return (
-    <BrowserRouter>
-      <MultiHash
-        hashes={{
-          "#div": ref1,
-          "#heading": [ref2, { behavior: "smooth" }],
-          "#paragraph": [ref3, { position: "start" }],
-        }}
-        requiredPathname="/docs"
-      />
-      <div ref={ref1}>Element #1</div>
-      <h4 ref={ref2}>Element #2</h4>
-      <p ref={ref3}>Element #3</p>
-    </BrowserRouter>
-  );
-};
-```
-
----
-
-## Component API
 
 ### Reused Props
 
@@ -189,11 +122,15 @@ Props that are used by multiple components
   - [position](#position): The defined scroll position for the element or the default position
 - Type: `(ref,`[`behavior`](#behavior)`,`[`position`](#position)`) => void`
 
+---
+
 ### HashScroll
 
 Scrolls to child element when the specified hash is present in the url
 
-#### hash
+#### Props
+
+`hash`
 
 - **Required**
 - Type: `string`
@@ -203,94 +140,161 @@ Scrolls to child element when the specified hash is present in the url
   - "#example"
   - "example"
 
-#### [behavior](#behavior) <!-- omit in toc -->
+[`behavior`](#behavior)
 
-#### [position](#position) <!-- omit in toc -->
+[`position`](#position)
 
-#### [requiredPathname](#requiredpathname) <!-- omit in toc -->
+[`requiredPathname`](#requiredpathname)
 
-#### [scrollFunc](#scrollfunc) <!-- omit in toc -->
+[`scrollFunc`](#scrollfunc)
 
-#### children
+`children`
 
 - **Required**
 - Type: `ReactElement`
 - Must be a singular child (which **CANNOT** be text)
 - Custom children must forward refs to a dom element
-- Examples:
 
-  ```javascript
-  <HashScroll
-    hash="#example"
-    position="start"
-    behavior="smooth"
-    requiredPathname="/contact"
-  >
-    <div>Example</div>
-  </HashScroll>
-  ```
+#### Example
 
-  ```javascript
-  <HashScroll
-    hash="#example"
-    position="nearest"
-    behavior="auto"
-    requiredPathname=["/docs/api", "/home"]
-  >
-    <CustomChild /> //This component MUST forward ref to a dom element
-  </HashScroll>
-  ```
+```javascript
+import React from "react";
+import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
+import { HashScroll } from "react-hash-scroll";
 
-  ```javascript
-  <HashScroll hash="#example" position="end">
-    Hello! //This does not work! Neither does <>Hello!</>
-  </HashScroll>
-  ```
+const App = () => {
+  return (
+    <BrowserRouter>
+      <HashScroll hash="#hash1" position="center">
+        <HashChild>Element #1</HashChild>
+      </HashScroll>
+      <HashScroll hash="#hash2" requiredPathname="/docs">
+        <div>Element #2</div>
+      </HashScroll>
+      <HashScroll hash="#example" position="end">
+        Hello! (This does not work! Neither does <>Hello!</>) Children must be elements!
+      </HashScroll>
+    </BrowserRouter>
+  );
+};
+
+const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for custom HashScroll children
+  <div ref={ref}>{props.children}</div>
+)
+```
+
+---
 
 ### MultiHash
 
 Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
 
-#### hashes
+#### Props
+
+`hashes`
 
 - **Required**
-- An object specifying the hashes and the refs they correspond to
+- An object specifying the hashes and the refs or refs with options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc)) they correspond to
 - Hashes can include or exclude leading "#"
-- Each hash corresponds to a ref or a ref with options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc))
-- Example:
 
-  ```javascript
-  const ref1 = createRef();
-  const ref2 = createRef();
-  const hashes = {
-    hash1: ref1,
-    "#hash2": [
-      ref2,
-      {
-        behavior: "auto",
-        requiredPathname: ["/docs", "/contact"],
-      },
-    ],
-  };
-
-  return <MultiHash hashes={hashes} />;
-  ```
-
-#### [behavior](#behavior) <!-- omit in toc -->
+[`behavior`](#behavior)
 
 - Applies to all hashes unless overriden by a ref with options
 
-#### [position](#position) <!-- omit in toc -->
+[`position`](#position)
 
 - Applies to all hashes unless overriden by a ref with options
 
-#### [requiredPathname](#requiredpathname) <!-- omit in toc -->
+[`requiredPathname`](#requiredpathname)
 
 - Applies to all hashes unless overriden by a ref with options
 
-#### [scrollFunc](#scrollfunc) <!-- omit in toc -->
+[`scrollFunc`](#scrollfunc)
 
 - Applies to all hashes unless overriden by a ref with options
+
+#### Example
+
+```javascript
+import React from "react";
+import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
+import { MultiHash } from "react-hash-scroll";
+
+const App = () => {
+  const ref1 = React.createRef();
+  const ref2 = React.createRef();
+  const ref3 = React.createRef();
+
+  return (
+    <BrowserRouter>
+      <MultiHash
+        hashes={{
+          "#div": ref1,
+          "#heading": [ref2, { behavior: "smooth" }],
+          "#paragraph": [
+            ref3,
+            { position: "start", requiredPathname: ["/docs", "/contact"] },
+          ],
+        }}
+        requiredPathname="/docs"
+      />
+      <div ref={ref1}>Element #1</div>
+      <h4 ref={ref2}>Element #2</h4>
+      <p ref={ref3}>Element #3</p>
+    </BrowserRouter>
+  );
+};
+```
+
+---
+
+### ChildrenHash
+
+Scrolls to corresponding child element when one of the hashes is present in the url
+
+#### Props
+
+`hashes`
+
+- **Required**
+- Array of hashes or hashes with scroll options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc))
+- Hashes can include or exclude leading "#"
+- Length should be equal to children length
+
+[`behavior`](#behavior)
+
+[`position`](#position)
+
+[`requiredPathname`](#requiredpathname)
+
+[`scrollFunc`](#scrollfunc)
+
+#### Example
+
+```javascript
+import React from "react";
+import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
+import { ChildrenHash } from "react-hash-scroll";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <ChildrenHash
+        hashes={[
+          "#div",
+          { hash: "#heading", behavior: "smooth" },
+          { hash: "#paragraph", position: "end" },
+        ]}
+        requiredPathname={["/login", "/signup"]}
+      >
+        <div ref={ref1}>Element #1</div>
+        <h4 ref={ref2}>Element #2</h4>
+        <p ref={ref3}>Element #3</p>
+      </ChildrenHash>
+    </BrowserRouter>
+  );
+};
+```
 
 ---
 

@@ -3,6 +3,7 @@ import pkg from "./package.json";
 import typescript from "@rollup/plugin-typescript";
 import babel from "@rollup/plugin-babel";
 import replace from "@rollup/plugin-replace";
+import nodeResolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 
 const globals = {
@@ -22,13 +23,14 @@ const cjs = [
       entryFileNames: `${pkg.name}.js`,
     },
     plugins: [
-      replace({ "process.env.NODE_ENV": JSON.stringify("development") }),
       babel({
         exclude: /node_modules/,
         sourceMaps: true,
         rootMode: "upward",
       }),
+      nodeResolve(),
       typescript({ declaration: true, declarationDir: "cjs" }),
+      replace({ "process.env.NODE_ENV": JSON.stringify("development") }),
     ],
     external: Object.keys(globals),
   },
@@ -40,13 +42,14 @@ const cjs = [
       sourcemap: true,
     },
     plugins: [
-      replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
       babel({
         exclude: /node_modules/,
         sourceMaps: true,
         rootMode: "upward",
       }),
+      nodeResolve(),
       typescript(),
+      replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
       terser(),
     ],
     external: Object.keys(globals),
@@ -64,16 +67,17 @@ const umd = [
     },
     external: Object.keys(globals),
     plugins: [
-      replace({
-        "process.env.NODE_ENV": JSON.stringify("development"),
-      }),
       babel({
         exclude: /node_modules/,
         babelHelpers: "runtime",
         plugins: [["@babel/transform-runtime", { useESModules: true }]],
         rootMode: "upward",
       }),
+      nodeResolve(),
       typescript({ sourceMap: false }),
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("development"),
+      }),
     ],
   },
   {
@@ -86,9 +90,6 @@ const umd = [
     },
     external: Object.keys(globals),
     plugins: [
-      replace({
-        "process.env.NODE_ENV": JSON.stringify("production"),
-      }),
       babel({
         exclude: /node_modules/,
         babelHelpers: "runtime",
@@ -96,6 +97,10 @@ const umd = [
         rootMode: "upward",
       }),
       typescript({ sourceMap: false }),
+      nodeResolve(),
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("production"),
+      }),
       terser(),
     ],
   },

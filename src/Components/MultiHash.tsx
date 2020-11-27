@@ -1,6 +1,8 @@
 // React Imports
 import React, { FC, RefObject, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+
+//Utils
 import {
   DEFAULT_SCROLL_BEHAVIOR,
   DEFAULT_SCROLL_POSITION,
@@ -8,6 +10,9 @@ import {
 import { DEFAULT_SCROLL_FUNC } from "../Utils/functions";
 import { BaseScrollOptions } from "../Utils/types";
 
+/**
+ * Object specifying hashes and the refs or refs with scroll options they point to
+ */
 export type MultiHashes<T> = Record<
   string,
   RefObject<T> | [RefObject<T>, Partial<BaseScrollOptions>]

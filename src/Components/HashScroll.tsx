@@ -1,5 +1,8 @@
+//React Imports
 import { useRef, FC, ReactElement, cloneElement, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
+//Utils
 import {
   DEFAULT_SCROLL_BEHAVIOR,
   DEFAULT_SCROLL_POSITION,
