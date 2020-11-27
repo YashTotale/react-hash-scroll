@@ -16,5 +16,6 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_HASH_SCROLL }}"
           projectId: react-hash-scroll
+          entrypoint: "./demo"
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
