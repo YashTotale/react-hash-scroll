@@ -15,6 +15,8 @@ const changelogDest = join(root, "CHANGELOG.md");
 
 const semverRegex = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
 
+const today = moment().format("YYYY-MM-DD");
+
 const getChangelog = async () => {
   const str = await readFile(changelogDest, "utf-8");
 
@@ -65,11 +67,25 @@ const precommit = async () => {
 
     const date = mostRecent?.match(/\((.*)\)/)?.[1];
 
-    const today = moment().format("YYYY-MM-DD");
-
     if (date !== today) {
       throw new Error(
         "Please update the upcoming release in the CHANGELOG with today's date"
+      );
+    }
+
+    const mostRecentTOC = document.getElementsByTagName("a").item(3)?.innerHTML;
+
+    if (versions.find((v) => mostRecentTOC?.includes(v)) === undefined) {
+      throw new Error(
+        "Please update the CHANGELOG Table of Contents with the next planned release"
+      );
+    }
+
+    const dateTOC = mostRecentTOC?.match(/\((.*)\)/)?.[1];
+
+    if (dateTOC !== today) {
+      throw new Error(
+        "Please update the upcoming release in the CHANGELOG Table of Contents with today's date"
       );
     }
   } catch (e) {
