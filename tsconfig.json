@@ -16,6 +16,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
