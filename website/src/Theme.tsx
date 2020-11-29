@@ -14,17 +14,44 @@ import {
   CssBaseline,
 } from "@material-ui/core";
 
+const alternativeFont = "Arial, sans-serif";
+
 const Theme: React.FC = ({ children }) => {
   const dispatch = useDispatch();
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const isDarkMode = useSelector(getIsDarkMode);
+
   if (isDarkMode === null && prefersDarkMode) {
     dispatch(toggleDarkMode(prefersDarkMode));
   }
+
   const theme = createMuiTheme({
+    overrides: {
+      MuiTooltip: {
+        arrow: {
+          color: "rgb(0, 0, 0, 0.76)",
+        },
+        tooltip: {
+          fontFamily: alternativeFont,
+          fontWeight: 600,
+          fontSize: "0.72rem",
+          backgroundColor: "rgb(0, 0, 0, 0.76)",
+        },
+      },
+      MuiButton: {
+        label: {
+          fontFamily: alternativeFont,
+          fontWeight: 500,
+        },
+      },
+    },
     palette: {
       type: isDarkMode ? "dark" : "light",
+    },
+    typography: {
+      fontFamily: "Palatino, Georgia, Serif",
+      fontWeightBold: 600,
     },
   });
 
