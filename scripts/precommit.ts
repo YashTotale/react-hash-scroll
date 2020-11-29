@@ -57,80 +57,92 @@ const createDom = (changelog: string) => {
 };
 
 const checkChangelog = async () => {
-  const errors: string[] = [];
+  try {
+    const errors: string[] = [];
 
-  const changelog = await getChangelog();
+    const changelog = await getChangelog();
 
-  const versions = getNextVersions();
+    const versions = getNextVersions();
 
-  const { document } = createDom(changelog);
+    const { document } = createDom(changelog);
 
-  const mostRecent = document.getElementsByTagName("h2").item(1)?.innerHTML;
+    const mostRecent = document.getElementsByTagName("h2").item(1)?.innerHTML;
 
-  if (versions.find((v) => mostRecent?.includes(v)) === undefined)
-    errors.push("Please update the CHANGELOG with the next planned release");
+    if (versions.find((v) => mostRecent?.includes(v)) === undefined)
+      errors.push("Please update the CHANGELOG with the next planned release");
 
-  const date = mostRecent?.match(/\((.*)\)/)?.[1];
+    const date = mostRecent?.match(/\((.*)\)/)?.[1];
 
-  if (date !== today)
-    errors.push(
-      "Please update the upcoming release in the CHANGELOG with today's date"
-    );
+    if (date !== today)
+      errors.push(
+        "Please update the upcoming release in the CHANGELOG with today's date"
+      );
 
-  const mostRecentTOC = document.getElementsByTagName("a").item(3)?.innerHTML;
+    const mostRecentTOC = document.getElementsByTagName("a").item(3)?.innerHTML;
 
-  if (versions.find((v) => mostRecentTOC?.includes(v)) === undefined)
-    errors.push(
-      "Please update the CHANGELOG Table of Contents with the next planned release"
-    );
+    if (versions.find((v) => mostRecentTOC?.includes(v)) === undefined)
+      errors.push(
+        "Please update the CHANGELOG Table of Contents with the next planned release"
+      );
 
-  const dateTOC = mostRecentTOC?.match(/\((.*)\)/)?.[1];
+    const dateTOC = mostRecentTOC?.match(/\((.*)\)/)?.[1];
 
-  if (dateTOC !== today)
-    errors.push(
-      "Please update the upcoming release in the CHANGELOG Table of Contents with today's date"
-    );
+    if (dateTOC !== today)
+      errors.push(
+        "Please update the upcoming release in the CHANGELOG Table of Contents with today's date"
+      );
 
-  if (errors.length) throw errors.map((err) => new Error(err));
+    // if (errors.length) throw errors;
+    throw "test";
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const checkReadme = async () => {
-  const errors: string[] = [];
+  try {
+    const errors: string[] = [];
 
-  const staged = await getStagedFiles();
+    const staged = await getStagedFiles();
 
-  const docsDir = join(ROOT_DIR, "docs");
+    const docsDir = join(ROOT_DIR, "docs");
 
-  const componentsPath = "docs/Components/";
+    const componentsPath = "docs/Components/";
 
-  if (staged.includes(componentsPath)) {
-    const componentsDir = join(docsDir, "Components");
+    if (staged.includes(componentsPath)) {
+      const componentsDir = join(docsDir, "Components");
 
-    const files = await readDir(join(componentsDir));
+      const files = await readDir(join(componentsDir));
 
-    for (const file of files) {
-      if (staged.includes(`${componentsPath}${file}`)) {
-        const readme = await getReadme();
+      for (const file of files) {
+        if (staged.includes(`${componentsPath}${file}`)) {
+          const readme = await getReadme();
 
-        const titleIndex = readme.indexOf(`### ${parse(file).name}`);
+          const titleIndex = readme.indexOf(`### ${parse(file).name}`);
 
-        const endIndex = readme.indexOf("---", titleIndex);
+          const endIndex = readme.indexOf("---", titleIndex);
 
-        const fileContents = await readFile(join(componentsDir, file), "utf-8");
+          const fileContents = await readFile(
+            join(componentsDir, file),
+            "utf-8"
+          );
 
-        const newReadme =
-          readme.substring(0, titleIndex) +
-          fileContents +
-          "\n" +
-          readme.substring(endIndex);
+          const newReadme =
+            readme.substring(0, titleIndex) +
+            fileContents +
+            "\n" +
+            readme.substring(endIndex);
 
-        await writeFile(readmeDest, newReadme);
+          await writeFile(readmeDest, newReadme);
+        }
       }
+      await gitAdd(readmeDest);
     }
-    await gitAdd(readmeDest);
-  }
 
-  if (errors.length) throw errors.map((err) => new Error(err));
+    if (errors.length) throw errors;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const precommit = async () => {

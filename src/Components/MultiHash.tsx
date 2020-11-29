@@ -64,11 +64,11 @@ const createHashFunc = (
 
   const p = options.position ?? position ?? DEFAULT_SCROLL_POSITION;
 
+  const s = options.scrollFunc ?? scrollFunc ?? DEFAULT_SCROLL_FUNC;
+
   return () => {
     if ((req === undefined || req.includes(pathname)) && ref.current) {
-      if (options.scrollFunc) options.scrollFunc(ref, b, p);
-      else if (scrollFunc) scrollFunc(ref, b, p);
-      else DEFAULT_SCROLL_FUNC(ref, b, p);
+      s(ref, b, p);
     }
   };
 };

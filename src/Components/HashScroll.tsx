@@ -40,7 +40,7 @@ const HashScroll: FC<HashScrollProps> = ({
   behavior = DEFAULT_SCROLL_BEHAVIOR,
   position = DEFAULT_SCROLL_POSITION,
   requiredPathname,
-  scrollFunc,
+  scrollFunc = DEFAULT_SCROLL_FUNC,
 }) => {
   const { hash: urlHash, pathname } = useLocation();
 
@@ -60,11 +60,19 @@ const HashScroll: FC<HashScrollProps> = ({
       (requiredPathname === undefined || requiredPathname.includes(pathname))
     ) {
       if (childRef.current) {
-        if (scrollFunc) scrollFunc(childRef, behavior, position);
-        else DEFAULT_SCROLL_FUNC(childRef, behavior, position);
+        scrollFunc(childRef, behavior, position);
       }
     }
-  }, [urlHash, childRef, hash]);
+  }, [
+    urlHash,
+    childRef,
+    hash,
+    requiredPathname,
+    pathname,
+    scrollFunc,
+    behavior,
+    position,
+  ]);
 
   return cloneElement(children, {
     ref: childRef,
