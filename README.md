@@ -77,6 +77,8 @@ There are a lot of hash scrolling React libraries out there, so why should you p
 
 ---
 
+<!-- DON'T EDIT COMPONENTS HERE! EDIT COMPONENTS IN docs/Components folder! -->
+
 ## Components
 
 **Note**: [react-router-dom](https://reactrouter.com/web/) is required as a peer dependency and all components must be wrapped in a [Router](https://reactrouter.com/web/api/BrowserRouter)
@@ -199,19 +201,19 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
 
 [`behavior`](#behavior)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 [`position`](#position)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 [`requiredPathname`](#requiredpathname)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 [`scrollFunc`](#scrollfunc)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 #### Example
 

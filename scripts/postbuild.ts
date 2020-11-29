@@ -1,17 +1,8 @@
-import { exec } from "child_process";
-import { promises } from "fs";
-import { join } from "path";
-import { promisify } from "util";
-
-const execute = promisify(exec);
-
-const { writeFile } = promises;
-
-const rootDir = join(__dirname, "..");
+import { join, execute, ROOT_DIR, writeFile } from "./helpers";
 
 const cjs = async () => {
   try {
-    const dir = join(rootDir, "cjs");
+    const dir = join(ROOT_DIR, "cjs");
 
     await writeFile(
       join(dir, "index.js"),
