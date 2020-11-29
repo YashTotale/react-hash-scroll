@@ -6,11 +6,12 @@ import {
   readFile,
   ROOT_DIR,
   today,
-  getChangedFiles,
   readDir,
   join,
   parse,
   writeFile,
+  gitAdd,
+  getStagedFiles,
 } from "./helpers";
 
 const changelogDest = join(ROOT_DIR, "CHANGELOG.md");
@@ -96,19 +97,19 @@ const checkChangelog = async () => {
 const checkReadme = async () => {
   const errors: string[] = [];
 
-  const { stdout } = await getChangedFiles();
+  const staged = await getStagedFiles();
 
   const docsDir = join(ROOT_DIR, "docs");
 
   const componentsPath = "docs/Components/";
 
-  if (stdout.includes(componentsPath)) {
+  if (staged.includes(componentsPath)) {
     const componentsDir = join(docsDir, "Components");
 
     const files = await readDir(join(componentsDir));
 
     for (const file of files) {
-      if (stdout.includes(`${componentsPath}${file}`)) {
+      if (staged.includes(`${componentsPath}${file}`)) {
         const readme = await getReadme();
 
         const titleIndex = readme.indexOf(`### ${parse(file).name}`);
@@ -126,6 +127,7 @@ const checkReadme = async () => {
         await writeFile(readmeDest, newReadme);
       }
     }
+    await gitAdd(readmeDest);
   }
 
   if (errors.length) throw errors.map((err) => new Error(err));
