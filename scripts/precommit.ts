@@ -92,10 +92,10 @@ const checkChangelog = async () => {
         "Please update the upcoming release in the CHANGELOG Table of Contents with today's date"
       );
 
-    // if (errors.length) throw errors;
-    throw "test";
+    if (errors.length) throw errors;
   } catch (e) {
     console.log(e);
+    process.exit(1);
   }
 };
 
@@ -142,6 +142,7 @@ const checkReadme = async () => {
     if (errors.length) throw errors;
   } catch (e) {
     console.log(e);
+    process.exit(1);
   }
 };
 
