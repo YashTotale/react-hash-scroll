@@ -32,6 +32,14 @@ export const gitAdd = (files: string | string[]) => {
   return git.add(files);
 };
 
+export const getFilesChangedInCommit = (commitId: string) => {
+  return execute(`git diff-tree --no-commit-id --name-only -r ${commitId}`);
+};
+
+export const getBranches = () => {
+  return git.branch();
+};
+
 export const today = moment().format("YYYY-MM-DD");
 export const PACKAGE_NAME = "react-hash-scroll";
 export const PACKAGE_REPO_NAME = "react-hash-scroll";

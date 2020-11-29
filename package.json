@@ -25,6 +25,7 @@
     "start": "rollup -c -w",
     "test": "jest",
     "precommit": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/precommit.ts",
+    "postcommit": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/postcommit.ts",
     "prepublishOnly": "npm run build",
     "preversion": "npm test",
     "postversion": "git push && git push --tags && TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/postversion.ts"
