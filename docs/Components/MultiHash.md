@@ -12,19 +12,19 @@ Component that pairs hashes with refs and scrolls to a corresponding ref when on
 
 [`behavior`](#behavior)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 [`position`](#position)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 [`requiredPathname`](#requiredpathname)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 [`scrollFunc`](#scrollfunc)
 
-- Applies to all hashes unless overriden by a ref with options
+- Applies to all hashes unless overridden by a ref with options
 
 #### Example
 
