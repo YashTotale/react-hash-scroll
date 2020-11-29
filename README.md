@@ -9,7 +9,7 @@
 
 <p align="center">
     <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/npm/v/react-hash-scroll?logo=npm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Version" alt="Version"></a>&nbsp;
-    <a href="https://github.com/YashTotale/react-hash-scroll/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/react-hash-scroll/Node.js%20CI?logo=github&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Build" alt="Build"></a>&nbsp;
+    <a href="https://github.com/YashTotale/react-hash-scroll/actions?query=workflow%3A%22Node+CI%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/react-hash-scroll/Node%20CI?logo=github&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Build" alt="Build"></a>&nbsp;
     <a href="https://lgtm.com/projects/g/YashTotale/react-hash-scroll/context:javascript"><img src="https://img.shields.io/lgtm/grade/javascript/github/YashTotale/react-hash-scroll?logo=lgtm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Code%20Quality" alt="Code Quality"></a>&nbsp;
 </p>
 
@@ -317,10 +317,10 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 ---
 
-<!-- NPM Badges -->
+<!-- Dependency Badges -->
 <p align="center">
-    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/snyk/vulnerabilities/npm/react-hash-scroll?logo=snyk&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
-    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/depfu/YashTotale/react-hash-scroll?logo=dependabot&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
+    <a href="https://snyk.io/vuln/npm:react-hash-scroll"><img src="https://img.shields.io/snyk/vulnerabilities/npm/react-hash-scroll?logo=snyk&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Vulnerabilities" alt="Vulnerabilities"></a>&nbsp;
+    <a href="https://depfu.com/repos/github/YashTotale/react-hash-scroll"><img src="https://img.shields.io/depfu/YashTotale/react-hash-scroll?logo=dependabot&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Dependencies" alt="Dependencies"></a>&nbsp;
 </p>
 
 ---
@@ -346,8 +346,17 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 <!-- Commit Badges -->
 
 <p align="center">
-    <a href="https://github.com/YashTotale/react-hash-scroll/commits/master"><img src="https://img.shields.io/github/last-commit/YashTotale/react-hash-scroll?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit&color=007EC6" alt="Last Commit"></a>&nbsp;
+    <a href="https://github.com/YashTotale/react-hash-scroll/commits/main"><img src="https://img.shields.io/github/last-commit/YashTotale/react-hash-scroll?style=for-the-badge&logo=github&labelColor=000000&label=Last%20Commit&color=007EC6" alt="Last Commit"></a>&nbsp;
     <a href="https://github.com/YashTotale/react-hash-scroll/pulse/monthly"><img src="https://img.shields.io/github/commit-activity/w/YashTotale/react-hash-scroll?style=for-the-badge&logo=github&labelColor=000000&label=Commit%20Activity&color=007EC6" alt="Commit Activity"></a>&nbsp;
 </p>
 
 ---
+
+<!-- Workflow Badges -->
+
+<p align="center">
+    <a href="https://github.com/YashTotale/react-hash-scroll/actions?query=workflow%3A%22Website+Deploy+%28Push%29%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/react-hash-scroll/Website%20Deploy%20(Push)?label=Website%20Deploy%20%28Push%29&style=flat-square&logo=github&labelColor=000000&logoColor=FFFFF" alt="Website Deploy (Push)"></a>&nbsp;
+    <a href="https://github.com/YashTotale/react-hash-scroll/actions?query=workflow%3A%22Node+Package+Deploy%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/react-hash-scroll/Node%20Package%20Deploy?label=Node%20Package%20Deploy&style=flat-square&logo=github&labelColor=000000&logoColor=FFFFF" alt="Node.js Package Deploy"></a>&nbsp;
+    <a href="https://github.com/YashTotale/react-hash-scroll/actions?query=workflow%3A%22CodeQL+Analysis%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/react-hash-scroll/CodeQL%20Analysis?label=CodeQL%20Analysis&style=flat-square&logo=github&labelColor=000000&logoColor=FFFFF" alt="CodeQL Analysis"></a>&nbsp;
+
+</p>
