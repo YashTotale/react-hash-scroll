@@ -8,5 +8,6 @@
     ".prettierrc": "json",
     ".eslintrc": "json",
     ".firebaserc": "json"
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

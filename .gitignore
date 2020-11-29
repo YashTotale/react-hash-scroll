@@ -1,4 +1,10 @@
+# Dependencies
 node_modules/
+
+# Build
 cjs/
 umd/
+
+# Misc
 .DS_Store
+.env

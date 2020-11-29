@@ -1,21 +1,14 @@
-import { promises } from "fs";
 import { join } from "path";
 
 import { JSDOM } from "jsdom";
 import * as marked from "marked";
-import * as moment from "moment";
 
 import * as pkg from "../package.json";
+import { readFile, ROOT_DIR, today } from "./helpers";
 
-const { readFile } = promises;
-
-const root = join(__dirname, "..");
-
-const changelogDest = join(root, "CHANGELOG.md");
+const changelogDest = join(ROOT_DIR, "CHANGELOG.md");
 
 const semverRegex = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
-
-const today = moment().format("YYYY-MM-DD");
 
 const getChangelog = async () => {
   const str = await readFile(changelogDest, "utf-8");
