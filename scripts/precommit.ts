@@ -92,7 +92,7 @@ const checkChangelog = async () => {
         "Please update the upcoming release in the CHANGELOG Table of Contents with today's date"
       );
 
-    if (errors.length) throw errors.map((err) => new Error(err));
+    if (errors.length) throw errors;
   } catch (e) {
     console.log(e);
     process.exit(1);
@@ -139,7 +139,7 @@ const checkReadme = async () => {
       await gitAdd(readmeDest);
     }
 
-    if (errors.length) throw errors.map((err) => new Error(err));
+    if (errors.length) throw errors;
   } catch (e) {
     console.log(e);
     process.exit(1);
