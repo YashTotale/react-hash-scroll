@@ -1,12 +1,13 @@
 // React Imports
 import React, { FC } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 // Material UI Imports
-import { makeStyles, AppBar, Toolbar } from "@material-ui/core";
+import { makeStyles, AppBar, Toolbar, Link } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
 }));
 

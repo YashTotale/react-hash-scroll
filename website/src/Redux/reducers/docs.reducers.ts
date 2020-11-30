@@ -6,7 +6,7 @@ import {
 } from "../actions";
 
 export type DocsState = {
-  components?: string[];
+  components?: Record<string, string>;
   readme?: string;
   changelog?: string;
   isLoading: boolean;

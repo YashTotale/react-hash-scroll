@@ -14,26 +14,44 @@ import NotFound from "./Pages/404";
 
 //Component Imports
 import Header from "./Components/Header";
+import SideBar from "./Components/Sidebar";
 
 //Material UI Imports
 import Theme from "./Theme";
 
+//Utils
+import { SIDEBAR_WIDTH } from "./Utils/constants";
+
 //Router Imports
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingLeft: SIDEBAR_WIDTH,
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: "initial",
+    },
+  },
+}));
 
 const App: React.FC = (props) => {
   const dispatch = useDispatch();
+  const classes = useStyles();
 
-  useEffect(() => {
-    console.log("Yay");
-    dispatch(getDocsRequest());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   console.log("Yay");
+  //   dispatch(getDocsRequest());
+  // }, [dispatch]);
 
   return (
     <Router>
       <Theme>
         <Header />
-        <Routes />
+        <SideBar />
+        <div className={classes.container}>
+          <Routes />
+        </div>
       </Theme>
     </Router>
   );

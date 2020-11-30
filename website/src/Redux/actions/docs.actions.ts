@@ -6,7 +6,7 @@ export const loadDocsInProgress = () => ({
 
 export const LOAD_DOCS_SUCCESS = "LOAD_DOCS_SUCCESS";
 export const loadDocsSuccess = (
-  components: string[],
+  components: Record<string, string>,
   readme: string,
   changelog: string
 ) => ({

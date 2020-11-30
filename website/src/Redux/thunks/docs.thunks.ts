@@ -20,12 +20,12 @@ export const getDocsRequest = () => async (
       path: "docs/Components",
     });
 
-    const components: string[] = [];
+    const components: Record<string, string> = {};
 
     for (const component of (componentsData as unknown) as ReposGetContentResponseData[]) {
       const res = await fetch(component.download_url);
       const text = await res.text();
-      components.push(text);
+      components[component.name.slice(0, -3)] = text;
     }
 
     const { data: readmeData } = await octokit.repos.getContent({

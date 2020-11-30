@@ -6,3 +6,4 @@ export {
   LOAD_DOCS_ERROR,
   loadDocsError,
 } from "./docs.actions";
+export { TOGGLE_SIDEBAR, toggleSidebar } from "./display.actions";
