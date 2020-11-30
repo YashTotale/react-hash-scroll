@@ -1,24 +1,15 @@
 import { AnyAction } from "redux";
-import { TOGGLE_DARK_MODE } from "../actions";
 
-export interface DisplayState {
-  isDarkMode: boolean | null;
-}
+export interface DisplayState {}
 
-export const initialDisplayState: DisplayState = {
-  isDarkMode: null,
-};
+export const initialDisplayState: DisplayState = {};
 
 export const displayReducer = (
   state = initialDisplayState,
   action: AnyAction
 ): DisplayState => {
-  const { type, payload } = action;
+  const { type } = action;
   switch (type) {
-    case TOGGLE_DARK_MODE: {
-      const { isDarkMode } = payload;
-      return { ...state, isDarkMode: isDarkMode ?? !state.isDarkMode };
-    }
     default: {
       return state;
     }

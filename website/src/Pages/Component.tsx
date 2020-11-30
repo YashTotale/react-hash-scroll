@@ -6,10 +6,9 @@ import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {} from "@material-ui/core";
 import {} from "@material-ui/icons";
-import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
-  // Styles
+  component: {},
 }));
 
 interface Params {
@@ -24,7 +23,7 @@ const Component: FC<ComponentProps> = () => {
 
   console.log(id);
 
-  return <></>;
+  return <div className={classes.component}></div>;
 };
 
 export default Component;

@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 interface NotFoundProps {}
 
-const NotFound: FC<NotFoundProps> = ({}) => {
+const NotFound: FC<NotFoundProps> = () => {
   const classes = useStyles();
   const [redirect, setRedirect] = useState<string | null>(null);
 

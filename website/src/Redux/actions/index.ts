@@ -1,4 +1,3 @@
-export { TOGGLE_DARK_MODE, toggleDarkMode } from "./display.actions";
 export {
   LOAD_DOCS_IN_PROGRESS,
   loadDocsInProgress,

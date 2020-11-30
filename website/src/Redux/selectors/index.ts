@@ -1,4 +1,3 @@
-export { getIsDarkMode } from "./display.selectors";
 export {
   getComponents,
   getReadme,
