@@ -1,9 +1,17 @@
 //React Imports
 import { hot } from "react-hot-loader";
-import React from "react";
+import React, { useEffect } from "react";
+
+//Redux Imports
+import { useDispatch } from "react-redux";
+import { getDocsRequest } from "./Redux/thunks";
+
+//Page Imports
 import Home from "./Pages/Home";
 import Component from "./Pages/Component";
 import NotFound from "./Pages/404";
+
+//Component Imports
 import Navbar from "./Components/Navbar";
 
 //Material UI Imports
@@ -13,6 +21,13 @@ import Theme from "./Theme";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App: React.FC = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("Yay");
+    dispatch(getDocsRequest());
+  }, [dispatch]);
+
   return (
     <Router>
       <Theme>

@@ -18,10 +18,11 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 //Reducer Imports
-import { display } from "./Redux/reducers";
+import { display, docs } from "./Redux/reducers";
 
 const reducers = {
   display,
+  docs,
 };
 
 //The configuration for the persisted reducer

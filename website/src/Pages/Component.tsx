@@ -1,23 +1,29 @@
 // React Imports
 import React, { FC } from "react";
-
-// Redux Imports
-import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 // Material UI Imports
 import { makeStyles } from "@material-ui/core/styles";
 import {} from "@material-ui/core";
 import {} from "@material-ui/icons";
+import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   // Styles
 }));
 
+interface Params {
+  id: string;
+}
+
 interface ComponentProps {}
 
-const Component: FC<ComponentProps> = ({}) => {
+const Component: FC<ComponentProps> = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const { id } = useParams<Params>();
+
+  console.log(id);
+
   return <></>;
 };
 
