@@ -39,10 +39,10 @@ const App: React.FC = (props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   console.log("Yay");
-  //   dispatch(getDocsRequest());
-  // }, [dispatch]);
+  useEffect(() => {
+    console.log("Yay");
+    dispatch(getDocsRequest());
+  }, [dispatch]);
 
   return (
     <Router>
