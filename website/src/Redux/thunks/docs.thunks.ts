@@ -41,10 +41,22 @@ export const getDocsRequest = () => async (
     });
 
     const readmeRes = await fetch(readmeData.download_url);
-    const readme = await readmeRes.text();
+    const readmeText = await readmeRes.text();
+    const { data: readme } = await octokit.markdown.render({
+      text: readmeText,
+      mode: "gfm",
+      context: "YashTotale/react-hash-scroll",
+      mediaType: { format: "html" },
+    });
 
     const changelogRes = await fetch(changelogData.download_url);
-    const changelog = await changelogRes.text();
+    const changelogText = await changelogRes.text();
+    const { data: changelog } = await octokit.markdown.render({
+      text: changelogText,
+      mode: "gfm",
+      context: "YashTotale/react-hash-scroll",
+      mediaType: { format: "html" },
+    });
 
     dispatch(loadDocsSuccess(components, readme, changelog));
   } catch (e) {
