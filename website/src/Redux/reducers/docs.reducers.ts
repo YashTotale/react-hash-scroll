@@ -18,6 +18,7 @@ export type DocsState = {
   changelog?: string;
   isLoading: boolean;
   isError: boolean;
+  lastUpdated?: number;
 };
 
 export const initialDocsState: DocsState = {
@@ -32,11 +33,19 @@ export const docsReducer = (
   const { type, payload } = action;
   switch (type) {
     case LOAD_DOCS_IN_PROGRESS: {
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: true, isError: false };
     }
     case LOAD_DOCS_SUCCESS: {
       const { components, readme, changelog } = payload;
-      return { ...state, components, readme, changelog, isLoading: false };
+      return {
+        ...state,
+        components,
+        readme,
+        changelog,
+        isLoading: false,
+        isError: false,
+        lastUpdated: Date.now(),
+      };
     }
     case LOAD_DOCS_ERROR: {
       return { ...state, isError: true, isLoading: false };

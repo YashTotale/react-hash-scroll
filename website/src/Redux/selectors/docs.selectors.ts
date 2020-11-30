@@ -5,3 +5,4 @@ export const getReadme = (state: State) => state.docs.readme;
 export const getChangelog = (state: State) => state.docs.changelog;
 export const getIsDocsLoading = (state: State) => state.docs.isLoading;
 export const getIsDocsError = (state: State) => state.docs.isError;
+export const getDocsLastUpdated = (state: State) => state.docs.lastUpdated;
