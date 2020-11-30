@@ -106,6 +106,7 @@ const Contents: React.FC<ContentsProps> = () => {
             }))}
           />
         )}
+        <ListLink to="/changelog" name="Changelog" />
       </List>
     </>
   );

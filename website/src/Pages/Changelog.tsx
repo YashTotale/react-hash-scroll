@@ -3,7 +3,7 @@ import React from "react";
 
 //Redux Imports
 import { useSelector } from "react-redux";
-import { getReadme } from "../Redux/selectors";
+import { getChangelog } from "../Redux/selectors";
 
 //Material UI Imports
 import { makeStyles, Theme } from "@material-ui/core";
@@ -15,16 +15,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Home: React.FC = () => {
+const Changelog: React.FC = () => {
   const classes = useStyles();
-  const readme = useSelector(getReadme);
+  const changelog = useSelector(getChangelog);
 
   return (
     <div
       className={`${classes.home} markdown-body`}
-      dangerouslySetInnerHTML={{ __html: readme ?? "" }}
+      dangerouslySetInnerHTML={{ __html: changelog ?? "" }}
     ></div>
   );
 };
 
-export default Home;
+export default Changelog;

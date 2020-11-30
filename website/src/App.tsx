@@ -9,6 +9,7 @@ import { getDocsRequest } from "./Redux/thunks";
 
 //Page Imports
 import Home from "./Pages/Home";
+import Changelog from "./Pages/Changelog";
 import Component from "./Pages/Component";
 import NotFound from "./Pages/404";
 
@@ -63,11 +64,20 @@ const Routes: React.FC = (props) => {
       <Route exact path="/components/:id">
         <Component />
       </Route>
+      <Route exact path="/changelog">
+        <Changelog />
+      </Route>
       <Route exact path="/home">
+        <Home />
+      </Route>
+      <Route exact path="/readme">
         <Home />
       </Route>
       <Route exact path="/">
         <Home />
+      </Route>
+      <Route exact path="/404">
+        <NotFound />
       </Route>
       <Route path="/">
         <NotFound />
