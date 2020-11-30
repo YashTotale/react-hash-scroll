@@ -1,12 +1,12 @@
 // React Imports
 import React, { FC } from "react";
+import { Redirect } from "react-router-dom";
 
 // Material UI Imports
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Typography } from "@material-ui/core";
 import {} from "@material-ui/icons";
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   notFound: {
@@ -66,7 +66,7 @@ const NotFound: FC<NotFoundProps> = ({}) => {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => setRedirect("home")}
+        onClick={() => setRedirect("/home")}
         className={classes.homeBtn}
       >
         Go to Home

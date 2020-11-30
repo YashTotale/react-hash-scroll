@@ -2,10 +2,15 @@
 import React from "react";
 
 //Material UI Imports
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
-  home: {},
+  home: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 }));
 
 const Home: React.FC = () => {

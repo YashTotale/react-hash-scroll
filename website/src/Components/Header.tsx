@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface NavbarProps {}
+interface HeaderProps {}
 
-const Navbar: FC<NavbarProps> = () => {
+const Header: FC<HeaderProps> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -48,4 +48,4 @@ const Navbar: FC<NavbarProps> = () => {
   );
 };
 
-export default Navbar;
+export default Header;

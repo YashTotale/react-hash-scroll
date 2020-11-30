@@ -12,7 +12,7 @@ import Component from "./Pages/Component";
 import NotFound from "./Pages/404";
 
 //Component Imports
-import Navbar from "./Components/Navbar";
+import Header from "./Components/Header";
 
 //Material UI Imports
 import Theme from "./Theme";
@@ -31,7 +31,7 @@ const App: React.FC = (props) => {
   return (
     <Router>
       <Theme>
-        <Navbar />
+        <Header />
         <Routes />
       </Theme>
     </Router>
