@@ -5,6 +5,7 @@ import { loadDocsError, loadDocsSuccess, loadDocsInProgress } from "../actions";
 import { Dispatch } from "react";
 import { AnyAction } from "redux";
 import { State } from "../reducers";
+import { Components } from "../reducers/docs.reducers";
 
 export const getDocsRequest = () => async (
   dispatch: Dispatch<AnyAction>,
@@ -20,12 +21,28 @@ export const getDocsRequest = () => async (
       path: "docs/Components",
     });
 
-    const components: Record<string, string> = {};
+    const components: Components = {};
 
-    for (const component of (componentsData as unknown) as ReposGetContentResponseData[]) {
-      const res = await fetch(component.download_url);
+    for (const {
+      name,
+      download_url,
+    } of (componentsData as unknown) as ReposGetContentResponseData[]) {
+      const res = await fetch(download_url);
       const text = await res.text();
-      components[component.name.slice(0, -3)] = text;
+
+      const id = name.slice(0, -3);
+
+      const { data: html } = await octokit.markdown.render({
+        text,
+        mode: "gfm",
+        context: "YashTotale/react-hash-scroll",
+        mediaType: { format: "html" },
+      });
+
+      components[id] = {
+        text: html,
+        url: id.toLowerCase(),
+      };
     }
 
     const { data: readmeData } = await octokit.repos.getContent({

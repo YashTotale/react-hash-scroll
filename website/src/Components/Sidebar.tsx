@@ -102,7 +102,7 @@ const Contents: React.FC<ContentsProps> = () => {
             name="Components"
             items={Object.keys(components).map((component) => ({
               name: component,
-              to: component.toLowerCase(),
+              to: components[component].url,
             }))}
           />
         )}

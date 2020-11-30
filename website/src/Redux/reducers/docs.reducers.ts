@@ -5,8 +5,15 @@ import {
   LOAD_DOCS_ERROR,
 } from "../actions";
 
+export interface Component {
+  text: string;
+  url: string;
+}
+
+export type Components = Record<string, Component>;
+
 export type DocsState = {
-  components?: Record<string, string>;
+  components?: Components;
   readme?: string;
   changelog?: string;
   isLoading: boolean;

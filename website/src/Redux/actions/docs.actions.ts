@@ -1,3 +1,5 @@
+import { Components } from "../reducers/docs.reducers";
+
 export const LOAD_DOCS_IN_PROGRESS = "LOAD_DOCS_IN_PROGRESS";
 export const loadDocsInProgress = () => ({
   type: LOAD_DOCS_IN_PROGRESS,
@@ -6,7 +8,7 @@ export const loadDocsInProgress = () => ({
 
 export const LOAD_DOCS_SUCCESS = "LOAD_DOCS_SUCCESS";
 export const loadDocsSuccess = (
-  components: Record<string, string>,
+  components: Components,
   readme: string,
   changelog: string
 ) => ({
