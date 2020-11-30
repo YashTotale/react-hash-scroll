@@ -5,10 +5,10 @@ import {
   LOAD_DOCS_ERROR,
 } from "../actions";
 
-import { ReposGetContentResponseData } from "@octokit/types";
-
 export type DocsState = {
-  docs?: ReposGetContentResponseData;
+  components?: string[];
+  readme?: string;
+  changelog?: string;
   isLoading: boolean;
   isError: boolean;
 };
@@ -28,8 +28,8 @@ export const docsReducer = (
       return { ...state, isLoading: true };
     }
     case LOAD_DOCS_SUCCESS: {
-      const { docs } = payload;
-      return { ...state, docs, isLoading: false };
+      const { components, readme, changelog } = payload;
+      return { ...state, components, readme, changelog, isLoading: false };
     }
     case LOAD_DOCS_ERROR: {
       return { ...state, isError: true, isLoading: false };

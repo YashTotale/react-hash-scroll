@@ -1,2 +1,8 @@
 export { getIsDarkMode } from "./display.selectors";
-export { getDocs, getIsDocsLoading, getIsDocsError } from "./docs.selectors";
+export {
+  getComponents,
+  getReadme,
+  getChangelog,
+  getIsDocsLoading,
+  getIsDocsError,
+} from "./docs.selectors";

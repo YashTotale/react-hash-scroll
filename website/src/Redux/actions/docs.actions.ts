@@ -1,5 +1,3 @@
-import { ReposGetContentResponseData } from "@octokit/types";
-
 export const LOAD_DOCS_IN_PROGRESS = "LOAD_DOCS_IN_PROGRESS";
 export const loadDocsInProgress = () => ({
   type: LOAD_DOCS_IN_PROGRESS,
@@ -7,10 +5,16 @@ export const loadDocsInProgress = () => ({
 });
 
 export const LOAD_DOCS_SUCCESS = "LOAD_DOCS_SUCCESS";
-export const loadDocsSuccess = (docs: ReposGetContentResponseData) => ({
+export const loadDocsSuccess = (
+  components: string[],
+  readme: string,
+  changelog: string
+) => ({
   type: LOAD_DOCS_SUCCESS,
   payload: {
-    docs,
+    components,
+    readme,
+    changelog,
   },
 });
 

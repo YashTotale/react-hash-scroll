@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/rest";
+import { ReposGetContentResponseData } from "@octokit/types";
 import { loadDocsError, loadDocsSuccess, loadDocsInProgress } from "../actions";
 
 import { Dispatch } from "react";
@@ -13,13 +14,39 @@ export const getDocsRequest = () => async (
     dispatch(loadDocsInProgress());
     const octokit = new Octokit();
 
-    const { data } = await octokit.repos.getContent({
+    const { data: componentsData } = await octokit.repos.getContent({
       owner: "YashTotale",
       repo: "react-hash-scroll",
-      path: "docs",
+      path: "docs/Components",
     });
 
-    dispatch(loadDocsSuccess(data));
+    const components: string[] = [];
+
+    for (const component of (componentsData as unknown) as ReposGetContentResponseData[]) {
+      const res = await fetch(component.download_url);
+      const text = await res.text();
+      components.push(text);
+    }
+
+    const { data: readmeData } = await octokit.repos.getContent({
+      owner: "YashTotale",
+      repo: "react-hash-scroll",
+      path: "README.md",
+    });
+
+    const { data: changelogData } = await octokit.repos.getContent({
+      owner: "YashTotale",
+      repo: "react-hash-scroll",
+      path: "CHANGELOG.md",
+    });
+
+    const readmeRes = await fetch(readmeData.download_url);
+    const readme = await readmeRes.text();
+
+    const changelogRes = await fetch(changelogData.download_url);
+    const changelog = await changelogRes.text();
+
+    dispatch(loadDocsSuccess(components, readme, changelog));
   } catch (e) {
     dispatch(loadDocsError());
   }

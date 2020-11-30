@@ -2,7 +2,7 @@
 import React from "react";
 
 //Material UI Imports
-import { makeStyles, Theme, Typography } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
   home: {
