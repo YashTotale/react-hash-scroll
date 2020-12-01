@@ -11,6 +11,7 @@ import {
   loadReadmeError,
   loadReadmeInProgress,
   loadReadmeSuccess,
+  setSnackbarMessage,
 } from "../actions";
 
 import { Dispatch } from "react";
@@ -19,6 +20,9 @@ import { State } from "../reducers";
 import { Components } from "../reducers/docs.reducers";
 import { ThunkAction } from "redux-thunk";
 import {
+  getIsChangelogError,
+  getIsComponentsError,
+  getIsReadmeError,
   getLastChangelogUpdate,
   getLastComponentsUpdate,
   getLastReadmeUpdate,
@@ -168,19 +172,19 @@ export const onDemandDataRequest = (page: Page) => async (
 ) => {
   let getLastUpdate;
   let request;
-  let error;
+  let errored;
   if (page === "readme") {
     getLastUpdate = getLastReadmeUpdate;
     request = getReadmeRequest;
-    error = loadReadmeError;
+    errored = getIsReadmeError;
   } else if (page === "changelog") {
     getLastUpdate = getLastChangelogUpdate;
     request = getChangelogRequest;
-    error = loadChangelogError;
+    errored = getIsChangelogError;
   } else {
     getLastUpdate = getLastComponentsUpdate;
     request = getComponentsRequest;
-    error = loadComponentsError;
+    errored = getIsComponentsError;
   }
   try {
     const lastUpdated = getLastUpdate(getState());
@@ -193,7 +197,7 @@ export const onDemandDataRequest = (page: Page) => async (
 
       const diffInMinutes = diff / (1000 * 60);
 
-      if (diffInMinutes < 10) {
+      if (diffInMinutes < 10 && !errored(getState())) {
         throw new Error(
           `Please wait at least 10 minutes between requests (${(
             10 - diffInMinutes
@@ -204,6 +208,6 @@ export const onDemandDataRequest = (page: Page) => async (
       dispatch(request());
     }
   } catch (e) {
-    dispatch(error(e));
+    dispatch(setSnackbarMessage(e.message, "error"));
   }
 };

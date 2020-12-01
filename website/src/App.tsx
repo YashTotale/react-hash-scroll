@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { getDocs } from "./Redux/thunks";
 
 //Page Imports
-import Home from "./Pages/Home";
+import Readme from "./Pages/Readme";
 import Changelog from "./Pages/Changelog";
 import Component from "./Pages/Component";
 import NotFound from "./Pages/404";
@@ -70,13 +70,13 @@ const Routes: React.FC = (props) => {
         <Changelog />
       </Route>
       <Route exact path="/home">
-        <Home />
+        <Readme />
       </Route>
       <Route exact path="/readme">
-        <Home />
+        <Readme />
       </Route>
       <Route exact path="/">
-        <Home />
+        <Readme />
       </Route>
       <Route exact path="/404">
         <NotFound />

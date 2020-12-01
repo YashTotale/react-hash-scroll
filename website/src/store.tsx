@@ -1,5 +1,6 @@
 //React Imports
 import React from "react";
+import Loading from "./Components/Loading";
 
 //Redux Imports
 import { createStore, combineReducers, applyMiddleware } from "redux";
@@ -46,7 +47,7 @@ const persistor = persistStore(configuredStore);
 const ReduxStore: React.FC = ({ children }) => {
   return (
     <Provider store={configuredStore}>
-      <PersistGate persistor={persistor} loading={<div>Loading...</div>}>
+      <PersistGate persistor={persistor} loading={<Loading />}>
         {children}
       </PersistGate>
     </Provider>

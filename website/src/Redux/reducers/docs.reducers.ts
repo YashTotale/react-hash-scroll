@@ -26,9 +26,9 @@ export type DocsState = {
   areComponentsLoading: boolean;
   isReadmeLoading: boolean;
   isChangelogLoading: boolean;
-  isComponentsError: boolean;
-  isReadmeError: boolean;
-  isChangelogError: boolean;
+  isComponentsError: boolean | string;
+  isReadmeError: boolean | string;
+  isChangelogError: boolean | string;
   lastComponentsUpdate?: number;
   lastReadmeUpdate?: number;
   lastChangelogUpdate?: number;
@@ -74,6 +74,7 @@ export const docsReducer = (
         components,
         areComponentsLoading: false,
         lastComponentsUpdate: Date.now(),
+        isComponentsError: false,
       };
     }
     case LOAD_README_SUCCESS: {
@@ -83,6 +84,7 @@ export const docsReducer = (
         readme,
         isReadmeLoading: false,
         lastReadmeUpdate: Date.now(),
+        isReadmeError: false,
       };
     }
     case LOAD_CHANGELOG_SUCCESS: {
@@ -92,32 +94,43 @@ export const docsReducer = (
         changelog,
         isChangelogLoading: false,
         lastChangelogUpdate: Date.now(),
+        isChangelogError: false,
       };
     }
     case LOAD_DOCS_ERROR: {
+      const { error } = payload;
       return {
         ...state,
-        isComponentsError: true,
-        isReadmeError: true,
-        isChangelogError: true,
+        isComponentsError: error,
+        areComponentsLoading: false,
+        isReadmeError: error,
+        isReadmeLoading: false,
+        isChangelogError: error,
+        isChangelogLoading: false,
       };
     }
     case LOAD_COMPONENTS_ERROR: {
+      const { error } = payload;
       return {
         ...state,
-        isComponentsError: true,
+        isComponentsError: error,
+        isChangelogLoading: false,
       };
     }
     case LOAD_README_ERROR: {
+      const { error } = payload;
       return {
         ...state,
-        isReadmeError: true,
+        isReadmeError: error,
+        isReadmeLoading: false,
       };
     }
     case LOAD_CHANGELOG_ERROR: {
+      const { error } = payload;
       return {
         ...state,
-        isChangelogError: true,
+        isChangelogError: error,
+        isChangelogLoading: false,
       };
     }
     default: {

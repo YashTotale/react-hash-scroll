@@ -166,12 +166,13 @@ const Category: React.FC<CategoryProps> = ({ name, items }) => {
       </ListItem>
       <Collapse in={open} timeout="auto">
         <List component="div" disablePadding>
-          {items.map(({ to, name }) => (
+          {items.map(({ to, name }, i) => (
             <ListItem
               className={classes.nested}
               component={Link}
               to={`${base}/${to}`}
               button
+              key={i}
             >
               <ListItemText
                 primaryTypographyProps={{ variant: "body2" }}

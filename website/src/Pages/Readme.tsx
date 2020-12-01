@@ -6,43 +6,42 @@ import Alerter from "../Components/Alerter";
 //Redux Imports
 import { useSelector } from "react-redux";
 import {
-  getChangelog,
-  getIsChangelogError,
-  getIsChangelogLoading,
+  getIsReadmeError,
+  getIsReadmeLoading,
+  getReadme,
 } from "../Redux/selectors";
 
 //Material UI Imports
 import { makeStyles, Theme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
-  changelog: {
+  home: {
     maxWidth: "85%",
     margin: "10px auto",
-    padding: 10,
   },
 }));
 
-const Changelog: React.FC = () => {
+const Readme: React.FC = () => {
   const classes = useStyles();
-  const changelog = useSelector(getChangelog);
-  const isLoading = useSelector(getIsChangelogLoading);
-  const isError = useSelector(getIsChangelogError);
+  const readme = useSelector(getReadme);
+  const isLoading = useSelector(getIsReadmeLoading);
+  const isError = useSelector(getIsReadmeError);
 
   if (isLoading) return <Loading />;
 
   if (isError && typeof isError === "string")
     return (
-      <Alerter className={classes.changelog} severity="error">
+      <Alerter className={classes.home} severity="error">
         {isError}
       </Alerter>
     );
 
   return (
     <div
-      className={`${classes.changelog} markdown-body`}
-      dangerouslySetInnerHTML={{ __html: changelog ?? "" }}
+      className={`${classes.home} markdown-body`}
+      dangerouslySetInnerHTML={{ __html: readme ?? "" }}
     ></div>
   );
 };
 
-export default Changelog;
+export default Readme;
