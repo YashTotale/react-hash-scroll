@@ -1,5 +1,7 @@
 import { JSDOM } from "jsdom";
 import * as marked from "marked";
+import * as dotenv from "dotenv-safe";
+import axios from "axios";
 
 import * as pkg from "../package.json";
 import {
@@ -13,6 +15,8 @@ import {
   gitAdd,
   getStagedFiles,
 } from "./helpers";
+
+dotenv.config();
 
 const changelogDest = join(ROOT_DIR, "CHANGELOG.md");
 
@@ -30,20 +34,30 @@ const getReadme = () => {
   return readFile(readmeDest, "utf-8");
 };
 
-const getNextVersions = () => {
-  const currentVersion = pkg.version;
+const getNextVersions = async () => {
+  try {
+    const { data } = await axios.get(
+      `https://libraries.io/api/NPM/react-hash-scroll?api_key=${process.env.LIBRARIES_IO_KEY}`
+    );
 
-  const match = currentVersion.match(semverRegex) as RegExpMatchArray;
+    const currentVersion =
+      data?.versions?.slice?.(-1)?.[0]?.number ?? pkg.version;
 
-  const major = parseInt(match[1]),
-    minor = parseInt(match[2]),
-    patch = parseInt(match[3]);
+    const match = currentVersion.match(semverRegex) as RegExpMatchArray;
 
-  return [
-    `${major + 1}.0.0`,
-    `${major}.${minor + 1}.0`,
-    `${major}.${minor}.${patch + 1}`,
-  ];
+    const major = parseInt(match[1]),
+      minor = parseInt(match[2]),
+      patch = parseInt(match[3]);
+
+    return [
+      `${major + 1}.0.0`,
+      `${major}.${minor + 1}.0`,
+      `${major}.${minor}.${patch + 1}`,
+    ];
+  } catch (e) {
+    console.log(e);
+    process.exit(1);
+  }
 };
 
 const createDom = (changelog: string) => {
@@ -62,7 +76,7 @@ const checkChangelog = async () => {
 
     const changelog = await getChangelog();
 
-    const versions = getNextVersions();
+    const versions = await getNextVersions();
 
     const { document } = createDom(changelog);
 
