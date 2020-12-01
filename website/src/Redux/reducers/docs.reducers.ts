@@ -52,9 +52,13 @@ export const docsReducer = (
 
       return {
         ...state,
-        isError: error ?? true,
+        isError:
+          typeof error === "string"
+            ? error
+            : typeof error.message === "string"
+            ? error.message
+            : true,
         isLoading: false,
-        lastUpdated: Date.now(),
       };
     }
     default: {

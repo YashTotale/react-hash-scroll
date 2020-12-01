@@ -1,5 +1,9 @@
 import { AnyAction } from "redux";
-import { SET_SNACKBAR_MESSAGE, HANDLE_SNACKBAR_CLOSE } from "../actions";
+import {
+  SET_SNACKBAR_MESSAGE,
+  HANDLE_SNACKBAR_CLOSE,
+  LOAD_DOCS_ERROR,
+} from "../actions";
 import { Color } from "@material-ui/lab";
 
 export interface SnackbarState {
@@ -26,6 +30,20 @@ export const snackbarReducer = (
     }
     case HANDLE_SNACKBAR_CLOSE: {
       return { ...state, isOpen: false };
+    }
+    case LOAD_DOCS_ERROR: {
+      const { error } = payload;
+      return {
+        ...state,
+        isOpen: true,
+        message:
+          typeof error === "string"
+            ? error
+            : typeof error.message === "string"
+            ? error.message
+            : "Error",
+        severity: "error",
+      };
     }
     default: {
       return state;

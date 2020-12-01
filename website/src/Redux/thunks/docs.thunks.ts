@@ -79,7 +79,7 @@ export const getDocsRequest = () => async (
 
     dispatch(loadDocsSuccess(components, readme, changelog));
   } catch (e) {
-    dispatch(loadDocsError(e));
+    dispatch(loadDocsError("Data could not be fetched. Please try again"));
   }
 };
 
@@ -100,7 +100,9 @@ export const onDemandDataRequest = () => async (
 
       if (diffInMinutes < 10) {
         throw new Error(
-          "Data was fetched within the last 10 minutes. Please wait at least 10 minutes between requests"
+          `Please wait at least 10 minutes between requests (${(
+            10 - diffInMinutes
+          ).toFixed(2)} remaining)`
         );
       }
 

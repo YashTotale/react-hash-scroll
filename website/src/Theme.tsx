@@ -4,7 +4,7 @@ import React from "react";
 //Material UI Imports
 import { createMuiTheme, ThemeProvider, CssBaseline } from "@material-ui/core";
 
-const alternativeFont = "Arial, sans-serif";
+export const alternativeFont = "Arial, sans-serif";
 
 const Theme: React.FC = ({ children }) => {
   const theme = createMuiTheme({

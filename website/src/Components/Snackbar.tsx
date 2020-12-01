@@ -13,9 +13,13 @@ import { handleSnackbarClose } from "../Redux/actions";
 // Material UI Imports
 import { Snackbar, SnackbarCloseReason, makeStyles } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
+import { alternativeFont } from "../Theme";
 
 const useStyles = makeStyles((theme) => ({
-  alert: {},
+  alert: {
+    fontFamily: alternativeFont,
+    fontWeight: 600,
+  },
 }));
 
 interface SnackBarProps {}
@@ -49,6 +53,9 @@ const SnackBar: React.FC<SnackBarProps> = () => {
         variant="filled"
         severity={severity}
         onClose={handleClose}
+        classes={{
+          message: classes.alert,
+        }}
       >
         {message}
       </Alert>
