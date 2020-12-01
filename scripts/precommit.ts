@@ -37,11 +37,10 @@ const getReadme = () => {
 const getNextVersions = async () => {
   try {
     const { data } = await axios.get(
-      `https://libraries.io/api/NPM/react-hash-scroll?api_key=${process.env.LIBRARIES_IO_KEY}`
+      "http://registry.npmjs.org/-/package/react-hash-scroll/dist-tags"
     );
 
-    const currentVersion =
-      data?.versions?.slice?.(-1)?.[0]?.number ?? pkg.version;
+    const currentVersion = data.latest ?? pkg.version;
 
     const match = currentVersion.match(semverRegex) as RegExpMatchArray;
 

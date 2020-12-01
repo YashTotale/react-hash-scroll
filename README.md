@@ -17,7 +17,7 @@ _Table Of Contents_
 
 - [Installation](#installation)
 - [Why this one](#why-this-one)
-- [Website](#website)
+- [Website !Website](#website-)
 - [Components](#components)
   - [Reused Props](#reused-props)
     - [behavior](#behavior)
@@ -78,11 +78,9 @@ There are a lot of hash scrolling React libraries out there, so why should you p
 
 ---
 
-## Website
+## Website ![Website](https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F)
 
-<a href="https://react-hash-scroll.web.app/"><img src="https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F" alt="Website"></a>
-
-View the [website](https://react-hash-scroll.web.app/). It compiles all the information and demos on this library in one easy-to-access place.
+The [website](https://react-hash-scroll.web.app/) compiles all the information and demos on this library in one easy-to-access place.
 
 ---
 
