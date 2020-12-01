@@ -1,5 +1,6 @@
 //React Imports
 import React from "react";
+import Loading from "./Components/Loading";
 
 //Redux Imports
 import { createStore, combineReducers, applyMiddleware } from "redux";
@@ -18,10 +19,12 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 //Reducer Imports
-import { display } from "./Redux/reducers";
+import { display, docs, snackbar } from "./Redux/reducers";
 
 const reducers = {
   display,
+  docs,
+  snackbar,
 };
 
 //The configuration for the persisted reducer
@@ -44,7 +47,7 @@ const persistor = persistStore(configuredStore);
 const ReduxStore: React.FC = ({ children }) => {
   return (
     <Provider store={configuredStore}>
-      <PersistGate persistor={persistor} loading={<div>Loading...</div>}>
+      <PersistGate persistor={persistor} loading={<Loading />}>
         {children}
       </PersistGate>
     </Provider>

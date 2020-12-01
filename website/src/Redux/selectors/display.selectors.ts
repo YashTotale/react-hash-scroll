@@ -1,3 +1,3 @@
 import { State } from "../reducers";
 
-export const getIsDarkMode = (state: State) => state.display.isDarkMode;
+export const getIsSideBarOpen = (state: State) => state.display.isOpen;
