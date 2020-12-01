@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
-- [[v1.3.2] - (2020-12-1)](#v132---2020-12-1)
+- [[v1.3.2] - (2020-12-02)](#v132---2020-12-02)
 - [[v1.3.1] - (2020-11-30)](#v131---2020-11-30)
   - [Added](#added)
 - [[v1.3.0] - (2020-11-27)](#v130---2020-11-27)
@@ -36,7 +36,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ---
 
-## [v1.3.2] - (2020-12-1)
+## [v1.3.2] - (2020-12-02)
 
 ---
 

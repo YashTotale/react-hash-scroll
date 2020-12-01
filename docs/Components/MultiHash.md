@@ -1,6 +1,12 @@
 ### MultiHash
 
+#### Summary
+
 Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
+
+#### Demo
+
+[![View Multi Hash Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=multi-hash&module=/src/Demos/MultiHashDemo.tsx)
 
 #### Props
 
