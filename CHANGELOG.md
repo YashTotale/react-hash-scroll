@@ -2,13 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](http://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
-- [[v1.3.1] - (2020-11-29)](#v131---2020-11-29)
+- [[v1.3.1] - (2020-11-30)](#v131---2020-11-30)
 - [[v1.3.0] - (2020-11-27)](#v130---2020-11-27)
   - [Added](#added)
 - [[v1.2.3] - (2020-11-26)](#v123---2020-11-26)
@@ -35,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [v1.3.1] - (2020-11-29)
+## [v1.3.1] - (2020-11-30)
 
 ---
 

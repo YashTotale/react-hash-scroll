@@ -1,7 +1,5 @@
-export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
-export const toggleDarkMode = (isDarkMode?: boolean) => ({
-  type: TOGGLE_DARK_MODE,
-  payload: {
-    isDarkMode,
-  },
+export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
+export const toggleSidebar = (isOpen?: boolean) => ({
+  type: TOGGLE_SIDEBAR,
+  payload: { isOpen },
 });
