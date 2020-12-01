@@ -4,8 +4,8 @@ import React, { useEffect } from "react";
 import "./markdown.css";
 
 //Redux Imports
-import { useDispatch, useSelector } from "react-redux";
-import { getDocsRequest } from "./Redux/thunks";
+import { useDispatch } from "react-redux";
+import { getDocs } from "./Redux/thunks";
 
 //Page Imports
 import Home from "./Pages/Home";
@@ -27,7 +27,6 @@ import { SIDEBAR_WIDTH } from "./Utils/constants";
 //Router Imports
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
-import { getDocsLastUpdated } from "./Redux/selectors";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -40,23 +39,11 @@ const useStyles = makeStyles((theme) => ({
 
 const App: React.FC = (props) => {
   const dispatch = useDispatch();
-  const lastUpdated = useSelector(getDocsLastUpdated);
+
   const classes = useStyles();
 
   useEffect(() => {
-    if (lastUpdated === undefined) dispatch(getDocsRequest());
-    else {
-      const current = new Date().getTime();
-      const last = new Date(lastUpdated).getTime();
-
-      const diff = current - last;
-
-      const diffInHours = diff / (1000 * 60 * 60);
-
-      if (diffInHours > 24) {
-        dispatch(getDocsRequest());
-      }
-    }
+    dispatch(getDocs());
   });
 
   return (

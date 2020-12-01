@@ -2,6 +2,9 @@ import { AnyAction } from "redux";
 import {
   SET_SNACKBAR_MESSAGE,
   HANDLE_SNACKBAR_CLOSE,
+  LOAD_COMPONENTS_ERROR,
+  LOAD_README_ERROR,
+  LOAD_CHANGELOG_ERROR,
   LOAD_DOCS_ERROR,
 } from "../actions";
 import { Color } from "@material-ui/lab";
@@ -31,6 +34,9 @@ export const snackbarReducer = (
     case HANDLE_SNACKBAR_CLOSE: {
       return { ...state, isOpen: false };
     }
+    case LOAD_COMPONENTS_ERROR:
+    case LOAD_README_ERROR:
+    case LOAD_CHANGELOG_ERROR:
     case LOAD_DOCS_ERROR: {
       const { error } = payload;
       return {

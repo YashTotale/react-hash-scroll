@@ -2,9 +2,15 @@ export {
   getComponents,
   getReadme,
   getChangelog,
-  getIsDocsLoading,
-  getIsDocsError,
-  getDocsLastUpdated,
+  getAreComponentsLoading,
+  getIsReadmeLoading,
+  getIsChangelogLoading,
+  getIsComponentsError,
+  getIsReadmeError,
+  getIsChangelogError,
+  getLastComponentsUpdate,
+  getLastReadmeUpdate,
+  getLastChangelogUpdate,
 } from "./docs.selectors";
 export { getIsSideBarOpen } from "./display.selectors";
 export {
