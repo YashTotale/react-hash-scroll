@@ -21,7 +21,7 @@ export const loadDocsSuccess = (
 });
 
 export const LOAD_DOCS_ERROR = "LOAD_DOCS_ERROR";
-export const loadDocsError = () => ({
+export const loadDocsError = (error: string) => ({
   type: LOAD_DOCS_ERROR,
-  payload: {},
+  payload: { error },
 });

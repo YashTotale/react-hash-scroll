@@ -7,3 +7,9 @@ export {
   loadDocsError,
 } from "./docs.actions";
 export { TOGGLE_SIDEBAR, toggleSidebar } from "./display.actions";
+export {
+  SET_SNACKBAR_MESSAGE,
+  setSnackbarMessage,
+  HANDLE_SNACKBAR_CLOSE,
+  handleSnackbarClose,
+} from "./snackbar.actions";

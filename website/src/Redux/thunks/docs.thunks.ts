@@ -6,9 +6,11 @@ import { Dispatch } from "react";
 import { AnyAction } from "redux";
 import { State } from "../reducers";
 import { Components } from "../reducers/docs.reducers";
+import { getDocsLastUpdated } from "../selectors";
+import { ThunkAction } from "redux-thunk";
 
 export const getDocsRequest = () => async (
-  dispatch: Dispatch<AnyAction>,
+  dispatch: Dispatch<AnyAction | ThunkAction<void, State, any, any>>,
   getState: () => State
 ) => {
   try {
@@ -77,6 +79,34 @@ export const getDocsRequest = () => async (
 
     dispatch(loadDocsSuccess(components, readme, changelog));
   } catch (e) {
-    dispatch(loadDocsError());
+    dispatch(loadDocsError(e));
+  }
+};
+
+export const onDemandDataRequest = () => async (
+  dispatch: Dispatch<AnyAction | ThunkAction<void, State, any, any>>,
+  getState: () => State
+) => {
+  try {
+    const lastUpdated = getDocsLastUpdated(getState());
+
+    if (lastUpdated) {
+      const current = new Date().getTime();
+      const last = new Date(lastUpdated).getTime();
+
+      const diff = current - last;
+
+      const diffInMinutes = diff / (1000 * 60);
+
+      if (diffInMinutes < 10) {
+        throw new Error(
+          "Data was fetched within the last 10 minutes. Please wait at least 10 minutes between requests"
+        );
+      }
+
+      dispatch(getDocsRequest());
+    }
+  } catch (e) {
+    dispatch(loadDocsError(e));
   }
 };

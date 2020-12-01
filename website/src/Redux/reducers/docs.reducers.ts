@@ -17,7 +17,7 @@ export type DocsState = {
   readme?: string;
   changelog?: string;
   isLoading: boolean;
-  isError: boolean;
+  isError: boolean | string;
   lastUpdated?: number;
 };
 
@@ -48,7 +48,14 @@ export const docsReducer = (
       };
     }
     case LOAD_DOCS_ERROR: {
-      return { ...state, isError: true, isLoading: false };
+      const { error } = payload;
+
+      return {
+        ...state,
+        isError: error ?? true,
+        isLoading: false,
+        lastUpdated: Date.now(),
+      };
     }
     default: {
       return state;

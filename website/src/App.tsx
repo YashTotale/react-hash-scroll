@@ -16,6 +16,7 @@ import NotFound from "./Pages/404";
 //Component Imports
 import Header from "./Components/Header";
 import SideBar from "./Components/Sidebar";
+import SnackBar from "./Components/Snackbar";
 
 //Material UI Imports
 import Theme from "./Theme";
@@ -63,6 +64,7 @@ const App: React.FC = (props) => {
       <Theme>
         <Header />
         <SideBar />
+        <SnackBar />
         <div className={classes.container}>
           <Routes />
         </div>

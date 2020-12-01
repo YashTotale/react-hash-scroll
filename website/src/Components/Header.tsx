@@ -4,6 +4,7 @@ import React, { FC } from "react";
 //Redux Imports
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../Redux/actions";
+import { onDemandDataRequest } from "../Redux/thunks";
 
 // Material UI Imports
 import {
@@ -15,10 +16,13 @@ import {
   Tooltip,
   IconButton,
 } from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
+import { Cached, Menu } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {},
+  refresh: {
+    marginLeft: "auto",
+  },
 }));
 
 interface HeaderProps {}
@@ -40,6 +44,14 @@ const Header: FC<HeaderProps> = () => {
             </IconButton>
           </Tooltip>
         )}
+        <Tooltip title="Get Data">
+          <IconButton
+            className={classes.refresh}
+            onClick={() => dispatch(onDemandDataRequest())}
+          >
+            <Cached />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );
