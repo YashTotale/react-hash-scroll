@@ -79,31 +79,67 @@ const checkChangelog = async () => {
 
     const { document } = createDom(changelog);
 
-    const mostRecent = document.getElementsByTagName("h2").item(1)?.innerHTML;
+    const mostRecentHeading = document.getElementsByTagName("h2").item(1);
 
-    if (versions.find((v) => mostRecent?.includes(v)) === undefined)
+    const mostRecentSubheadings: string[] = [];
+
+    let nextSibling: Element | null | undefined = mostRecentHeading;
+
+    while (true) {
+      nextSibling = nextSibling?.nextElementSibling;
+      const tag = nextSibling?.tagName;
+      if (tag === "H2") break;
+      if (tag !== "H3") continue;
+
+      mostRecentSubheadings.push(nextSibling?.innerHTML ?? "");
+    }
+
+    const mostRecentTOC = document.getElementsByTagName("li").item(1);
+
+    const mostRecentTOCLink = mostRecentTOC
+      ?.getElementsByTagName?.("a")
+      ?.item?.(0);
+
+    const mostRecentTOCChildren = Array.from(
+      mostRecentTOC?.getElementsByTagName("ul")?.item(0)?.children ?? []
+    );
+
+    const mostRecentHeadingTitle = mostRecentHeading?.innerHTML;
+
+    if (versions.find((v) => mostRecentHeadingTitle?.includes(v)) === undefined)
       errors.push("Please update the CHANGELOG with the next planned release");
 
-    const date = mostRecent?.match(/\((.*)\)/)?.[1];
+    const date = mostRecentHeadingTitle?.match(/\((.*)\)/)?.[1];
 
     if (date !== today)
       errors.push(
         "Please update the upcoming release in the CHANGELOG with today's date"
       );
 
-    const mostRecentTOC = document.getElementsByTagName("a").item(3)?.innerHTML;
+    const mostRecentTOCTitle = mostRecentTOCLink?.innerHTML;
 
-    if (versions.find((v) => mostRecentTOC?.includes(v)) === undefined)
+    if (versions.find((v) => mostRecentTOCTitle?.includes(v)) === undefined)
       errors.push(
         "Please update the CHANGELOG Table of Contents with the next planned release"
       );
 
-    const dateTOC = mostRecentTOC?.match(/\((.*)\)/)?.[1];
+    const dateTOC = mostRecentTOCTitle?.match(/\((.*)\)/)?.[1];
 
     if (dateTOC !== today)
       errors.push(
         "Please update the upcoming release in the CHANGELOG Table of Contents with today's date"
       );
+
+    mostRecentSubheadings.forEach((heading, i) => {
+      const child = mostRecentTOCChildren[i];
+      const name = child?.getElementsByTagName("a")?.item(0)?.innerHTML;
+
+      if (name !== heading) {
+        errors.push(
+          `Please update the Changelog Table of Contents with subsection "${heading}" of the next planned release`
+        );
+      }
+    });
 
     if (errors.length) throw errors;
   } catch (e) {

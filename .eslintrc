@@ -24,6 +24,7 @@
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "react/prop-types": "off",
+    "no-constant-condition": ["error", { "checkLoops": false }],
     "@typescript-eslint/no-explicit-any": "off"
   }
 }
