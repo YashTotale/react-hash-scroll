@@ -39,7 +39,7 @@ function useHashScroll<T extends HTMLElement>(
       (requiredPathname === undefined || requiredPathname.includes(pathname))
     ) {
       if (ref.current) {
-        scrollFunc(ref, behavior, position);
+        scrollFunc<T>(ref, behavior, position);
       }
     }
   }, [
