@@ -1,6 +1,12 @@
 ### ChildrenHash
 
+#### Summary
+
 Scrolls to corresponding child element when one of the hashes is present in the url
+
+#### Demo
+
+[![View Children Hash Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=children-hash&module=/src/Demos/ChildrenHashDemo.tsx)
 
 #### Props
 

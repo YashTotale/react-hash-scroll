@@ -3,7 +3,7 @@
     <a href="https://github.com/YashTotale/react-hash-scroll/blob/main/static/icon.svg"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/cc2728f850fb8332a9ba22717faf70e1e74a30a6/static/icon.svg" alt="React Hash Scroll" width="200"></a>
   <br>
   <h2 align="center">
-    React Hash Scroll
+    <a href="https://react-hash-scroll.web.app/">React Hash Scroll</a>
   </h2>
 </p>
 
@@ -17,6 +17,7 @@ _Table Of Contents_
 
 - [Installation](#installation)
 - [Why this one](#why-this-one)
+- [Website](#website)
 - [Components](#components)
   - [Reused Props](#reused-props)
     - [behavior](#behavior)
@@ -24,12 +25,18 @@ _Table Of Contents_
     - [requiredPathname](#requiredpathname)
     - [scrollFunc](#scrollfunc)
   - [HashScroll](#hashscroll)
+    - [Summary](#summary)
+    - [Demo](#demo)
     - [Props](#props)
     - [Example](#example)
   - [MultiHash](#multihash)
+    - [Summary](#summary-1)
+    - [Demo](#demo-1)
     - [Props](#props-1)
     - [Example](#example-1)
   - [ChildrenHash](#childrenhash)
+    - [Summary](#summary-2)
+    - [Demo](#demo-2)
     - [Props](#props-2)
     - [Example](#example-2)
 - [Contributing](#contributing)
@@ -74,6 +81,14 @@ There are a lot of hash scrolling React libraries out there, so why should you p
 - This library offers built-in [TypeScript](https://www.typescriptlang.org/) support
 - Extensive testing makes this library more dependable
 - This library provides components that are very customizable, making it more likely that they will fit your use case
+
+---
+
+## Website
+
+![Website](https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F)
+
+The [website](https://react-hash-scroll.web.app/) compiles all the information and demos on this library in one easy-to-access place.
 
 ---
 
@@ -128,7 +143,13 @@ Props that are used by multiple components
 
 ### HashScroll
 
+#### Summary
+
 Scrolls to child element when the specified hash is present in the url
+
+#### Demo
+
+[![View Hash Scroll Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=hash-scroll&module=/src/Demos/HashScrollDemo.tsx)
 
 #### Props
 
@@ -189,7 +210,13 @@ const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for c
 
 ### MultiHash
 
+#### Summary
+
 Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
+
+#### Demo
+
+[![View Multi Hash Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=multi-hash&module=/src/Demos/MultiHashDemo.tsx)
 
 #### Props
 
@@ -252,7 +279,13 @@ const App = () => {
 
 ### ChildrenHash
 
+#### Summary
+
 Scrolls to corresponding child element when one of the hashes is present in the url
+
+#### Demo
+
+[![View Children Hash Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=children-hash&module=/src/Demos/ChildrenHashDemo.tsx)
 
 #### Props
 

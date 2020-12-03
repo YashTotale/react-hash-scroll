@@ -1,6 +1,12 @@
 ### HashScroll
 
+#### Summary
+
 Scrolls to child element when the specified hash is present in the url
+
+#### Demo
+
+[![View Hash Scroll Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=hash-scroll&module=/src/Demos/HashScrollDemo.tsx)
 
 #### Props
 
