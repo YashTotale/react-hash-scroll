@@ -156,35 +156,43 @@ const checkReadme = async () => {
 
     const docsDir = join(ROOT_DIR, "docs");
 
-    const componentsPath = "docs/Components/";
+    const docsPath = "docs/";
 
-    if (staged.includes(componentsPath)) {
-      const componentsDir = join(docsDir, "Components");
+    if (staged.includes(docsPath)) {
+      const createReadme = async (name: string) => {
+        const path = docsPath + name + "/";
 
-      const files = await readDir(join(componentsDir));
+        if (staged.includes(path)) {
+          const dir = join(docsDir, name);
 
-      for (const file of files) {
-        if (staged.includes(`${componentsPath}${file}`)) {
-          const readme = await getReadme();
+          const files = await readDir(dir);
 
-          const titleIndex = readme.indexOf(`### ${parse(file).name}`);
+          for (const file of files) {
+            if (staged.includes(`${path}${file}`)) {
+              const readme = await getReadme();
 
-          const endIndex = readme.indexOf("---", titleIndex);
+              const titleIndex = readme.indexOf(`### ${parse(file).name}`);
 
-          const fileContents = await readFile(
-            join(componentsDir, file),
-            "utf-8"
-          );
+              const endIndex = readme.indexOf("---", titleIndex);
 
-          const newReadme =
-            readme.substring(0, titleIndex) +
-            fileContents +
-            "\n" +
-            readme.substring(endIndex);
+              const fileContents = await readFile(join(dir, file), "utf-8");
 
-          await writeFile(readmeDest, newReadme);
+              const newReadme =
+                readme.substring(0, titleIndex) +
+                fileContents +
+                "\n" +
+                readme.substring(endIndex);
+
+              await writeFile(readmeDest, newReadme);
+            }
+          }
         }
-      }
+      };
+
+      await createReadme("Components");
+
+      await createReadme("Hooks");
+
       await gitAdd(readmeDest);
     }
 

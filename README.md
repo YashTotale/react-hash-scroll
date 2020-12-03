@@ -39,6 +39,12 @@ _Table Of Contents_
     - [Demo](#demo-2)
     - [Props](#props-2)
     - [Example](#example-2)
+- [Hooks](#hooks)
+  - [useHashScroll](#usehashscroll)
+    - [Summary](#summary-3)
+    - [Demo](#demo-3)
+    - [Params](#params)
+    - [Example](#example-3)
 - [Contributing](#contributing)
 - [More Info (Badges)](#more-info-badges)
 
@@ -330,6 +336,22 @@ const App = () => {
   );
 };
 ```
+
+---
+
+## Hooks
+
+### useHashScroll
+
+#### Summary
+
+Creates a ref that scrolls to its assigned element when a specified hash is present in the url
+
+#### Demo
+
+#### Params
+
+#### Example
 
 ---
 
