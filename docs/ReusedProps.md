@@ -1,8 +1,8 @@
-### Reused Props
+## Reused Props
 
 Props that are used by multiple components
 
-#### behavior
+### behavior
 
 - The behavior of the scroll
 - Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
@@ -10,7 +10,7 @@ Props that are used by multiple components
   - "smooth": Smooth scroll (_Default_)
   - "auto": Instant scroll
 
-#### position
+### position
 
 - The position of the element on the page after it is scrolled to
 - Like [behavior](#behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
@@ -20,7 +20,7 @@ Props that are used by multiple components
   - "start": Element will scroll to top of page
   - "nearest": Element will scroll to center/end/start depending on which one is closest
 
-#### requiredPathname
+### requiredPathname
 
 - Only scroll on a specific pathname(s)
 - Note: "/" matches to the website name with no pathname
@@ -30,7 +30,7 @@ Props that are used by multiple components
   - **/docs** or **/features**: ["/docs", "/features"]
 - Type: `string | string[]`
 
-#### scrollFunc
+### scrollFunc
 
 - A custom scroll function that overrides the default [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) function used by React Hash Scroll
 - Parameters:

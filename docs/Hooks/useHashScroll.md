@@ -4,8 +4,16 @@
 
 Creates a ref that scrolls to its assigned element when a specified hash is present in the url
 
-#### Demo
-
 #### Params
+
+`hash`
+
+- **Required**
+- Type: `string`
+- The hash that should trigger scroll
+
+`options`
+
+-
 
 #### Example

@@ -159,39 +159,64 @@ const checkReadme = async () => {
     const docsPath = "docs/";
 
     if (staged.includes(docsPath)) {
-      const createReadme = async (name: string) => {
-        const path = docsPath + name + "/";
+      const buildReadme = async (name: string, isFile?: boolean) => {
+        const path = docsPath + name;
 
         if (staged.includes(path)) {
-          const dir = join(docsDir, name);
+          const buildFile = async (
+            file: string,
+            dir: string,
+            hashCount = 3
+          ) => {
+            const readme = await getReadme();
 
-          const files = await readDir(dir);
+            const hashes = "#".repeat(hashCount);
 
-          for (const file of files) {
-            if (staged.includes(`${path}${file}`)) {
-              const readme = await getReadme();
+            let titleIndex = readme.indexOf(`${hashes} ${parse(file).name}`);
 
-              const titleIndex = readme.indexOf(`### ${parse(file).name}`);
+            if (titleIndex < 0)
+              titleIndex = readme.indexOf(
+                `${hashes} ${parse(file)
+                  .name.match(/[A-Z][a-z]+|[0-9]+/g)
+                  ?.join(" ")}`
+              );
 
-              const endIndex = readme.indexOf("---", titleIndex);
+            const endIndex = readme.indexOf("---", titleIndex);
 
-              const fileContents = await readFile(join(dir, file), "utf-8");
+            const fileContents = await readFile(join(dir, file), "utf-8");
 
-              const newReadme =
-                readme.substring(0, titleIndex) +
-                fileContents +
-                "\n" +
-                readme.substring(endIndex);
+            const newReadme =
+              readme.substring(0, titleIndex) +
+              fileContents +
+              "\n" +
+              readme.substring(endIndex);
 
-              await writeFile(readmeDest, newReadme);
+            await writeFile(readmeDest, newReadme);
+          };
+
+          if (isFile) {
+            if (staged.includes(path)) {
+              await buildFile(name, docsDir, 2);
+            }
+          } else {
+            const dir = join(docsDir, name);
+
+            const files = await readDir(dir);
+
+            for (const file of files) {
+              if (staged.includes(`${path}/${file}`)) {
+                await buildFile(file, dir);
+              }
             }
           }
         }
       };
 
-      await createReadme("Components");
+      await buildReadme("Components");
 
-      await createReadme("Hooks");
+      await buildReadme("Hooks");
+
+      await buildReadme("ReusedProps.md", true);
 
       await gitAdd(readmeDest);
     }
