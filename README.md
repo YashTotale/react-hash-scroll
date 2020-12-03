@@ -19,11 +19,6 @@ _Table Of Contents_
 - [Why this one](#why-this-one)
 - [Website](#website)
 - [Components](#components)
-  - [Reused Props](#reused-props)
-    - [behavior](#behavior)
-    - [position](#position)
-    - [requiredPathname](#requiredpathname)
-    - [scrollFunc](#scrollfunc)
   - [HashScroll](#hashscroll)
     - [Summary](#summary)
     - [Demo](#demo)
@@ -39,6 +34,16 @@ _Table Of Contents_
     - [Demo](#demo-2)
     - [Props](#props-2)
     - [Example](#example-2)
+- [Hooks](#hooks)
+  - [useHashScroll](#usehashscroll)
+    - [Summary](#summary-3)
+    - [Params](#params)
+    - [Example](#example-3)
+- [Reused Props](#reused-props)
+  - [behavior](#behavior)
+  - [position](#position)
+  - [requiredPathname](#requiredpathname)
+  - [scrollFunc](#scrollfunc)
 - [Contributing](#contributing)
 - [More Info (Badges)](#more-info-badges)
 
@@ -98,49 +103,6 @@ The [website](https://react-hash-scroll.web.app/) compiles all the information a
 
 **Note**: [react-router-dom](https://reactrouter.com/web/) is required as a peer dependency and all components must be wrapped in a [Router](https://reactrouter.com/web/api/BrowserRouter)
 
-### Reused Props
-
-Props that are used by multiple components
-
-#### behavior
-
-- The behavior of the scroll
-- Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
-- Type:
-  - "smooth": Smooth scroll (_Default_)
-  - "auto": Instant scroll
-
-#### position
-
-- The position of the element on the page after it is scrolled to
-- Like [behavior](#behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
-- Type:
-  - "center": Element will scroll to center of page (_Default_)
-  - "end": Element will scroll to bottom of page
-  - "start": Element will scroll to top of page
-  - "nearest": Element will scroll to center/end/start depending on which one is closest
-
-#### requiredPathname
-
-- Only scroll on a specific pathname(s)
-- Note: "/" matches to the website name with no pathname
-- **Don't** end pathnames with "/" (Ex. "/test/")
-- For example, to only scroll on:
-  - **/home/contact**: "/home/contact"
-  - **/docs** or **/features**: ["/docs", "/features"]
-- Type: `string | string[]`
-
-#### scrollFunc
-
-- A custom scroll function that overrides the default [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) function used by React Hash Scroll
-- Parameters:
-  - ref: The ref object that contains the target element
-  - [behavior](#behavior): The defined scroll behavior for the element or the default behavior
-  - [position](#position): The defined scroll position for the element or the default position
-- Type: `(ref,`[`behavior`](#behavior)`,`[`position`](#position)`) => void`
-
----
-
 ### HashScroll
 
 #### Summary
@@ -156,9 +118,9 @@ Scrolls to child element when the specified hash is present in the url
 `hash`
 
 - **Required**
-- Type: `string`
 - The [hash](<https://www.oho.com/blog/explained-60-seconds-hash-symbols-urls-and-seo#:~:text=A%20hash%20sign%20(%23)%20in,specific%20subsection%20of%20that%20document.>) that should trigger scroll to the element
 - Can include or exclude leading "#"
+- Type: `string`
 - Examples:
   - "#example"
   - "example"
@@ -174,9 +136,9 @@ Scrolls to child element when the specified hash is present in the url
 `children`
 
 - **Required**
-- Type: `ReactElement`
 - Must be a singular child (which **CANNOT** be text)
 - Custom children must forward refs to a dom element
+- Type: `ReactElement`
 
 #### Example
 
@@ -330,6 +292,110 @@ const App = () => {
   );
 };
 ```
+
+---
+
+## Hooks
+
+### useHashScroll
+
+#### Summary
+
+Creates a ref that scrolls to its assigned element when a specified hash is present in the url
+
+#### Params
+
+`hash`
+
+- **Required**
+- Type: `string`
+- The hash that should trigger scroll
+
+`options`
+
+- Object specifying optional scroll options
+
+  - [`behavior`](#behavior)
+
+  - [`position`](#position)
+
+  - [`requiredPathname`](#requiredpathname)
+
+  - [`scrollFunc`](#scrollfunc)
+
+#### Example
+
+```javascript
+import React from "react";
+import { BrowserRouter } from "react-router-dom"; //Can use HashRouter or MemoryRouter as well
+import { useHashScroll } from "react-hash-scroll";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Example
+        hash="#element1"
+        options={{
+          behavior: "smooth",
+        }}
+      >
+        Element #1
+      </Example>
+      <Example hash="#element2">Element #2</Example>
+      <Example hash="#element3">Element #3</Example>
+    </BrowserRouter>
+  );
+};
+
+const Example = ({ children, hash, options }) => {
+  const scrollRef = useHashScroll(hash, options); //options is optional
+
+  return <div ref={scrollRef}>Scrolled to when the hash is in the url</div>;
+};
+```
+
+---
+
+## Reused Props
+
+Props that are used by multiple components
+
+### behavior
+
+- The behavior of the scroll
+- Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
+- Type:
+  - "smooth": Smooth scroll (_Default_)
+  - "auto": Instant scroll
+
+### position
+
+- The position of the element on the page after it is scrolled to
+- Like [behavior](#behavior), some browsers don't support [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) options yet, so this property may not work on all browsers.
+- Type:
+  - "center": Element will scroll to center of page (_Default_)
+  - "end": Element will scroll to bottom of page
+  - "start": Element will scroll to top of page
+  - "nearest": Element will scroll to center/end/start depending on which one is closest
+
+### requiredPathname
+
+- Only scroll on a specific pathname(s)
+- Note: "/" matches to the website name with no pathname
+- **Don't** end pathnames with "/" (Ex. "/test/")
+- For example, to only scroll on:
+  - **/home/contact**: "/home/contact"
+  - **/docs** or **/features**: ["/docs", "/features"]
+- Type: `string | string[]`
+
+### scrollFunc
+
+- A custom scroll function that overrides the default [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) function used by React Hash Scroll
+- Parameters:
+  - ref: The ref object that contains the target element
+  - [behavior](#behavior): The defined scroll behavior for the element or the default behavior
+  - [position](#position): The defined scroll position for the element or the default position
+- Type: `(ref,`[`behavior`](#behavior)`,`[`position`](#position)`) => void`
 
 ---
 

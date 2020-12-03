@@ -156,35 +156,68 @@ const checkReadme = async () => {
 
     const docsDir = join(ROOT_DIR, "docs");
 
-    const componentsPath = "docs/Components/";
+    const docsPath = "docs/";
 
-    if (staged.includes(componentsPath)) {
-      const componentsDir = join(docsDir, "Components");
+    if (staged.includes(docsPath)) {
+      const buildReadme = async (name: string, isFile?: boolean) => {
+        const path = docsPath + name;
 
-      const files = await readDir(join(componentsDir));
+        if (staged.includes(path)) {
+          const buildFile = async (
+            file: string,
+            dir: string,
+            hashCount = 3
+          ) => {
+            const readme = await getReadme();
 
-      for (const file of files) {
-        if (staged.includes(`${componentsPath}${file}`)) {
-          const readme = await getReadme();
+            const hashes = "#".repeat(hashCount);
 
-          const titleIndex = readme.indexOf(`### ${parse(file).name}`);
+            let titleIndex = readme.indexOf(`${hashes} ${parse(file).name}`);
 
-          const endIndex = readme.indexOf("---", titleIndex);
+            if (titleIndex < 0)
+              titleIndex = readme.indexOf(
+                `${hashes} ${parse(file)
+                  .name.match(/[A-Z][a-z]+|[0-9]+/g)
+                  ?.join(" ")}`
+              );
 
-          const fileContents = await readFile(
-            join(componentsDir, file),
-            "utf-8"
-          );
+            const endIndex = readme.indexOf("---", titleIndex);
 
-          const newReadme =
-            readme.substring(0, titleIndex) +
-            fileContents +
-            "\n" +
-            readme.substring(endIndex);
+            const fileContents = await readFile(join(dir, file), "utf-8");
 
-          await writeFile(readmeDest, newReadme);
+            const newReadme =
+              readme.substring(0, titleIndex) +
+              fileContents +
+              "\n" +
+              readme.substring(endIndex);
+
+            await writeFile(readmeDest, newReadme);
+          };
+
+          if (isFile) {
+            if (staged.includes(path)) {
+              await buildFile(name, docsDir, 2);
+            }
+          } else {
+            const dir = join(docsDir, name);
+
+            const files = await readDir(dir);
+
+            for (const file of files) {
+              if (staged.includes(`${path}/${file}`)) {
+                await buildFile(file, dir);
+              }
+            }
+          }
         }
-      }
+      };
+
+      await buildReadme("Components");
+
+      await buildReadme("Hooks");
+
+      await buildReadme("ReusedProps.md", true);
+
       await gitAdd(readmeDest);
     }
 

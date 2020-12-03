@@ -7,7 +7,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -17,14 +18,21 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "eslint-plugin-tsdoc"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "eslint-plugin-tsdoc",
+    "react-hooks"
+  ],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "react/prop-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "no-constant-condition": ["error", { "checkLoops": false }],
-    "@typescript-eslint/no-explicit-any": "off"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

@@ -1,6 +1,8 @@
 export { default as HashScroll } from "./Components/HashScroll";
 export { default as MultiHash } from "./Components/MultiHash";
 export { default as ChildrenHash } from "./Components/ChildrenHash";
+export { default as useHashScroll } from "./Hooks/useHashScroll";
+
 export {
   DEFAULT_SCROLL_BEHAVIOR,
   DEFAULT_SCROLL_POSITION,

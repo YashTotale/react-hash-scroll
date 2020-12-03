@@ -25,7 +25,7 @@ const postcommit = async () => {
 
         const wikiPath = join(ROOT_DIR, "wiki");
 
-        rootGit.clone(
+        await rootGit.clone(
           "https://github.com/YashTotale/react-hash-scroll.wiki.git",
           wikiPath
         );

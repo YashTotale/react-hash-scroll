@@ -41,8 +41,8 @@ export interface BaseScrollOptions {
    * - behavior: The defined scroll behavior for the element or the default behavior
    * - position: The defined scroll position for the element or the default position
    */
-  scrollFunc?: (
-    ref: React.RefObject<HTMLElement>,
+  scrollFunc?: <T extends HTMLElement>(
+    ref: React.RefObject<T>,
     behavior: ScrollBehavior,
     position: ScrollLogicalPosition
   ) => void;
