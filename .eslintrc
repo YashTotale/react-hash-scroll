@@ -33,6 +33,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "no-constant-condition": ["error", { "checkLoops": false }],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "tsdoc/syntax": "warn"
   }
 }

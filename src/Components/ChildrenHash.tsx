@@ -57,7 +57,7 @@ const ChildrenHash: FC<ChildrenHashProps> = ({
   requiredPathname,
   scrollFunc,
 }) => {
-  warning(hashes.length !== children.length, CHILDREN_HASH_UNEQUAL_LENGTHS);
+  warning(hashes.length === children.length, CHILDREN_HASH_UNEQUAL_LENGTHS);
   return (
     <>
       {children.map((child, i) => (

@@ -4,6 +4,10 @@
 
 Creates a ref that scrolls to its assigned element when a specified hash is present in the url
 
+#### Demo
+
+[![View useHashScroll Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=use-hash-scroll&module=/src/Demos/UseHashScrollDemo.tsx)
+
 #### Params
 
 `hash`
