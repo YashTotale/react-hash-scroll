@@ -1,6 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "lint-staged && npm run precommit",
-    "post-commit": "npm run postcommit"
+    "pre-commit": "lint-staged && npm run precommit"
   }
 }
