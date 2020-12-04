@@ -16,8 +16,6 @@ const postcommit = async () => {
     if ((await getBranches()).current.includes("main")) {
       const { stdout: changed } = await getFilesChangedInCommit("HEAD");
 
-      console.log(changed);
-
       const docsDir = join(ROOT_DIR, "docs");
 
       const docsPath = "docs/";

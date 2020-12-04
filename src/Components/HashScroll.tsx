@@ -1,13 +1,8 @@
 //React Imports
-import { useRef, FC, ReactElement, cloneElement, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { FC, ReactElement, cloneElement } from "react";
+import useHashScroll from "../Hooks/useHashScroll";
 
 //Utils
-import {
-  DEFAULT_SCROLL_BEHAVIOR,
-  DEFAULT_SCROLL_POSITION,
-} from "../Utils/constants";
-import { DEFAULT_SCROLL_FUNC } from "../Utils/functions";
 import { BaseScrollOptions } from "../Utils/types";
 
 export interface HashScrollProps extends Partial<BaseScrollOptions> {
@@ -37,42 +32,17 @@ export interface HashScrollProps extends Partial<BaseScrollOptions> {
 const HashScroll: FC<HashScrollProps> = ({
   hash,
   children,
-  behavior = DEFAULT_SCROLL_BEHAVIOR,
-  position = DEFAULT_SCROLL_POSITION,
+  behavior,
+  position,
   requiredPathname,
-  scrollFunc = DEFAULT_SCROLL_FUNC,
+  scrollFunc,
 }) => {
-  const { hash: urlHash, pathname } = useLocation();
-
-  const childRef = useRef<HTMLElement>(null);
-
-  if (hash.charAt(0) !== "#") {
-    hash = "#" + hash;
-  }
-
-  if (typeof requiredPathname === "string") {
-    requiredPathname = [requiredPathname];
-  }
-
-  useEffect(() => {
-    if (
-      urlHash === hash &&
-      (requiredPathname === undefined || requiredPathname.includes(pathname))
-    ) {
-      if (childRef.current) {
-        scrollFunc(childRef, behavior, position);
-      }
-    }
-  }, [
-    urlHash,
-    childRef,
-    hash,
-    requiredPathname,
-    pathname,
-    scrollFunc,
+  const childRef = useHashScroll(hash, {
     behavior,
     position,
-  ]);
+    requiredPathname,
+    scrollFunc,
+  });
 
   return cloneElement(children, {
     ref: childRef,
