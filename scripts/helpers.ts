@@ -4,6 +4,7 @@ import { join, parse } from "path";
 import { exec } from "child_process";
 
 import simpleGit from "simple-git";
+import * as rimraf from "rimraf";
 import * as moment from "moment";
 
 export const { readFile, writeFile, readdir: readDir } = promises;
@@ -46,3 +47,4 @@ export const PACKAGE_REPO_NAME = "react-hash-scroll";
 export const PACKAGE_REPO_OWNER = "YashTotale";
 export const ROOT_DIR = join(__dirname, "..");
 export const git = simpleGit(ROOT_DIR);
+export const remove = promisify(rimraf);

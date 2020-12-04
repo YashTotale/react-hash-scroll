@@ -37,6 +37,7 @@ _Table Of Contents_
 - [Hooks](#hooks)
   - [useHashScroll](#usehashscroll)
     - [Summary](#summary-3)
+    - [Demo](#demo-3)
     - [Params](#params)
     - [Example](#example-3)
 - [Reused Props](#reused-props)

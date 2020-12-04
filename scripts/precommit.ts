@@ -159,46 +159,38 @@ const checkReadme = async () => {
     const docsPath = "docs/";
 
     if (staged.includes(docsPath)) {
+      const buildFile = async (file: string, dir: string, hashCount = 3) => {
+        const readme = await getReadme();
+
+        const hashes = "#".repeat(hashCount);
+
+        let titleIndex = readme.indexOf(`${hashes} ${parse(file).name}`);
+
+        if (titleIndex < 0)
+          titleIndex = readme.indexOf(
+            `${hashes} ${parse(file)
+              .name.match(/[A-Z][a-z]+|[0-9]+/g)
+              ?.join(" ")}`
+          );
+
+        const endIndex = readme.indexOf("---", titleIndex);
+
+        const fileContents = await readFile(join(dir, file), "utf-8");
+
+        const newReadme =
+          readme.substring(0, titleIndex) +
+          fileContents +
+          "\n" +
+          readme.substring(endIndex);
+
+        await writeFile(readmeDest, newReadme);
+      };
       const buildReadme = async (name: string, isFile?: boolean) => {
         const path = docsPath + name;
 
         if (staged.includes(path)) {
-          const buildFile = async (
-            file: string,
-            dir: string,
-            hashCount = 3
-          ) => {
-            const readme = await getReadme();
-
-            const hashes = "#".repeat(hashCount);
-
-            let titleIndex = readme.indexOf(`${hashes} ${parse(file).name}`);
-
-            if (titleIndex < 0)
-              titleIndex = readme.indexOf(
-                `${hashes} ${parse(file)
-                  .name.match(/[A-Z][a-z]+|[0-9]+/g)
-                  ?.join(" ")}`
-              );
-
-            const endIndex = readme.indexOf("---", titleIndex);
-
-            const fileContents = await readFile(join(dir, file), "utf-8");
-
-            const newReadme =
-              readme.substring(0, titleIndex) +
-              fileContents +
-              "\n" +
-              readme.substring(endIndex);
-
-            await writeFile(readmeDest, newReadme);
-          };
-
-          if (isFile) {
-            if (staged.includes(path)) {
-              await buildFile(name, docsDir, 2);
-            }
-          } else {
+          if (isFile) await buildFile(name, docsDir, 2);
+          else {
             const dir = join(docsDir, name);
 
             const files = await readDir(dir);
