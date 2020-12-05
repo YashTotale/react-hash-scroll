@@ -1,6 +1,6 @@
-import * as dotenv from "dotenv-safe";
+import dotenv from "dotenv-safe";
 import { Octokit } from "@octokit/rest";
-import * as pkg from "../package.json";
+import pkg from "../package.json";
 
 import {
   PACKAGE_REPO_NAME,

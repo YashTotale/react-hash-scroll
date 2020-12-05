@@ -4,8 +4,8 @@ import { join, parse } from "path";
 import { exec } from "child_process";
 
 import simpleGit from "simple-git";
-import * as rimraf from "rimraf";
-import * as moment from "moment";
+import rimraf from "rimraf";
+import moment from "moment";
 
 export const { readFile, writeFile, readdir: readDir } = promises;
 

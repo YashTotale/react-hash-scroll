@@ -17,7 +17,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["**/*.test.tsx"]

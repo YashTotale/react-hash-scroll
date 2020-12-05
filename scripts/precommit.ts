@@ -1,9 +1,9 @@
 import { JSDOM } from "jsdom";
-import * as marked from "marked";
-import * as dotenv from "dotenv-safe";
+import marked from "marked";
+import dotenv from "dotenv-safe";
 import axios from "axios";
 
-import * as pkg from "../package.json";
+import pkg from "../package.json";
 import {
   readFile,
   ROOT_DIR,

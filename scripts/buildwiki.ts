@@ -1,35 +1,25 @@
 import simpleGit from "simple-git";
-import {
-  ROOT_DIR,
-  join,
-  readDir,
-  readFile,
-  parse,
-  writeFile,
-  remove,
-} from "./helpers";
+import { ROOT_DIR, join, readDir, readFile, parse, writeFile } from "./helpers";
 
 const buildWiki = async () => {
+  const docsDir = join(ROOT_DIR, "docs");
+
+  const wikiPath = join(ROOT_DIR, "wiki");
+
+  const replacements = [
+    "behavior",
+    "position",
+    "requiredpathname",
+    "scrollfunc",
+  ];
+
   try {
-    const docsDir = join(ROOT_DIR, "docs");
-
-    const replacements = [
-      "behavior",
-      "position",
-      "requiredpathname",
-      "scrollfunc",
-    ];
-
-    const wikiPath = join(ROOT_DIR, "wiki");
-
     const rootGit = simpleGit(ROOT_DIR);
 
     await rootGit.clone(
       "https://github.com/YashTotale/react-hash-scroll.wiki.git",
       wikiPath
     );
-
-    const git = simpleGit(wikiPath);
 
     const buildFile = async (file: string, dir: string) => {
       let fileContents = await readFile(join(dir, file), "utf-8");
@@ -60,14 +50,6 @@ const buildWiki = async () => {
       buildWiki("Hooks"),
       buildWiki("ReusedProps.md", true),
     ]);
-
-    await git.add(wikiPath);
-    await git.addConfig("user.name", "Yash Totale");
-    await git.addConfig("user.email", "totaleyash@gmail.com");
-    await git.commit("Changes");
-    await git.push();
-
-    await remove(wikiPath);
   } catch (e) {
     console.log(e);
     process.exit(1);

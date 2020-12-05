@@ -22,3 +22,10 @@ jobs:
 
       - name: Build Wiki
         run: npm run buildwiki
+
+      - name: Push Wiki
+        run: |
+          git add wiki
+          git commit -m "Changes"
+          git push
+          rm -rf wiki
