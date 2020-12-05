@@ -29,7 +29,7 @@ jobs:
           git add .
           git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-          git commit -m "Changes"
+          git commit --allow-empty -m "Changes"
           git push
           cd ..
           rm -rf wiki
