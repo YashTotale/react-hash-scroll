@@ -62,6 +62,8 @@ const buildWiki = async () => {
     ]);
 
     await git.add(wikiPath);
+    await git.addConfig("user.name", "Yash Totale");
+    await git.addConfig("user.email", "totaleyash@gmail.com");
     await git.commit("Changes");
     await git.push();
 

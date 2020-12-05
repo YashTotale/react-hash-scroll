@@ -20,13 +20,5 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Configure Git
-        uses: OleksiyRudenko/gha-git-credentials@v2
-        with:
-          name: "Yash Totale"
-          email: "totaleyash@gmail.com"
-          actor: "YashTotale"
-          token: "${{ secrets.GH_PAT }}"
-
       - name: Build Wiki
         run: npm run buildwiki
