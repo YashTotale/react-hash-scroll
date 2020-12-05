@@ -17,7 +17,7 @@ const buildWiki = async () => {
     const rootGit = simpleGit(ROOT_DIR);
 
     await rootGit.clone(
-      "https://github.com/YashTotale/react-hash-scroll.wiki.git",
+      "git@github.com:YashTotale/react-hash-scroll.wiki.git",
       wikiPath
     );
 
