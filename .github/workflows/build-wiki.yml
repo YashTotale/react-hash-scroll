@@ -25,7 +25,9 @@ jobs:
 
       - name: Push Wiki
         run: |
-          git add wiki
+          cd wiki
+          git add .
           git commit -m "Changes"
           git push
+          cd ..
           rm -rf wiki
