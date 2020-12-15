@@ -51,7 +51,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@types/dotenv-safe": "^8.1.1",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "@types/jsdom": "^16.2.5",
     "@types/marked": "^1.2.0",
     "@types/react": "^17.0.0",
