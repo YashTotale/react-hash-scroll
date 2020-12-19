@@ -1,6 +1,7 @@
 // React Imports
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import isEqual from "lodash.isequal";
 
 //Redux Imports
 import { useDispatch, useSelector } from "react-redux";
@@ -88,7 +89,8 @@ const SideBar: React.FC<SideBarProps> = () => {
 interface ContentsProps {}
 
 const Contents: React.FC<ContentsProps> = () => {
-  const components = useSelector(getComponents);
+  const components = useSelector(getComponents, isEqual);
+  const componentNames = Object.keys(components);
   const classes = useStyles();
 
   return (
@@ -97,10 +99,10 @@ const Contents: React.FC<ContentsProps> = () => {
       <Divider />
       <List component="nav" className={classes.list}>
         <ListLink to="/home" name="Home" />
-        {components && (
+        {componentNames.length > 0 && (
           <Category
             name="Components"
-            items={Object.keys(components).map((component) => ({
+            items={componentNames.map((component) => ({
               name: component,
               to: components[component].url,
             }))}

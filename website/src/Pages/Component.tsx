@@ -7,7 +7,7 @@ import Alerter from "../Components/Alerter";
 //Redux Imports
 import { useSelector } from "react-redux";
 import {
-  getAreComponentsLoading,
+  getIsComponentsLoading,
   getComponents,
   getIsComponentsError,
 } from "../Redux/selectors";
@@ -34,7 +34,7 @@ interface ComponentProps {}
 const Component: FC<ComponentProps> = () => {
   const classes = useStyles();
   const components = useSelector(getComponents);
-  const isLoading = useSelector(getAreComponentsLoading);
+  const isLoading = useSelector(getIsComponentsLoading);
   const isError = useSelector(getIsComponentsError);
 
   const { id } = useParams<Params>();

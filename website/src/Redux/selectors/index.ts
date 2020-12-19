@@ -2,7 +2,7 @@ export {
   getComponents,
   getReadme,
   getChangelog,
-  getAreComponentsLoading,
+  getIsComponentsLoading,
   getIsReadmeLoading,
   getIsChangelogLoading,
   getIsComponentsError,

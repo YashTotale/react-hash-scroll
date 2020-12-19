@@ -5,7 +5,7 @@ import "./markdown.css";
 
 //Redux Imports
 import { useDispatch } from "react-redux";
-import { getDocs } from "./Redux/thunks";
+import { getAllDocs } from "./Redux/thunks";
 
 //Page Imports
 import Readme from "./Pages/Readme";
@@ -43,7 +43,7 @@ const App: React.FC = (props) => {
   const classes = useStyles();
 
   useEffect(() => {
-    dispatch(getDocs());
+    dispatch(getAllDocs());
   });
 
   return (
