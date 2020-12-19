@@ -74,12 +74,7 @@ export const getDocs = (docType: DocType) => async (
 
     const res = await fetch(data.download_url);
     const text = await res.text();
-    const { data: docs } = await octokit.markdown.render({
-      text: text,
-      mode: "gfm",
-      context: "YashTotale/react-hash-scroll",
-      mediaType: { format: "html" },
-    });
+    const docs = await markdownToHtml(text);
 
     dispatch(loadDocsSuccess(docType, docs));
   } catch (e) {
@@ -114,14 +109,9 @@ const getComponentsRequest = () => async (
       const res = await fetch(download_url);
       const text = await res.text();
 
-      const id = name.slice(0, -3);
+      const html = await markdownToHtml(text);
 
-      const { data: html } = await octokit.markdown.render({
-        text,
-        mode: "gfm",
-        context: "YashTotale/react-hash-scroll",
-        mediaType: { format: "html" },
-      });
+      const id = name.slice(0, -3);
 
       components[id] = {
         text: html,
@@ -173,6 +163,19 @@ export const onDemandDataRequest = (page: DocType | null) => async (
   } catch (e) {
     dispatch(setSnackbarMessage(e.message, "error"));
   }
+};
+
+const markdownToHtml = async (md: string) => {
+  const octokit = new Octokit();
+
+  const { data } = await octokit.markdown.render({
+    text: md,
+    mode: "gfm",
+    context: "YashTotale/react-hash-scroll",
+    mediaType: { format: "html" },
+  });
+
+  return data;
 };
 
 const getFuncsForDocType = (docType: DocType) => {
