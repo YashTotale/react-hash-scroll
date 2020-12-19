@@ -58,18 +58,16 @@ const Header: FC<HeaderProps> = () => {
             </IconButton>
           </Tooltip>
         )}
-        {page && (
-          <Tooltip title={`Get Data${page && ` - ${capitalize(page)}`}`}>
-            <IconButton
-              className={classes.refresh}
-              onClick={() => {
-                dispatch(onDemandDataRequest(page));
-              }}
-            >
-              <Cached />
-            </IconButton>
-          </Tooltip>
-        )}
+        <Tooltip title={`Get Data${page && ` - ${capitalize(page)}`}`}>
+          <IconButton
+            className={classes.refresh}
+            onClick={() => {
+              dispatch(onDemandDataRequest(page));
+            }}
+          >
+            <Cached />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );
