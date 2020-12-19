@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-    <a href="https://github.com/YashTotale/react-hash-scroll/blob/main/static/icon.svg"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/cc2728f850fb8332a9ba22717faf70e1e74a30a6/static/icon.svg" alt="React Hash Scroll" width="200"></a>
+    <a href="https://github.com/YashTotale/react-hash-scroll/blob/main/static/icon.png"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/cc2728f850fb8332a9ba22717faf70e1e74a30a6/static/icon.png" alt="React Hash Scroll" width="200"></a>
   <br>
   <h2 align="center">
     <a href="https://react-hash-scroll.web.app/">React Hash Scroll</a>
