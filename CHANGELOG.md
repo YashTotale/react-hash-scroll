@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 - [[Unreleased]](#unreleased)
 - [[1.4.2] - (2020-12-18)](#142---2020-12-18)
+  - [Changed](#changed)
 - [[v1.4.1] - (2020-12-03)](#v141---2020-12-03)
   - [Added](#added)
   - [Fixed](#fixed)
@@ -28,12 +29,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
   - [Fixed](#fixed-2)
 - [[v1.2.0] - (2020-11-26)](#v120---2020-11-26)
   - [Added](#added-5)
-  - [Changed](#changed)
+  - [Changed](#changed-1)
 - [[v1.1.0] - (2020-11-24)](#v110---2020-11-24)
   - [Added](#added-6)
-  - [Changed](#changed-1)
-- [[v1.0.2] - (2020-11-23)](#v102---2020-11-23)
   - [Changed](#changed-2)
+- [[v1.0.2] - (2020-11-23)](#v102---2020-11-23)
+  - [Changed](#changed-3)
 - [[1.0.1] - (2020-11-23)](#101---2020-11-23)
   - [Added](#added-7)
   - [Fixed](#fixed-3)
@@ -44,6 +45,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 ---
 
 ## [1.4.2] - (2020-12-18)
+
+### Changed
+
+- Documentation updates
 
 ---
 
