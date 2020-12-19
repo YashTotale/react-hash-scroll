@@ -2,7 +2,7 @@
 
 #### Summary
 
-Scrolls to child element when the specified hash is present in the url
+Scrolls to thechild element when the specified hash is present in the url
 
 #### Demo
 
@@ -20,6 +20,13 @@ Scrolls to child element when the specified hash is present in the url
   - "#example"
   - "example"
 
+`children`
+
+- **Required**
+- Must be a singular child (which **MUST** be a DOM element and **CANNOT** be text)
+- Custom children must forward refs to a DOM element
+- Type: `ReactElement`
+
 [`behavior`](#behavior)
 
 [`position`](#position)
@@ -27,13 +34,6 @@ Scrolls to child element when the specified hash is present in the url
 [`requiredPathname`](#requiredpathname)
 
 [`scrollFunc`](#scrollfunc)
-
-`children`
-
-- **Required**
-- Must be a singular child (which **CANNOT** be text)
-- Custom children must forward refs to a dom element
-- Type: `ReactElement`
 
 #### Example
 

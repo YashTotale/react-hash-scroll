@@ -83,16 +83,16 @@ You can then access the library as `window.ReactHashScroll`
 
 There are a lot of hash scrolling React libraries out there, so why should you pick this one?
 
-- Most other libraries rely on scrolling by id, whereas this library relies on ref scrolling, making it more robust for large projects
-- This library offers built-in [TypeScript](https://www.typescriptlang.org/) support
-- Extensive testing makes this library more dependable
-- This library provides components that are very customizable, making it more likely that they will fit your use case
+- Most other libraries rely on scrolling by id, whereas React Hash Scroll relies on ref scrolling, making it more robust for large projects
+- React Hash Scroll offers built-in [TypeScript](https://www.typescriptlang.org/) support
+- Extensive testing makes React Hash Scroll more dependable
+- Components provided by React Hash Scroll are very customizable, making it more likely that they will fit your use case
 
 ---
 
 ## Website
 
-![Website](https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F&style=flat-square&logo=firebase)
 
 The [website](https://react-hash-scroll.web.app/) compiles all the information and demos on this library in one easy-to-access place.
 
@@ -108,7 +108,7 @@ The [website](https://react-hash-scroll.web.app/) compiles all the information a
 
 #### Summary
 
-Scrolls to child element when the specified hash is present in the url
+Scrolls to thechild element when the specified hash is present in the url
 
 #### Demo
 
@@ -126,6 +126,13 @@ Scrolls to child element when the specified hash is present in the url
   - "#example"
   - "example"
 
+`children`
+
+- **Required**
+- Must be a singular child (which **MUST** be a DOM element and **CANNOT** be text)
+- Custom children must forward refs to a DOM element
+- Type: `ReactElement`
+
 [`behavior`](#behavior)
 
 [`position`](#position)
@@ -133,13 +140,6 @@ Scrolls to child element when the specified hash is present in the url
 [`requiredPathname`](#requiredpathname)
 
 [`scrollFunc`](#scrollfunc)
-
-`children`
-
-- **Required**
-- Must be a singular child (which **CANNOT** be text)
-- Custom children must forward refs to a dom element
-- Type: `ReactElement`
 
 #### Example
 
@@ -175,7 +175,7 @@ const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for c
 
 #### Summary
 
-Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
+Component that pairs hashes with refs and scrolls when one of the hashes is present in the url to a corresponding ref
 
 #### Demo
 
@@ -257,7 +257,11 @@ Scrolls to corresponding child element when one of the hashes is present in the 
 - **Required**
 - Array of hashes or hashes with scroll options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc))
 - Hashes can include or exclude leading "#"
-- Length should be equal to children length
+
+`children`
+
+- **Required**
+- Number of children should equal the number of hashes
 
 [`behavior`](#behavior)
 
@@ -285,9 +289,9 @@ const App = () => {
         ]}
         requiredPathname={["/login", "/signup"]}
       >
-        <div ref={ref1}>Element #1</div>
-        <h4 ref={ref2}>Element #2</h4>
-        <p ref={ref3}>Element #3</p>
+        <div>Element #1</div>
+        <h4>Element #2</h4>
+        <p>Element #3</p>
       </ChildrenHash>
     </BrowserRouter>
   );
@@ -313,8 +317,12 @@ Creates a ref that scrolls to its assigned element when a specified hash is pres
 `hash`
 
 - **Required**
-- Type: `string`
 - The hash that should trigger scroll
+- Can include or exclude leading "#"
+- Type: `string`
+- Examples:
+  - "#example"
+  - "example"
 
 `options`
 
@@ -368,7 +376,9 @@ Props that are used by multiple components
 ### behavior
 
 - The behavior of the scroll
-- Note: not all browsers have implemented options for [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally) - see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) - there is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
+- Note: not all browsers have implemented options for [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) (which is what React Hash Scroll uses internally)
+  - See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) and [Can I Use](https://caniuse.com/scrollintoview) for a comprehensive list
+  - There is also a [browser polyfill](https://github.com/iamdustan/smoothscroll) for smooth scrolling which you can install separately so smooth scrolling will work in all browsers
 - Type:
   - "smooth": Smooth scroll (_Default_)
   - "auto": Instant scroll

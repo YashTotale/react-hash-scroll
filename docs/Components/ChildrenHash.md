@@ -15,7 +15,11 @@ Scrolls to corresponding child element when one of the hashes is present in the 
 - **Required**
 - Array of hashes or hashes with scroll options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc))
 - Hashes can include or exclude leading "#"
-- Length should be equal to children length
+
+`children`
+
+- **Required**
+- Number of children should equal the number of hashes
 
 [`behavior`](#behavior)
 
@@ -43,9 +47,9 @@ const App = () => {
         ]}
         requiredPathname={["/login", "/signup"]}
       >
-        <div ref={ref1}>Element #1</div>
-        <h4 ref={ref2}>Element #2</h4>
-        <p ref={ref3}>Element #3</p>
+        <div>Element #1</div>
+        <h4>Element #2</h4>
+        <p>Element #3</p>
       </ChildrenHash>
     </BrowserRouter>
   );

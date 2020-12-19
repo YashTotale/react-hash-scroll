@@ -13,8 +13,12 @@ Creates a ref that scrolls to its assigned element when a specified hash is pres
 `hash`
 
 - **Required**
-- Type: `string`
 - The hash that should trigger scroll
+- Can include or exclude leading "#"
+- Type: `string`
+- Examples:
+  - "#example"
+  - "example"
 
 `options`
 
