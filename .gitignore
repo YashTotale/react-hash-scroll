@@ -1,10 +1,17 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # Dependencies
 node_modules/
 
 # Build
 cjs/
 umd/
+build/
 
 # Misc
 .DS_Store
 .env
+.eslintcache
+
+# Testing
+coverage/

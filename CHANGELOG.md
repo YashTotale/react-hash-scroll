@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
-- [[1.4.4] - (2020-12-18)](#144---2020-12-18)
+- [[1.4.4] - (2020-12-19)](#144---2020-12-19)
 - [[1.4.3] - (2020-12-18)](#143---2020-12-18)
   - [Fixed](#fixed)
 - [[1.4.2] - (2020-12-18)](#142---2020-12-18)
@@ -47,7 +47,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ---
 
-## [1.4.4] - (2020-12-18)
+## [1.4.4] - (2020-12-19)
 
 ---
 

@@ -3,10 +3,11 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "files.associations": {
+    ".eslintrc": "json",
     ".huskyrc": "json",
     ".lintstagedrc": "json",
+    ".markdownlintrc": "json",
     ".prettierrc": "json",
-    ".eslintrc": "json",
     ".firebaserc": "json"
   },
   "markdown.extension.toc.updateOnSave": true,
