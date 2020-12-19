@@ -1,7 +1,1 @@
-export {
-  getDocs,
-  getChangelogRequest,
-  getComponentsRequest,
-  getReadmeRequest,
-  onDemandDataRequest,
-} from "./docs.thunks";
+export { getDocs, onDemandDataRequest, getAllDocs } from "./docs.thunks";

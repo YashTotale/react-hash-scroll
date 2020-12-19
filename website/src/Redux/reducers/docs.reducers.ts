@@ -1,14 +1,8 @@
 import { AnyAction } from "redux";
+import mapValues from "lodash.mapvalues";
 import {
-  LOAD_COMPONENTS_IN_PROGRESS,
-  LOAD_README_IN_PROGRESS,
-  LOAD_CHANGELOG_IN_PROGRESS,
-  LOAD_COMPONENTS_SUCCESS,
-  LOAD_CHANGELOG_SUCCESS,
-  LOAD_README_SUCCESS,
-  LOAD_COMPONENTS_ERROR,
-  LOAD_README_ERROR,
-  LOAD_CHANGELOG_ERROR,
+  LOAD_DOCS_IN_PROGRESS,
+  LOAD_DOCS_SUCCESS,
   LOAD_DOCS_ERROR,
 } from "../actions";
 
@@ -19,28 +13,42 @@ export interface Component {
 
 export type Components = Record<string, Component>;
 
+export type DocType = "components" | "readme" | "changelog";
+
+export const DOC_TYPES: DocType[] = ["components", "readme", "changelog"];
+
 export type DocsState = {
-  components?: Components;
-  readme?: string;
-  changelog?: string;
-  areComponentsLoading: boolean;
-  isReadmeLoading: boolean;
-  isChangelogLoading: boolean;
-  isComponentsError: boolean | string;
-  isReadmeError: boolean | string;
-  isChangelogError: boolean | string;
-  lastComponentsUpdate?: number;
-  lastReadmeUpdate?: number;
-  lastChangelogUpdate?: number;
+  info: {
+    components: Components;
+    readme: string;
+    changelog: string;
+  };
+  loading: Record<DocType, boolean>;
+  errors: Record<DocType, boolean | string>;
+  updates: Record<DocType, number | undefined>;
 };
 
 export const initialDocsState: DocsState = {
-  areComponentsLoading: false,
-  isReadmeLoading: false,
-  isChangelogLoading: false,
-  isComponentsError: false,
-  isReadmeError: false,
-  isChangelogError: false,
+  info: {
+    components: {},
+    readme: "",
+    changelog: "",
+  },
+  loading: {
+    components: false,
+    readme: false,
+    changelog: false,
+  },
+  errors: {
+    components: false,
+    readme: false,
+    changelog: false,
+  },
+  updates: {
+    components: undefined,
+    readme: undefined,
+    changelog: undefined,
+  },
 };
 
 export const docsReducer = (
@@ -49,88 +57,56 @@ export const docsReducer = (
 ): DocsState => {
   const { type, payload } = action;
   switch (type) {
-    case LOAD_COMPONENTS_IN_PROGRESS: {
+    case LOAD_DOCS_IN_PROGRESS: {
+      const { docType } = payload;
       return {
         ...state,
-        areComponentsLoading: true,
+        loading: {
+          ...state.loading,
+          [docType]: true,
+        },
       };
     }
-    case LOAD_README_IN_PROGRESS: {
+    case LOAD_DOCS_SUCCESS: {
+      const { docType, docs } = payload;
       return {
         ...state,
-        isReadmeLoading: true,
-      };
-    }
-    case LOAD_CHANGELOG_IN_PROGRESS: {
-      return {
-        ...state,
-        isChangelogLoading: true,
-      };
-    }
-    case LOAD_COMPONENTS_SUCCESS: {
-      const { components } = payload;
-      return {
-        ...state,
-        components,
-        areComponentsLoading: false,
-        lastComponentsUpdate: Date.now(),
-        isComponentsError: false,
-      };
-    }
-    case LOAD_README_SUCCESS: {
-      const { readme } = payload;
-      return {
-        ...state,
-        readme,
-        isReadmeLoading: false,
-        lastReadmeUpdate: Date.now(),
-        isReadmeError: false,
-      };
-    }
-    case LOAD_CHANGELOG_SUCCESS: {
-      const { changelog } = payload;
-      return {
-        ...state,
-        changelog,
-        isChangelogLoading: false,
-        lastChangelogUpdate: Date.now(),
-        isChangelogError: false,
+        info: {
+          ...state.info,
+          [docType]: docs,
+        },
+        errors: {
+          ...state.errors,
+          [docType]: false,
+        },
+        updates: {
+          ...state.updates,
+          [docType]: Date.now(),
+        },
+        loading: {
+          ...state.loading,
+          [docType]: false,
+        },
       };
     }
     case LOAD_DOCS_ERROR: {
-      const { error } = payload;
+      const { docType, error } = payload;
       return {
         ...state,
-        isComponentsError: error,
-        areComponentsLoading: false,
-        isReadmeError: error,
-        isReadmeLoading: false,
-        isChangelogError: error,
-        isChangelogLoading: false,
-      };
-    }
-    case LOAD_COMPONENTS_ERROR: {
-      const { error } = payload;
-      return {
-        ...state,
-        isComponentsError: error,
-        isChangelogLoading: false,
-      };
-    }
-    case LOAD_README_ERROR: {
-      const { error } = payload;
-      return {
-        ...state,
-        isReadmeError: error,
-        isReadmeLoading: false,
-      };
-    }
-    case LOAD_CHANGELOG_ERROR: {
-      const { error } = payload;
-      return {
-        ...state,
-        isChangelogError: error,
-        isChangelogLoading: false,
+        errors:
+          docType === null
+            ? mapValues(state.errors, () => error)
+            : {
+                ...state.errors,
+                [docType]: error,
+              },
+        loading:
+          docType === null
+            ? mapValues(state.loading, () => false)
+            : {
+                ...state.loading,
+                [docType]: false,
+              },
       };
     }
     default: {

@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../Redux/actions";
 import { onDemandDataRequest } from "../Redux/thunks";
-import { Page } from "../Redux/thunks/docs.thunks";
+import { DocType } from "../Redux/reducers/docs.reducers";
 
 // Material UI Imports
 import {
@@ -38,13 +38,11 @@ const Header: FC<HeaderProps> = () => {
 
   const root = pathname.split("/")[1];
 
-  let page: Page | undefined = undefined;
+  let page: DocType | null = null;
 
   if (root === "readme" || root === "home" || root === "") page = "readme";
-
-  if (root === "components") page = "components";
-
-  if (root === "changelog") page = "changelog";
+  else if (root === "components") page = "components";
+  else if (root === "changelog") page = "changelog";
 
   const isSizeSmall = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("md")
@@ -61,11 +59,11 @@ const Header: FC<HeaderProps> = () => {
           </Tooltip>
         )}
         {page && (
-          <Tooltip title={`Get Data - ${capitalize(page)}`}>
+          <Tooltip title={`Get Data${page && ` - ${capitalize(page)}`}`}>
             <IconButton
               className={classes.refresh}
               onClick={() => {
-                dispatch(onDemandDataRequest(page ?? "components"));
+                dispatch(onDemandDataRequest(page));
               }}
             >
               <Cached />
