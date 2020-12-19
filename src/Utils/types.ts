@@ -47,3 +47,7 @@ export interface BaseScrollOptions {
     position: ScrollLogicalPosition
   ) => void;
 }
+
+export type BaseScrollOptionsWithHash = Partial<BaseScrollOptions> & {
+  hash: string;
+};

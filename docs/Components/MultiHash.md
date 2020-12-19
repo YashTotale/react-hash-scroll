@@ -2,7 +2,7 @@
 
 #### Summary
 
-Component that pairs hashes with refs and scrolls when one of the hashes is present in the url to a corresponding ref
+Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
 
 #### Demo
 

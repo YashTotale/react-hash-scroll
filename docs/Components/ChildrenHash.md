@@ -2,7 +2,7 @@
 
 #### Summary
 
-Scrolls to corresponding child element when one of the hashes is present in the url
+Scrolls to a corresponding child element when one of the hashes is present in the url
 
 #### Demo
 
@@ -15,11 +15,13 @@ Scrolls to corresponding child element when one of the hashes is present in the 
 - **Required**
 - Array of hashes or hashes with scroll options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc))
 - Hashes can include or exclude leading "#"
+- Type: `string[] | BaseScrollOptionsWithHash[]`
 
 `children`
 
 - **Required**
 - Number of children should equal the number of hashes
+- Type: `ReactElement[]`
 
 [`behavior`](#behavior)
 

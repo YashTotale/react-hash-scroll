@@ -2,7 +2,7 @@
 
 #### Summary
 
-Scrolls to thechild element when the specified hash is present in the url
+Scrolls to the child element when the specified hash is present in the url
 
 #### Demo
 

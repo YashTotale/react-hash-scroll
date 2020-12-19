@@ -108,7 +108,7 @@ The [website](https://react-hash-scroll.web.app/) compiles all the information a
 
 #### Summary
 
-Scrolls to thechild element when the specified hash is present in the url
+Scrolls to the child element when the specified hash is present in the url
 
 #### Demo
 
@@ -175,7 +175,7 @@ const HashChild = React.forwardRef((props, ref)) => ( // Must forward refs for c
 
 #### Summary
 
-Component that pairs hashes with refs and scrolls when one of the hashes is present in the url to a corresponding ref
+Component that pairs hashes with refs and scrolls to a corresponding ref when one of the hashes is present in the url
 
 #### Demo
 
@@ -244,7 +244,7 @@ const App = () => {
 
 #### Summary
 
-Scrolls to corresponding child element when one of the hashes is present in the url
+Scrolls to a corresponding child element when one of the hashes is present in the url
 
 #### Demo
 
@@ -257,11 +257,13 @@ Scrolls to corresponding child element when one of the hashes is present in the 
 - **Required**
 - Array of hashes or hashes with scroll options ([behavior](#behavior), [position](#position), [requiredPathname](#requiredpathname), [scrollFunc](#scrollfunc))
 - Hashes can include or exclude leading "#"
+- Type: `string[] | BaseScrollOptionsWithHash[]`
 
 `children`
 
 - **Required**
 - Number of children should equal the number of hashes
+- Type: `ReactElement[]`
 
 [`behavior`](#behavior)
 

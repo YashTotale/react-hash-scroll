@@ -4,12 +4,10 @@ import warning from "tiny-warning";
 import HashScroll from "./HashScroll";
 
 //Utils
-import { BaseScrollOptions } from "../Utils/types";
+import { BaseScrollOptions, BaseScrollOptionsWithHash } from "../Utils/types";
 import { CHILDREN_HASH_UNEQUAL_LENGTHS } from "../Utils/messages";
 
-export type ChildHash =
-  | string
-  | (Partial<BaseScrollOptions> & { hash: string });
+export type ChildHash = string | BaseScrollOptionsWithHash;
 
 export interface ChildrenHashProps extends Partial<BaseScrollOptions> {
   /**
