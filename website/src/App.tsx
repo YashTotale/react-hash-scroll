@@ -10,7 +10,7 @@ import { getAllDocs } from "./Redux/thunks";
 //Page Imports
 import Readme from "./Pages/Readme";
 import Changelog from "./Pages/Changelog";
-import Component from "./Pages/Component";
+import Doc from "./Pages/Doc";
 import NotFound from "./Pages/404";
 
 //Component Imports
@@ -64,7 +64,10 @@ const Routes: React.FC = (props) => {
   return (
     <Switch>
       <Route exact path="/components/:id">
-        <Component />
+        <Doc type="components" />
+      </Route>
+      <Route exact path="/hooks/:id">
+        <Doc type="hooks" />
       </Route>
       <Route exact path="/changelog">
         <Changelog />

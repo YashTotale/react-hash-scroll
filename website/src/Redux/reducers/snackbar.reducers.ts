@@ -6,13 +6,13 @@ import {
 } from "../actions";
 import { Color } from "@material-ui/lab";
 
-export interface SnackbarState {
+interface SnackbarState {
   isOpen: boolean;
   message: string;
   severity: Color;
 }
 
-export const initialSnackbarState: SnackbarState = {
+const initialSnackbarState: SnackbarState = {
   isOpen: false,
   message: "",
   severity: "info",

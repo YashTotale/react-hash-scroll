@@ -1,3 +1,3 @@
-import { State } from "../reducers";
+import { RootState } from "../reducers";
 
-export const getIsSideBarOpen = (state: State) => state.display.isOpen;
+export const getIsSideBarOpen = (state: RootState) => state.display.isOpen;

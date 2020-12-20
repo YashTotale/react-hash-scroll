@@ -1,11 +1,11 @@
 import { AnyAction } from "redux";
 import { TOGGLE_SIDEBAR } from "../actions";
 
-export interface DisplayState {
+interface DisplayState {
   isOpen: boolean;
 }
 
-export const initialDisplayState: DisplayState = {
+const initialDisplayState: DisplayState = {
   isOpen: false,
 };
 

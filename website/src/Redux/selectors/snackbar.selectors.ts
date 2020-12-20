@@ -1,7 +1,8 @@
-import { State } from "../reducers";
+import { RootState } from "../reducers";
 
-export const getSnackbarMessage = (state: State) => state.snackbar.message;
+export const getSnackbarMessage = (state: RootState) => state.snackbar.message;
 
-export const getIsSnackbarOpen = (state: State) => state.snackbar.isOpen;
+export const getIsSnackbarOpen = (state: RootState) => state.snackbar.isOpen;
 
-export const getSnackbarSeverity = (state: State) => state.snackbar.severity;
+export const getSnackbarSeverity = (state: RootState) =>
+  state.snackbar.severity;

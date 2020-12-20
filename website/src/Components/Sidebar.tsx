@@ -5,7 +5,7 @@ import isEqual from "lodash.isequal";
 
 //Redux Imports
 import { useDispatch, useSelector } from "react-redux";
-import { getComponents, getIsSideBarOpen } from "../Redux/selectors";
+import { getComponents, getIsSideBarOpen, getHooks } from "../Redux/selectors";
 import { toggleSidebar } from "../Redux/actions";
 
 //Utils
@@ -24,6 +24,7 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { ExpandLess } from "@material-ui/icons";
+import { NestedDocs } from "../Redux/reducers/docs.reducers";
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -90,7 +91,7 @@ interface ContentsProps {}
 
 const Contents: React.FC<ContentsProps> = () => {
   const components = useSelector(getComponents, isEqual);
-  const componentNames = Object.keys(components);
+  const hooks = useSelector(getHooks, isEqual);
   const classes = useStyles();
 
   return (
@@ -99,15 +100,8 @@ const Contents: React.FC<ContentsProps> = () => {
       <Divider />
       <List component="nav" className={classes.list}>
         <ListLink to="/home" name="Home" />
-        {componentNames.length > 0 && (
-          <Category
-            name="Components"
-            items={componentNames.map((component) => ({
-              name: component,
-              to: components[component].url,
-            }))}
-          />
-        )}
+        <DropdownDocs name="Components" docs={components} />
+        <DropdownDocs name="Hooks" docs={hooks} />
         <ListLink to="/changelog" name="Changelog" />
       </List>
     </>
@@ -127,6 +121,25 @@ const ListLink: React.FC<ListLinkProps> = ({ to, name }) => {
       <ListItemText primary={name} classes={{ primary: classes.listItem }} />
     </ListItem>
   );
+};
+
+interface DropdownDocsProps {
+  name: string;
+  docs: NestedDocs;
+}
+
+const DropdownDocs: React.FC<DropdownDocsProps> = ({ docs, name }) => {
+  const names = Object.keys(docs);
+
+  return names.length > 0 ? (
+    <Category
+      name={name}
+      items={names.map((name) => ({
+        name: name,
+        to: docs[name].url,
+      }))}
+    />
+  ) : null;
 };
 
 interface CategoryStyleProps {

@@ -1,4 +1,4 @@
-import { Components, DocType } from "../reducers/docs.reducers";
+import { NestedDocs, DocType } from "../reducers/docs.reducers";
 
 export const LOAD_DOCS_IN_PROGRESS = "LOAD_DOCS_IN_PROGRESS";
 
@@ -12,7 +12,7 @@ export const loadDocsInProgress = (docType: DocType) => ({
 export const LOAD_DOCS_SUCCESS = "LOAD_DOCS_SUCCESS";
 export const loadDocsSuccess = (
   docType: DocType,
-  docs: string | Components
+  docs: string | NestedDocs
 ) => ({
   type: LOAD_DOCS_SUCCESS,
   payload: {

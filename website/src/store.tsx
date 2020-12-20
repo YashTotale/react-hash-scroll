@@ -37,6 +37,8 @@ const persistConfig = {
 const rootReducer = combineReducers(reducers);
 const persistedReducer = persistReducer<any>(persistConfig, rootReducer);
 
+export type RootState = ReturnType<typeof rootReducer>;
+
 const configuredStore = createStore(
   persistedReducer,
   composeWithDevTools(applyMiddleware(thunk))

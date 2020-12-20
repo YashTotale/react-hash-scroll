@@ -6,20 +6,26 @@ import {
   LOAD_DOCS_ERROR,
 } from "../actions";
 
-export interface Component {
+export interface NestedDoc {
   text: string;
   url: string;
 }
 
-export type Components = Record<string, Component>;
+export type NestedDocs = Record<string, NestedDoc>;
 
-export type DocType = "components" | "readme" | "changelog";
+export type DocType = "components" | "readme" | "changelog" | "hooks";
 
-export const DOC_TYPES: DocType[] = ["components", "readme", "changelog"];
+export const DOC_TYPES: DocType[] = [
+  "components",
+  "readme",
+  "changelog",
+  "hooks",
+];
 
-export type DocsState = {
+type DocsState = {
   info: {
-    components: Components;
+    components: NestedDocs;
+    hooks: NestedDocs;
     readme: string;
     changelog: string;
   };
@@ -28,24 +34,28 @@ export type DocsState = {
   updates: Record<DocType, number | undefined>;
 };
 
-export const initialDocsState: DocsState = {
+const initialDocsState: DocsState = {
   info: {
     components: {},
+    hooks: {},
     readme: "",
     changelog: "",
   },
   loading: {
     components: false,
+    hooks: false,
     readme: false,
     changelog: false,
   },
   errors: {
     components: false,
+    hooks: false,
     readme: false,
     changelog: false,
   },
   updates: {
     components: undefined,
+    hooks: undefined,
     readme: undefined,
     changelog: undefined,
   },

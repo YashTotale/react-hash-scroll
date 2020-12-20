@@ -3,8 +3,8 @@ import { Dispatch } from "react";
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { State } from "../reducers";
-import { Components, DocType, DOC_TYPES } from "../reducers/docs.reducers";
+import { RootState } from "../reducers";
+import { NestedDocs, DocType, DOC_TYPES } from "../reducers/docs.reducers";
 import {
   loadDocsError,
   setSnackbarMessage,
@@ -14,16 +14,18 @@ import {
 import {
   getIsChangelogError,
   getIsComponentsError,
+  getIsHooksError,
   getIsReadmeError,
   getLastChangelogUpdate,
   getLastComponentsUpdate,
+  getLastHooksUpdate,
   getLastReadmeUpdate,
 } from "../selectors";
 import { capitalize } from "@material-ui/core";
 
 export const getAllDocs = () => async (
-  dispatch: Dispatch<AnyAction | ThunkAction<void, State, any, any>>,
-  getState: () => State
+  dispatch: Dispatch<AnyAction | ThunkAction<void, RootState, any, any>>,
+  getState: () => RootState
 ) => {
   try {
     const getDiff = (lastUpdated: number) => {
@@ -36,11 +38,15 @@ export const getAllDocs = () => async (
     };
 
     const lastComponentsUpdate = getLastComponentsUpdate(getState());
+    const lastHooksUpdate = getLastHooksUpdate(getState());
     const lastReadmeUpdate = getLastReadmeUpdate(getState());
     const lastChangelogUpdate = getLastChangelogUpdate(getState());
 
     if (!lastComponentsUpdate || getDiff(lastComponentsUpdate) > 24)
-      dispatch(getComponentsRequest());
+      dispatch(getDocs("components"));
+
+    if (!lastHooksUpdate || getDiff(lastHooksUpdate) > 24)
+      dispatch(getDocs("hooks"));
 
     if (!lastReadmeUpdate || getDiff(lastReadmeUpdate) > 24)
       dispatch(getDocs("readme"));
@@ -55,12 +61,15 @@ export const getAllDocs = () => async (
 };
 
 export const getDocs = (docType: DocType) => async (
-  dispatch: Dispatch<AnyAction | ThunkAction<void, State, any, any>>,
-  getState: () => State
+  dispatch: Dispatch<AnyAction | ThunkAction<void, RootState, any, any>>,
+  getState: () => RootState
 ) => {
   try {
     if (docType === "components") {
-      return dispatch(getComponentsRequest());
+      return dispatch(getNestedDocs("components"));
+    }
+    if (docType === "hooks") {
+      return dispatch(getNestedDocs("hooks"));
     }
     dispatch(loadDocsInProgress(docType));
 
@@ -87,21 +96,21 @@ export const getDocs = (docType: DocType) => async (
   }
 };
 
-const getComponentsRequest = () => async (
-  dispatch: Dispatch<AnyAction | ThunkAction<void, State, any, any>>,
-  getState: () => State
+const getNestedDocs = (docType: "components" | "hooks") => async (
+  dispatch: Dispatch<AnyAction | ThunkAction<void, RootState, any, any>>,
+  getState: () => RootState
 ) => {
   try {
-    dispatch(loadDocsInProgress("components"));
+    dispatch(loadDocsInProgress(docType));
     const octokit = new Octokit();
 
     const { data } = await octokit.repos.getContent({
       owner: "YashTotale",
       repo: "react-hash-scroll",
-      path: "docs/Components",
+      path: `docs/${capitalize(docType)}`,
     });
 
-    const components: Components = {};
+    const nestedDocs: NestedDocs = {};
 
     ((data as unknown) as typeof data[]).forEach(async (component) => {
       const { name, download_url } = component;
@@ -113,26 +122,26 @@ const getComponentsRequest = () => async (
 
       const id = name.slice(0, -3);
 
-      components[id] = {
+      nestedDocs[id] = {
         text: html,
         url: id.toLowerCase(),
       };
     });
 
-    dispatch(loadDocsSuccess("components", components));
+    dispatch(loadDocsSuccess(docType, nestedDocs));
   } catch (e) {
     dispatch(
       loadDocsError(
-        "components",
-        "Components could not be fetched. Please try again"
+        docType,
+        `${capitalize(docType)} could not be fetched. Please try again`
       )
     );
   }
 };
 
 export const onDemandDataRequest = (page: DocType | null) => async (
-  dispatch: Dispatch<AnyAction | ThunkAction<void, State, any, any>>,
-  getState: () => State
+  dispatch: Dispatch<AnyAction | ThunkAction<void, RootState, any, any>>,
+  getState: () => RootState
 ) => {
   if (page === null)
     return DOC_TYPES.forEach((docType) => onDemandDataRequest(docType));
@@ -192,6 +201,13 @@ const getFuncsForDocType = (docType: DocType) => {
         getLastUpdate: getLastComponentsUpdate,
         docRequest: getDocs("components"),
         isError: getIsComponentsError,
+      };
+    }
+    case "hooks": {
+      return {
+        getLastUpdate: getLastHooksUpdate,
+        docRequest: getDocs("hooks"),
+        isError: getIsHooksError,
       };
     }
     case "changelog": {

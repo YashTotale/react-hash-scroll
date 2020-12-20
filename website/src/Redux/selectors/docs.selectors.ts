@@ -1,23 +1,30 @@
-import { State } from "../reducers";
+import { RootState } from "../reducers";
 
-export const getComponents = (state: State) => state.docs.info.components;
-export const getReadme = (state: State) => state.docs.info.readme;
-export const getChangelog = (state: State) => state.docs.info.changelog;
+export const getComponents = (state: RootState) => state.docs.info.components;
+export const getHooks = (state: RootState) => state.docs.info.hooks;
+export const getReadme = (state: RootState) => state.docs.info.readme;
+export const getChangelog = (state: RootState) => state.docs.info.changelog;
 
-export const getIsComponentsLoading = (state: State) =>
+export const getIsComponentsLoading = (state: RootState) =>
   state.docs.loading.components;
-export const getIsReadmeLoading = (state: State) => state.docs.loading.readme;
-export const getIsChangelogLoading = (state: State) =>
+export const getIsHooksLoading = (state: RootState) => state.docs.loading.hooks;
+export const getIsReadmeLoading = (state: RootState) =>
+  state.docs.loading.readme;
+export const getIsChangelogLoading = (state: RootState) =>
   state.docs.loading.changelog;
 
-export const getIsComponentsError = (state: State) =>
+export const getIsComponentsError = (state: RootState) =>
   state.docs.errors.components;
-export const getIsReadmeError = (state: State) => state.docs.errors.readme;
-export const getIsChangelogError = (state: State) =>
+export const getIsHooksError = (state: RootState) => state.docs.errors.hooks;
+export const getIsReadmeError = (state: RootState) => state.docs.errors.readme;
+export const getIsChangelogError = (state: RootState) =>
   state.docs.errors.changelog;
 
-export const getLastComponentsUpdate = (state: State) =>
+export const getLastComponentsUpdate = (state: RootState) =>
   state.docs.updates.components;
-export const getLastReadmeUpdate = (state: State) => state.docs.updates.readme;
-export const getLastChangelogUpdate = (state: State) =>
+export const getLastHooksUpdate = (state: RootState) =>
+  state.docs.updates.hooks;
+export const getLastReadmeUpdate = (state: RootState) =>
+  state.docs.updates.readme;
+export const getLastChangelogUpdate = (state: RootState) =>
   state.docs.updates.changelog;

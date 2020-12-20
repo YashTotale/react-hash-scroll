@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../Redux/actions";
 import { onDemandDataRequest } from "../Redux/thunks";
-import { DocType } from "../Redux/reducers/docs.reducers";
+import { DocType, DOC_TYPES } from "../Redux/reducers/docs.reducers";
 
 // Material UI Imports
 import {
@@ -38,11 +38,9 @@ const Header: FC<HeaderProps> = () => {
 
   const root = pathname.split("/")[1];
 
-  let page: DocType | null = null;
+  let page: DocType | null = DOC_TYPES.find((type) => type === root) ?? null;
 
-  if (root === "readme" || root === "home" || root === "") page = "readme";
-  else if (root === "components") page = "components";
-  else if (root === "changelog") page = "changelog";
+  if (root === "home" || root === "") page = "readme";
 
   const isSizeSmall = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("md")
