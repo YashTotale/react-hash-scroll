@@ -1,6 +1,5 @@
 import { JSDOM } from "jsdom";
 import marked from "marked";
-import dotenv from "dotenv-safe";
 import axios from "axios";
 
 import pkg from "../package.json";
@@ -15,8 +14,6 @@ import {
   gitAdd,
   getStagedFiles,
 } from "./helpers";
-
-dotenv.config();
 
 const changelogDest = join(ROOT_DIR, "CHANGELOG.md");
 

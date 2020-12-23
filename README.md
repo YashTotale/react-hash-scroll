@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-    <a href="https://github.com/YashTotale/react-hash-scroll/blob/main/static/icon.png"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/main/static/icon.png" alt="React Hash Scroll" width="200"></a>
+    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/main/static/icon.png" alt="React Hash Scroll" width="200"></a>
   <br>
   <h2 align="center">
     <a href="https://react-hash-scroll.web.app/">React Hash Scroll</a>
@@ -92,7 +92,7 @@ There are a lot of hash scrolling React libraries out there, so why should you p
 
 ## Website
 
-![Website](https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F&style=flat-square&logo=firebase)
+<a href="https://react-hash-scroll.web.app/"><img src="https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F&style=flat-square&logo=firebase" alt="Website"></a>
 
 The [website](https://react-hash-scroll.web.app/) compiles all the information and demos on this library in one easy-to-access place.
 
