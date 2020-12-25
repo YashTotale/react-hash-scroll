@@ -113,6 +113,7 @@ Scrolls to the child element when the specified hash is present in the url
 #### Demo
 
 [![View Hash Scroll Demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-hash-scroll-demos-ge3b4?initialpath=hash-scroll&module=/src/Demos/HashScrollDemo.tsx)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FYashTotale%2Freact-hash-scroll.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FYashTotale%2Freact-hash-scroll?ref=badge_shield)
 
 #### Props
 
@@ -478,3 +479,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
     <a href="https://github.com/YashTotale/react-hash-scroll/actions?query=workflow%3A%22CodeQL+Analysis%22"><img src="https://img.shields.io/github/workflow/status/YashTotale/react-hash-scroll/CodeQL%20Analysis?label=CodeQL%20Analysis&style=flat-square&logo=github&labelColor=000000&logoColor=FFFFF" alt="CodeQL Analysis"></a>&nbsp;
 
 </p>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FYashTotale%2Freact-hash-scroll.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FYashTotale%2Freact-hash-scroll?ref=badge_large)
