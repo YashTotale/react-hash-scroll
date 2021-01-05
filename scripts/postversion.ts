@@ -47,7 +47,7 @@ const postversion = async () => {
       release_id: data.id,
       name: version,
       tag_name: version,
-      body: await getChangeLogSection(version),
+      body: await getChangeLogSection(pkg.version),
     });
   } catch (e) {
     console.log(e);
