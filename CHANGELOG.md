@@ -8,13 +8,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 - [[Unreleased]](#unreleased)
 - [[1.4.4] - (2021-01-04)](#144---2021-01-04)
-- [[1.4.3] - (2020-12-18)](#143---2020-12-18)
   - [Fixed](#fixed)
+- [[1.4.3] - (2020-12-18)](#143---2020-12-18)
+  - [Fixed](#fixed-1)
 - [[1.4.2] - (2020-12-18)](#142---2020-12-18)
   - [Changed](#changed)
 - [[1.4.1] - (2020-12-03)](#141---2020-12-03)
   - [Added](#added)
-  - [Fixed](#fixed-1)
+  - [Fixed](#fixed-2)
 - [[1.4.0] - (2020-12-03)](#140---2020-12-03)
   - [Added](#added-1)
 - [[1.3.2] - (2020-12-02)](#132---2020-12-02)
@@ -27,9 +28,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 - [[1.2.3] - (2020-11-26)](#123---2020-11-26)
   - [Removed](#removed)
 - [[1.2.2] - (2020-11-26)](#122---2020-11-26)
-  - [Fixed](#fixed-2)
-- [[1.2.1] - (2020-11-26)](#121---2020-11-26)
   - [Fixed](#fixed-3)
+- [[1.2.1] - (2020-11-26)](#121---2020-11-26)
+  - [Fixed](#fixed-4)
 - [[1.2.0] - (2020-11-26)](#120---2020-11-26)
   - [Added](#added-5)
   - [Changed](#changed-1)
@@ -40,7 +41,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
   - [Changed](#changed-3)
 - [[1.0.1] - (2020-11-23)](#101---2020-11-23)
   - [Added](#added-7)
-  - [Fixed](#fixed-4)
+  - [Fixed](#fixed-5)
 - [[1.0.0] - (2020-11-23)](#100---2020-11-23)
 
 ## [Unreleased]
@@ -48,6 +49,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 ---
 
 ## [1.4.4] - (2021-01-04)
+
+### Fixed
+
+- CHANGELOG formatting
 
 ---
 

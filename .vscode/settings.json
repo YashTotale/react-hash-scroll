@@ -10,7 +10,6 @@
     ".prettierrc": "json",
     ".firebaserc": "json"
   },
-  "markdown.extension.toc.updateOnSave": true,
   "markdown.extension.toc.slugifyMode": "github",
   "typescript.tsdk": "node_modules/typescript/lib"
 }
