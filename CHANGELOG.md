@@ -8,12 +8,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 - [[Unreleased]](#unreleased)
 - [[1.4.5] - (2021-02-13)](#145---2021-02-13)
+  - [Changed](#changed)
 - [[1.4.4] - (2021-01-04)](#144---2021-01-04)
   - [Fixed](#fixed)
 - [[1.4.3] - (2020-12-18)](#143---2020-12-18)
   - [Fixed](#fixed-1)
 - [[1.4.2] - (2020-12-18)](#142---2020-12-18)
-  - [Changed](#changed)
+  - [Changed](#changed-1)
 - [[1.4.1] - (2020-12-03)](#141---2020-12-03)
   - [Added](#added)
   - [Fixed](#fixed-2)
@@ -34,12 +35,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
   - [Fixed](#fixed-4)
 - [[1.2.0] - (2020-11-26)](#120---2020-11-26)
   - [Added](#added-5)
-  - [Changed](#changed-1)
+  - [Changed](#changed-2)
 - [[1.1.0] - (2020-11-24)](#110---2020-11-24)
   - [Added](#added-6)
-  - [Changed](#changed-2)
-- [[1.0.2] - (2020-11-23)](#102---2020-11-23)
   - [Changed](#changed-3)
+- [[1.0.2] - (2020-11-23)](#102---2020-11-23)
+  - [Changed](#changed-4)
 - [[1.0.1] - (2020-11-23)](#101---2020-11-23)
   - [Added](#added-7)
   - [Fixed](#fixed-5)
@@ -50,6 +51,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 ---
 
 ## [1.4.5] - (2021-02-13)
+
+### Changed
+
+- Dependency Updates
 
 ---
 
