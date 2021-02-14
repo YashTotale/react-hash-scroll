@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
-- [[1.4.5] - (2021-01-04)](#145---2021-01-04)
+- [[1.4.5] - (2021-02-13)](#145---2021-02-13)
 - [[1.4.4] - (2021-01-04)](#144---2021-01-04)
   - [Fixed](#fixed)
 - [[1.4.3] - (2020-12-18)](#143---2020-12-18)
@@ -49,7 +49,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ---
 
-## [1.4.5] - (2021-01-04)
+## [1.4.5] - (2021-02-13)
 
 ---
 

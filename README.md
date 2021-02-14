@@ -429,7 +429,7 @@ _Check out [first contributions](https://github.com/firstcontributions/first-con
 
 <!-- NPM Badges -->
 <p align="center">
-    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/npm/dw/react-hash-scroll?logo=npm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Downloads" alt="Downloads"></a>&nbsp;
+    <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/npm/dt/react-hash-scroll?logo=npm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Downloads" alt="Downloads"></a>&nbsp;
     <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://img.shields.io/bundlephobia/min/react-hash-scroll?logo=npm&logoColor=FFFFFF&style=for-the-badge&labelColor=000000&label=Minified%20Size" alt="Minified Size"></a>&nbsp;
 </p>
 
