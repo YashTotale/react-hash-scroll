@@ -27,7 +27,7 @@
     "precommit": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/precommit.ts",
     "prepublishOnly": "npm run build",
     "preversion": "npm test",
-    "postversion": "git push && git push --follow-tags && TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/postversion.ts",
+    "postversion": "git push && git push --follow-tags && TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/recreate-releases.ts",
     "buildwiki": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node scripts/buildwiki.ts"
   },
   "dependencies": {

@@ -45,6 +45,6 @@ export const today = moment().format("YYYY-MM-DD");
 export const PACKAGE_NAME = "react-hash-scroll";
 export const PACKAGE_REPO_NAME = "react-hash-scroll";
 export const PACKAGE_REPO_OWNER = "YashTotale";
-export const ROOT_DIR = join(__dirname, "..");
+export const ROOT_DIR = join(__dirname, "..", "..");
 export const git = simpleGit(ROOT_DIR);
 export const remove = promisify(rimraf);

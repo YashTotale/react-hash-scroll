@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 **Table of Contents**
 
 - [[Unreleased]](#unreleased)
+- [[1.4.6] - (2021-02-27)](#146---2021-02-27)
 - [[1.4.5] - (2021-02-13)](#145---2021-02-13)
   - [Changed](#changed)
 - [[1.4.4] - (2021-01-04)](#144---2021-01-04)
@@ -47,6 +48,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 - [[1.0.0] - (2020-11-23)](#100---2020-11-23)
 
 ## [Unreleased]
+
+---
+
+## [1.4.6] - (2021-02-27)
 
 ---
 
@@ -134,7 +139,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ### Removed
 
-- Source Maps for [UMD](https://github.com/umdjs/umd#readme) builds
+- Source Maps for [UMD] builds
 
 ---
 
@@ -142,7 +147,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ### Fixed
 
-- Typo in [UMD](https://github.com/umdjs/umd#readme) build
+- Typo in [UMD] build
 
 ---
 
@@ -150,7 +155,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ### Fixed
 
-- Link to [unpkg](https://unpkg.com/) build in README
+- Link to [unpkg] build in README
 
 ---
 
@@ -158,11 +163,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ### Added
 
-- [UMD](https://github.com/umdjs/umd#readme) build added
+- [UMD] build added
 
 ### Changed
 
-- [unpkg](https://unpkg.com/) documentation added to README
+- [unpkg] documentation added to README
 
 ---
 
@@ -204,3 +209,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 - Initial release
 
 ---
+
+<!-- Start Reference Links -->
+
+[umd]: https://github.com/umdjs/umd#readme
+[unpkg]: https://unpkg.com/
