@@ -1,6 +1,6 @@
 {
   "name": "react-hash-scroll",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "Customizable React components for hash scrolling with refs (TS supported)",
   "main": "cjs/index.js",
   "author": {
