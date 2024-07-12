@@ -1,4 +1,4 @@
-# Contributing to Introspect
+# Contributing to React Hash Scroll
 
 Welcome, and thank you for your interest in contributing to react-hash-scroll!
 
