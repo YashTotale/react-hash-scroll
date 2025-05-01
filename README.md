@@ -3,7 +3,7 @@
     <a href="https://www.npmjs.com/package/react-hash-scroll"><img src="https://raw.githubusercontent.com/YashTotale/react-hash-scroll/main/static/icon.png" alt="React Hash Scroll" width="200"></a>
   <br>
   <h2 align="center">
-    <a href="https://react-hash-scroll.web.app/">React Hash Scroll</a>
+    <a href="https://www.npmjs.com/package/react-hash-scroll">React Hash Scroll</a>
   </h2>
 </p>
 
@@ -16,7 +16,6 @@ _Table Of Contents_
 
 - [Installation](#installation)
 - [Why this one](#why-this-one)
-- [Website](#website)
 - [Components](#components)
   - [HashScroll](#hashscroll)
     - [Summary](#summary)
@@ -45,7 +44,6 @@ _Table Of Contents_
   - [requiredPathname](#requiredpathname)
   - [scrollFunc](#scrollfunc)
 - [Contributing](#contributing)
-- [More Info (Badges)](#more-info-badges)
 
 ---
 
@@ -86,14 +84,6 @@ There are a lot of hash scrolling React libraries out there, so why should you p
 - React Hash Scroll offers built-in [TypeScript](https://www.typescriptlang.org/) support
 - Extensive testing makes React Hash Scroll more dependable
 - Components provided by React Hash Scroll are very customizable, making it more likely that they will fit your use case
-
----
-
-## Website
-
-<a href="https://react-hash-scroll.web.app/"><img src="https://img.shields.io/website?url=https%3A%2F%2Freact-hash-scroll.web.app%2F&style=flat-square&logo=firebase" alt="Website"></a>
-
-The [website](https://react-hash-scroll.web.app/) compiles all the information and demos on this library in one easy-to-access place.
 
 ---
 
